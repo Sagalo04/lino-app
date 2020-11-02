@@ -1,0 +1,60 @@
+.o-service{
+    width: 25rem;
+    margin: 3rem;
+    /* height: 40rem; */
+    box-shadow: 0px 0px 11px -2px rgba(0,0,0,0.52);
+}
+
+.o-service-header{
+    padding: 1rem;
+    background-color: #078998;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    
+}
+.o-service-icons{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+}
+.o-icon{
+    color: #D7D0B7;
+}
+
+.o-select{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.o-select p{
+    margin-top: 26px;
+}
+
+.mydatepicker{
+    margin: 8px;
+    width: 10.2rem;
+}
+
+.o-button{
+    outline: none;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    background-color: #54BEDF;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+    transition: 0.7s;
+    
+}
+
+.o-button:hover{
+    background-color: #007DA4;
+    transition: 0.7s;
+    outline: none;
+}
