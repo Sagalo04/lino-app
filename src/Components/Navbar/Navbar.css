@@ -1,3 +1,4 @@
+/*Estilos del navbar*/
 .o-navbar{
     -webkit-box-shadow: 0px 3px 13px -4px rgba(97,97,97,0.84);
     -moz-box-shadow: 0px 3px 13px -4px rgba(97,97,97,0.84);
@@ -5,7 +6,7 @@
     padding-left: 3rem;
     padding-right: 3rem;
 }
-
+/*Estilos del titulo LINO*/
 .o-nav-title{
     color: #D7D0B7;
     font-weight: bolder;
@@ -15,24 +16,24 @@
     margin-right: 5rem;
     transform: scale(1);
 }
-
+/*Estilos del titulo LINO*/
 .o-nav-title:hover{
     transform: scale(1.1);
     transition: 0.8s;
     text-decoration: none;
+    color: #0050a7;
 }
-
-
+/*Estilos del la prímera división izquierda*/
 .o-nav-1{
     display: flex;
 }
-
+/*Estilos de la división derecha*/
 .o-nav-2{
     display: flex;
     width: 20rem;
     justify-content: space-around;
 }
-
+/*Estilos de los íconos de las divisiones*/
 .o-navlink:hover{
     text-decoration: none;
 }

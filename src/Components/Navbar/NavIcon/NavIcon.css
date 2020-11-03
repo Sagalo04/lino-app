@@ -1,18 +1,16 @@
+/*Estilos del icono*/
 .o-nav-icon{
     color: #888065;
     transition: 0.8s;
     text-decoration: none;
 }
-
 .o-nav-icon:hover{
     color: #D7D0B7;
     transition: 0.8s;
     cursor: pointer;
     text-decoration: none;
 }
-
-
-
+/*Estilos del texto del icono*/
 .o-nav-icon-title{
     margin: 0;
     text-decoration: none;

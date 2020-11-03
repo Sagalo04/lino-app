@@ -1,0 +1,14 @@
+.o-select{
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+.o-select p{
+    margin-top: 26px;
+}
+
+hr{
+    width: 90%;
+    border-top: 0.5px solid rgba(0,0,0,.2)
+}

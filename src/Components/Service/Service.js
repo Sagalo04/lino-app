@@ -9,6 +9,9 @@ import {
 import ServiceHeader from './ServiceHeader/ServiceHeader';
 import OButton from '../OButton/OButton'
 import { Link } from 'react-router-dom';
+//service Select
+import ServiceSelect from './ServiceSelect/ServiceSelect';
+
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -40,40 +43,12 @@ function Service(props) {
     return (
         <div className="o-service">
             <ServiceHeader />
-            <div className="o-select">
-                <p className='o-label'>Deseo un: </p>
-                <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">Médico/Psicologo</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={age}
-                        onChange={handleChange2}
-                    >
-                        <MenuItem value={1}>Médico</MenuItem>
-                        <MenuItem value={2}>Psicólogo</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
-
-            <hr />
-
-            <div className="o-select">
-                <p className='o-label'>Especialidad: </p>
-                <FormControl className={classes.formControl}>
-                    <InputLabel id="demo-simple-select-label">Especialidad</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={age}
-                        onChange={handleChange2}
-                    >
-                        <MenuItem value={1}>Cardiologia</MenuItem>
-                        <MenuItem value={2}>General</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
-            <hr />
+            {/*Seleccionar Medico/Psicologo*/}
+            <ServiceSelect label={"Deseo un:"} initialValue={"Médico/Psicólogo"} options={["Médico","Psicólogo"]}/>
+            
+            {/*Seleccionar especialidad*/}
+            <ServiceSelect label={"Especialidad:"} initialValue={"General"} options={["General","Cardiólogo"]}/>
+            {/*Seleccionar fecha*/}
             <div className="o-select">
                 <p className='o-label'>Para el dia: </p>
                 <MuiPickersUtilsProvider className="o-mui" utils={DateFnsUtils} >
@@ -88,8 +63,8 @@ function Service(props) {
                     />
                 </MuiPickersUtilsProvider>
             </div>
-
             <hr />
+            {/*Boton para confimar servicio*/}
             <Link to="/Servicio">
                 <OButton label={"Aceptar"}></OButton>
             </Link>

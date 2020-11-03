@@ -2,6 +2,7 @@ import React from 'react';
 import "./Navbar.css"
 import NavIcon from './NavIcon/NavIcon';
 import { NavLink } from 'react-router-dom';
+
 function Navbar(props) {
     return (
         <header className="o-header">
