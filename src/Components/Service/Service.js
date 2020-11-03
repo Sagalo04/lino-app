@@ -13,16 +13,6 @@ import { Link } from 'react-router-dom';
 import ServiceSelect from './ServiceSelect/ServiceSelect';
 
 
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 170,
-    },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
-    },
-}));
-
 function Service(props) {
 
     const [selectedDate, setSelectedDate] = React.useState(new Date());
@@ -31,14 +21,7 @@ function Service(props) {
         setSelectedDate(date);
     };
 
-    const classes = useStyles();
-
-
-    const [age, setAge] = React.useState('');
-
-    const handleChange2 = (event) => {
-        setAge(event.target.value);
-    };
+    
 
     return (
         <div className="o-service">
