@@ -5,28 +5,13 @@
     box-shadow: 0px 0px 11px -2px rgba(0,0,0,0.52);
 }
 
-.o-service-header{
-    padding: 1rem;
-    background-color: #078998;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    
+.o-service hr{
+    width: 90%;
+    border-top: 0.5px solid rgba(0,0,0,.2)
 }
-.o-service-icons{
-    width: 70%;
-    display: flex;
-    justify-content: space-around;
-}
-.o-icon{
-    color: #D7D0B7;
-}
-
 .o-select{
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
 }
 
@@ -35,26 +20,18 @@
 }
 
 .mydatepicker{
-    margin: 8px;
-    width: 10.2rem;
+    margin: 8px !important; 
+    width: 10.3rem;
 }
 
-.o-button{
-    outline: none;
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-    padding: 0.5rem 3rem 0.5rem 3rem;
-    background-color: #54BEDF;
-    color: white;
-    border-radius: 5px;
-    border: 0;
-    box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
-    transition: 0.7s;
-    
+.o-mui{
+    margin:8px;
 }
 
-.o-button:hover{
-    background-color: #007DA4;
-    transition: 0.7s;
-    outline: none;
+.o-label{
+    justify-self:   flex-start ;
+    align-items: flex-start;
+    width: 5rem;
+    margin-left: 2.5rem;
+    margin-right: 4rem;
 }

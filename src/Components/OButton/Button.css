@@ -1,0 +1,19 @@
+.o-button{
+    outline: none;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    background-color: #54BEDF;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+    transition: 0.7s;
+    
+}
+
+.o-button:hover{
+    background-color: #007DA4;
+    transition: 0.7s;
+    outline: none;
+}

@@ -1,13 +1,14 @@
 import React from 'react';
-import Switch from '@material-ui/core/Switch';
 import DateFnsUtils from '@date-io/date-fns';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select } from '@material-ui/core';
-
+import { makeStyles } from '@material-ui/core/styles';
+import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 import './Service.css'
 import {
     KeyboardDatePicker, MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
+import ServiceHeader from './ServiceHeader/ServiceHeader';
+import OButton from '../OButton/OButton'
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -19,41 +20,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-const AntSwitch = withStyles((theme) => ({
-    root: {
-        width: 28,
-        height: 16,
-        padding: 0,
-        // display: 'flex',
-    },
-    switchBase: {
-        padding: 2,
-        color: theme.palette.common.white,
-        '&$checked': {
-            transform: 'translateX(12px)',
-            color: theme.palette.common.white,
-            '& + $track': {
-                opacity: 1,
-                backgroundColor: '#54BEDF',
-                borderColor: '#54BEDF',
-            },
-        },
-    },
-    thumb: {
-        width: 12,
-        height: 12,
-        boxShadow: 'none',
-    },
-    track: {
-        border: `1px solid ${theme.palette.grey[500]}`,
-        borderRadius: 16 / 2,
-        opacity: 1,
-        backgroundColor: '#959595',
-    },
-    checked: {},
-}))(Switch);
-
 function Service(props) {
 
     const [selectedDate, setSelectedDate] = React.useState(new Date());
@@ -63,13 +29,7 @@ function Service(props) {
     };
 
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        checkedA: true,
-        checkedB: true,
-    })
-    const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
-    };
+
 
     const [age, setAge] = React.useState('');
 
@@ -79,46 +39,9 @@ function Service(props) {
 
     return (
         <div className="o-service">
-            <div className="o-service-header">
-                <h3>¿Que servicio deseas?</h3>
-                <div className="o-service-icons">
-                    <FormControl component="fieldset">
-                        <FormGroup aria-label="position" row>
-                            <FormControlLabel
-                                value="top"
-                                control={<AntSwitch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
-                                label={<div>
-                                    <h5>Hogar</h5>
-                                    <i className="fas fa-home fa-2x o-icon"></i>
-                                </div>}
-                                labelPlacement="top" />
-                        </FormGroup>
-                    </FormControl>
-
-                    <FormControl component="fieldset">
-                        <FormGroup aria-label="position" row>
-                            <FormControlLabel
-                                value="top"
-                                control={<AntSwitch checked={state.checkedB} onChange={handleChange} name="checkedB" />}
-                                label={
-                                    <div>
-                                        <h5>Remoto</h5>
-                                        <i className="fas fa-wifi fa-2x o-icon"></i>
-                                    </div>
-                                }
-                                labelPlacement="top" />
-                        </FormGroup>
-                    </FormControl>
-                    {/* <Switch
-                        checked={state.checkedA}
-                        onChange={handleChange}
-                        name="checkedA"
-                        inputProps={{ 'aria-label': 'primary checkbox' }}
-                    /> */}
-                </div>
-            </div>
+            <ServiceHeader />
             <div className="o-select">
-                <p>Deseo un: </p>
+                <p className='o-label'>Deseo un: </p>
                 <FormControl className={classes.formControl}>
                     <InputLabel id="demo-simple-select-label">Médico/Psicologo</InputLabel>
                     <Select
@@ -136,7 +59,7 @@ function Service(props) {
             <hr />
 
             <div className="o-select">
-                <p>Especialidad: </p>
+                <p className='o-label'>Especialidad: </p>
                 <FormControl className={classes.formControl}>
                     <InputLabel id="demo-simple-select-label">Especialidad</InputLabel>
                     <Select
@@ -152,27 +75,24 @@ function Service(props) {
             </div>
             <hr />
             <div className="o-select">
-                <p>Para el dia: </p>
-                <MuiPickersUtilsProvider utils={DateFnsUtils} >
+                <p className='o-label'>Para el dia: </p>
+                <MuiPickersUtilsProvider className="o-mui" utils={DateFnsUtils} >
                     <KeyboardDatePicker
                         className="mydatepicker"
                         clearable
                         format="dd/MM/yyyy"
-                        // margin="normal"
                         width='20'
                         label="Día de la cita"
                         value={selectedDate}
                         onChange={handleDateChange}
-                    // KeyboardButtonProps={{
-                    //     'aria-label': 'change date',
-                    // }}
                     />
                 </MuiPickersUtilsProvider>
             </div>
 
             <hr />
-
-            <button className="o-button">Aceptar</button>
+            <Link to="/Servicio">
+                <OButton label={"Aceptar"}></OButton>
+            </Link>
         </div>
     );
 }

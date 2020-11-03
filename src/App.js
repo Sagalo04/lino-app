@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom"
 import Service from './Components/Service/Service';
+import ServiceConfirm from './Components/Service/ServiceConfirm';
 
 function App() {
   return (
@@ -25,11 +26,15 @@ function App() {
             <h3>Ayuda</h3>
           </Route>
           <Route path="/Reputacion">
-            {/* <h3>Reputación</h3> */}
-          <Service></Service>
+            <h3>Reputación</h3>
+
           </Route>
           <Route path="/" exact>
-            <h3>Inicio</h3>
+            <Service></Service>
+          </Route>
+
+          <Route path="/Servicio" exact>
+            <ServiceConfirm />
           </Route>
         </Switch>
       </div>

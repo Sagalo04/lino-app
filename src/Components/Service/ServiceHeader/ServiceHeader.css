@@ -1,0 +1,15 @@
+.o-service-header{
+    padding: 1rem;
+    background-color: #078998;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    
+}
+.o-service-icons{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+}
