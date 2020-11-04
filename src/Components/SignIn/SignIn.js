@@ -79,7 +79,7 @@ function SignIn(props) {
                         />
                     </FormControl>
 
-                    <Link to="/">
+                    <Link to="/home">
                         <OButton label={"Ingresar"} />
                     </Link>
 

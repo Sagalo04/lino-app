@@ -4,7 +4,8 @@ import "./NavIcon.css"
 const icons = {
     star: "fas fa-star",
     question: "fas fa-question-circle",
-    user: "fas fa-user"
+    user: "fas fa-user",
+    close: "fas fa-sign-out-alt"
 }
 
 function GetNavIcon(iconState) {

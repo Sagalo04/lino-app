@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom"
 import Service from './Components/Service/Service';
 import ServiceConfirm from './Components/Service/ServiceConfirm';
@@ -17,7 +18,7 @@ function App() {
         <Route path="/signin">
           <SignIn ></SignIn>
         </Route>
-        <Route path="/" exact>
+        <Route path="/home">
           <Router>
             <div className="App">
               <Navbar></Navbar>
@@ -39,11 +40,11 @@ function App() {
                   <h3>Reputación</h3>
                 </Route>
                 {/*Ruta de pagina principal*/}
-                <Route path="/" exact>
+                <Route path="/home" >
                   <Service></Service>
                 </Route>
                 {/*Ruta para confirmar servicio*/}
-                <Route path="/Servicio" exact>
+                <Route path="/Servicio">
                   <ServiceConfirm />
                 </Route>
                 {/*Ruta de recurso no encontrado*/}
@@ -54,6 +55,9 @@ function App() {
               </Switch>
             </div>
           </Router>
+        </Route>
+        <Route path="/">
+          <Redirect to="/signin"></Redirect>
         </Route>
       </Switch>
     </Router>
