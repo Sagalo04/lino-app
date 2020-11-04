@@ -12,7 +12,7 @@ function ServiceConfirm(props) {
             <div className="o-service-contain">
                 <Avatar alt="name" src="https://material-ui.com/static/images/avatar/1.jpg"></Avatar>
                 <p>Javier Antonio Vazques</p>
-                <p>Médico Cardiologo</p>
+                <p>Médico Cardiólogo</p>
                 <div className="o-service-info">
                     <p>Fecha:</p>
                     <p>29/09/2020</p>
