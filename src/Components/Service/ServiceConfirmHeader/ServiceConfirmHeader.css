@@ -1,0 +1,9 @@
+.o-service-confirm-header{
+    padding: 1rem;
+    background-color: #078998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    
+}

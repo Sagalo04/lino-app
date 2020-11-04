@@ -1,14 +1,16 @@
 import { Avatar } from '@material-ui/core';
 import React from 'react';
 import ServiceHeader from './ServiceHeader/ServiceHeader';
+import ServiceConfirmHeader from './ServiceConfirmHeader/ServiceConfirmHeader';
 import './ServiceConfirm.css'
 import { Link } from 'react-router-dom';
 import OButton from '../OButton/OButton';
 
+
 function ServiceConfirm(props) {
     return (
         <div className="o-service">
-            <ServiceHeader />
+            <ServiceConfirmHeader title="¡Hemos encontrado tu servicio!"/>
             <div className="o-service-contain">
                 <Avatar alt="name" src="https://material-ui.com/static/images/avatar/1.jpg"></Avatar>
                 <p>Javier Antonio Vazques</p>
