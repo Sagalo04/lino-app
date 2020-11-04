@@ -1,0 +1,46 @@
+body{
+    background-image: url('/src/Resources/Images/principal.png');
+    
+    background-size: cover;
+    /* background-position: a; */
+    /* background-position: center; */
+    background-repeat: no-repeat;
+}
+
+.o-contain-signin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.o-contain{ 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.o-signin{
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+    width: 25rem;
+    margin: 6rem 6rem 4rem 6rem;
+    /* height: 40rem; */
+    box-shadow: 0px 0px 11px -2px rgba(0,0,0,0.52);
+}
+
+.o-title{
+    margin-bottom: 4rem;
+    color: #888065;
+}
+
+.o-text{
+    justify-self: center;
+}
