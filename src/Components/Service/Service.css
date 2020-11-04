@@ -1,8 +1,9 @@
 /* Estilos para el fondo */
 .o-body{
-    position: absolute;
+     position: absolute; 
     height: 100vh;
     width: 100vw;
+   
     background-size: cover;
     background-image: url('/src/Resources/Images/mapa.png'); 
 }
@@ -23,6 +24,11 @@
 }
 /* Mediaquerys para movil */
 @media only screen and (max-width: 700px){
+    .o-body{
+        position: inherit;
+        display: flex;
+        justify-content: center;
+    }
     .o-service{
         width: 19rem !important;
         margin-right: 0;
