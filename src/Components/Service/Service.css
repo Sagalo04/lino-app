@@ -1,9 +1,8 @@
 /* Estilos para el fondo */
 .o-body{
-     position: absolute; 
+    position: fixed; 
     height: 100vh;
     width: 100vw;
-   
     background-size: cover;
     background-image: url('/src/Resources/Images/mapa.png'); 
 }
