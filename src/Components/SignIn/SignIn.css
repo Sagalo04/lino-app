@@ -1,5 +1,5 @@
 body{
-    background-image: url('/src/Resources/Images/principal.png');
+   
     
     background-size: cover;
     /* background-position: a; */
@@ -12,10 +12,13 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .o-contain{ 
-    
+    width: 100%;
+    height: 100vh;
+    background-image: url('/src/Resources/Images/principal.png');
     display: flex;
     flex-direction: column;
     justify-content: center;

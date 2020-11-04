@@ -6,7 +6,7 @@ function ServiceHeader(props) {
 
     return (
         <div className="o-service-header">
-            <h3>¿Que servicio deseas?</h3>
+            <h3>¿Qué servicio deseas?</h3>
             <div className="o-service-icons">
                 <ServiceIcon label={"Hogar"} icon={"Home"}></ServiceIcon>
                 <ServiceIcon label={"Remoto"} icon={"Remote"}></ServiceIcon>
