@@ -1,20 +1,21 @@
-import { Avatar } from '@material-ui/core';
 import React from 'react';
-import ServiceHeader from './ServiceHeader/ServiceHeader';
 import ServiceConfirmHeader from './ServiceConfirmHeader/ServiceConfirmHeader';
 import './ServiceConfirm.css'
 import { Link } from 'react-router-dom';
 import OButton from '../OButton/OButton';
-
+//DocCard
+import DocCard from './DocCard/DocCard';
 
 function ServiceConfirm(props) {
     return (
         <div className="o-service">
             <ServiceConfirmHeader title="¡Hemos encontrado tu servicio!"/>
             <div className="o-service-contain">
-                <Avatar alt="name" src="https://material-ui.com/static/images/avatar/1.jpg"></Avatar>
-                <p>Javier Antonio Vazques</p>
-                <p>Médico Cardiólogo</p>
+                <DocCard 
+                    name="Javier Antonio Vazques"
+                    info="Médico Cardiólogo"
+                    sourceImg="https://material-ui.com/static/images/avatar/1.jpg"
+                />
                 <div className="o-service-info">
                     <p>Fecha:</p>
                     <p>29/09/2020</p>
