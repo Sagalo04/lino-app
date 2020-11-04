@@ -18,10 +18,9 @@ function App() {
           <SignIn ></SignIn>
         </Route>
         <Route path="/" exact>
-
-          <div className="App">
-            <Navbar></Navbar>
-            <Router>
+          <Router>
+            <div className="App">
+              <Navbar></Navbar>
               <Switch>
                 {/*Ruta para la informacion del usuario*/}
                 <Route path="/User/:id">
@@ -53,8 +52,8 @@ function App() {
                   <p>La página que estas buscando no está disponible</p>
                 </Route>
               </Switch>
-            </Router>
-          </div>
+            </div>
+          </Router>
         </Route>
       </Switch>
     </Router>
