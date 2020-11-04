@@ -12,3 +12,11 @@ hr{
     width: 90%;
     border-top: 0.5px solid rgba(0,0,0,.2)
 }
+
+.o-label{
+    justify-self:   flex-start ;
+    align-items: flex-start;
+    width: 5rem;
+    margin-left: 2.5rem;
+    margin-right: 4rem;
+}

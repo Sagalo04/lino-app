@@ -4,6 +4,10 @@
     /* height: 40rem; */
     box-shadow: 0px 0px 11px -2px rgba(0,0,0,0.52);
 }
+.mydatepicker{
+    margin: 8px !important; 
+    width: 10.3rem;
+}
 
 .o-label{
     justify-self:   flex-start ;
