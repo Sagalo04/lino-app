@@ -5,6 +5,11 @@
     box-shadow: 0px 3px 13px -4px rgba(97,97,97,0.84);
     padding-left: 3rem;
     padding-right: 3rem;
+    text-align: center;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    
 }
 /*Estilos del titulo LINO*/
 .o-nav-title{
@@ -30,10 +35,55 @@
 /*Estilos de la división derecha*/
 .o-nav-2{
     display: flex;
-    width: 20rem;
-    justify-content: space-around;
+    width: 100%;
+    justify-content: space-between;
 }
 /*Estilos de los íconos de las divisiones*/
 .o-navlink:hover{
     text-decoration: none;
+}
+/*Estilos para la parte que se volverá menú hamburguesa*/
+.o-collapse{
+    display: flex;
+    justify-content: flex-end;
+}
+/* Estilos del los iconos de la derecha */
+.o-container-icons{
+    display: flex;
+    justify-content: space-between;
+    width: 20rem;
+}
+/* Mediaquerys para mobil */
+@media only screen and (max-width: 700px){
+    .o-navbar{
+        padding: 0.5rem ;
+        width: 100vw ;
+    }
+    .o-nav-2{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center ;
+        text-align: center;
+        margin-left: 1rem;
+    }  
+    /* Estilos de los iconos con el texto */
+    .o-nav-2 .o-nav-icon{
+        display: flex;
+        width: 80vw;
+        align-items: center;
+        border-bottom: 0.0001rem solid gray;
+    }
+    /* estilos para el icono dentro del menu hamburgesa */
+    .o-nav-2 .o-nav-icon .fas{
+       margin: 0.5rem;
+       margin-left: 0;
+    }
+    /* Estilos para las opciones */
+    .o-container-icons{
+        display: flex;
+      flex-direction: column;
+    }
+ 
 }

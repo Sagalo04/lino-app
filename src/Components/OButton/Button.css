@@ -17,3 +17,9 @@
     transition: 0.7s;
     outline: none;
 }
+/* Mediaquerys para movil */
+@media only screen and (max-width: 770px){
+    .o-button{
+     margin: 0.5rem;
+    }
+}

@@ -25,3 +25,11 @@
     flex-direction: row;
     justify-content: space-between;
 }
+/* Mediaquerys para movil */
+@media only screen and (max-width: 700px){
+    .o-service-info{
+
+        width: 90%;
+
+    }
+}
