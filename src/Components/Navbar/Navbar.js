@@ -3,10 +3,6 @@ import "./Navbar.css"
 import NavIcon from './NavIcon/NavIcon';
 import { NavLink } from 'react-router-dom';
 
-function a() {
-    window.location.reload();
-}
-
 function Navbar(props) {
     return (
         <header className="o-header">
@@ -33,7 +29,7 @@ function Navbar(props) {
                             <NavLink to="/User" className="o-navlink">
                                 <NavIcon title={"Mi Cuenta"} icon={"user"} />
                             </NavLink>
-                            <NavLink to="/" className="o-navlink" onClick={a}>
+                            <NavLink to="/" className="o-navlink">
                                 <NavIcon title={"Cerrar Sesión"} icon={"close"} />
                             </NavLink>
                         </div>
