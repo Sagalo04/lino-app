@@ -1,9 +1,9 @@
 import React from 'react';
 import './Button.css'
 
-function OButton({label}) {
+function OButton({label, onClick}) {
     return (
-        <button className="o-button">{label}</button>
+        <button className="o-button" onClick={onClick}>{label}</button>
     );
 }
 

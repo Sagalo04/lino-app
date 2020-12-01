@@ -29,6 +29,11 @@ export default class Service extends React.Component {
     handleChange = (k, value) => {
         this.setState({ [k]: value });
     }
+
+    //envio solicitud de servicio
+    request = _=>{
+        console.log(this.state)
+    }
     
 
     render() {
@@ -66,9 +71,9 @@ export default class Service extends React.Component {
                         k="date"/>
                     
                     {/*Boton para confimar servicio*/}
-                    <Link to="/Servicio">
-                        <OButton label={"Aceptar"}></OButton>
-                    </Link>
+                    
+                        <OButton label={"Aceptar"} onClick={this.request}></OButton>
+                    
                 </div>
             </div>
         );
