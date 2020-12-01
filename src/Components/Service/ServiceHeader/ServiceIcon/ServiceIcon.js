@@ -47,13 +47,18 @@ const AntSwitch = withStyles((theme) => ({
     checked: {},
 }))(Switch);
 
-function ServiceIcon({icon,label}) {
+function ServiceIcon({icon, label, checked, dataHandler}) {
+
+    console.log(checked)
+
     const [state, setState] = React.useState({
-        checked: true,
+        checked: checked,
     })
+
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
     }
+
     return (
         <FormControl component="fieldset">
             <FormGroup aria-label="position" row>
