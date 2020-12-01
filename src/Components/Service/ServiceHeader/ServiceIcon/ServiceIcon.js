@@ -54,7 +54,7 @@ export default class ServiceIcon extends React.Component{
     }
 
     handleChange = (e)=>{
-        this.props.onHomeChange(!this.props.checked)
+        this.props.handler(this.props.k,!this.props.checked)
     }
 
     render(){
@@ -77,32 +77,3 @@ export default class ServiceIcon extends React.Component{
         );
     }
 }
-/*
-function ServiceIcon({icon, label, checked, dataHandler}) {
-
-    const [state, setState] = React.useState({
-        checked: checked,
-    })
-
-    const handleChange = (event) => {
-        //setState({ ...state, [event.target.name]: event.target.checked });
-        
-    }
-
-    return (
-        <FormControl component="fieldset">
-            <FormGroup aria-label="position" row>
-                <FormControlLabel
-                    value="top"
-                    control={<AntSwitch checked={state.checked} onChange={handleChange} name="checked" />}
-                    label={<div>
-                        <h5>{label}</h5>
-                        {GetServIcon(icon)}
-                    </div>}
-                    labelPlacement="top" />
-            </FormGroup>
-        </FormControl>
-    );
-}
-
-export default ServiceIcon;*/

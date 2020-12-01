@@ -8,36 +8,45 @@ import ServiceSelect from './ServiceSelect/ServiceSelect';
 import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 
 
-export default class Service extends React.Component{
+export default class Service extends React.Component {
 
-    constructor(props){
+    specialtyOptions = ["General", "Cardiólogo"];
+    services = {};
+
+    constructor(props) {
         super(props);
         this.state = {
             home: false,  //servicio hogar
             remote: false, //servicio remoto
-            specialty: [
-                "General",
-                "Cardiólogo"
-            ]
+            service: "", //medico o psicologo
+            specialty: "",
         }
     }
 
     //levantamiento de estado
-    handleHomeChange = (value) => {
-        this.setState({home: value});
+    handleChange = (k, value) => {
+        this.setState({ [k]: value });
     }
+    
 
-    render(){
+    render() {
         let state = this.state;
         return (
             <div className="o-body">
                 <div className="o-service">
-                    <ServiceHeader home={state.home} onHomeChange = {this.handleHomeChange}/>
+                    {/*Tipos de servicio*/}
+                    <ServiceHeader
+                        states={{ home: state.home, remote: state.remote }}
+                        handleChange={this.handleChange}
+                        keys={{home: "home", remote: "remote"}} />
                     {/*Seleccionar Medico/Psicologo*/}
-                    <ServiceSelect label={"Deseo un:"} initialValue={"Médico/Psicólogo"} options={["Médico", "Psicólogo"]} />
-    
+                    <ServiceSelect label={"Deseo un:"}
+                        initialValue={"Médico/Psicólogo"}
+                        options={["Médico", "Psicólogo"]}
+                        handleChange={this.handleChange} />
+
                     {/*Seleccionar especialidad*/}
-                    <ServiceSelect label={"Especialidad:"} initialValue={"General"} options={this.state.specialty} />
+                    <ServiceSelect label={"Especialidad:"} initialValue={"General"} options={this.specialtyOptions} />
                     {/*Seleccionar fecha*/}
                     <ServiceDatePicker />
                     <hr />
