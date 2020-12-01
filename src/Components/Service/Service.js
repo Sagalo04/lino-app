@@ -7,6 +7,10 @@ import { Link } from 'react-router-dom';
 import ServiceSelect from './ServiceSelect/ServiceSelect';
 import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 
+//web socket comunication
+import io from 'socket.io-client'
+const socket = io.connect('http://localhost:4000')
+
 
 export default class Service extends React.Component {
 
@@ -32,7 +36,8 @@ export default class Service extends React.Component {
 
     //envio solicitud de servicio
     request = _=>{
-        console.log(this.state)
+        //console.log(socket)
+        socket.emit('request', this.state);
     }
     
 
