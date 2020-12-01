@@ -5,7 +5,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import './SignIn.css'
 import OButton from '../OButton/OButton'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import UserProfile from '../../UserProfile';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,9 +34,16 @@ function SignIn(props) {
         weight: '',
         weightRange: '',
         showPassword: false,
+        mail: '',
     });
 
+    const history = useHistory()
+
     const handleChange = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value });
+    };
+
+    const handleChange2 = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
     };
 
@@ -46,16 +54,32 @@ function SignIn(props) {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    const handleOnSubmit = () => {
+        if(values.mail != ""){
+            UserProfile.setMail(values.mail)
+            if(values.mail.includes('@doctor')){
+                UserProfile.setProvide('doctor')
+            }else{
+                UserProfile.setProvide('user')
+            }
+            console.log(UserProfile.getProvide())
+            history.push(`/Home`);
+        }
+        
+    };
     return (
         <div className="o-contain">
             <div className="o-contain-signin">
                 <div className="o-signin">
                     <h2 className="o-title">Iniciar Sesión</h2>
                     <TextField
-                        className={ classes.textField}
+                        className={classes.textField}
                         id="input-with-icon-textfield"
                         label="Nombre de usuario"
                         required
+                        value={values.mail}
+                        onChange={handleChange2('mail')}
                     />
                     <FormControl className={clsx(classes.margin, classes.textField)}>
                         <InputLabel htmlFor="standard-adornment-password">Contraseña</InputLabel>
@@ -79,9 +103,11 @@ function SignIn(props) {
                         />
                     </FormControl>
 
-                    <Link to="/home">
-                        <OButton label={"Ingresar"} />
-                    </Link>
+
+                    <OButton label={"Ingresar"}
+                        onClick={handleOnSubmit}
+                    />
+
 
                     <p className="mb-5">¿Olvidaste tu contraseña?</p>
                 </div>

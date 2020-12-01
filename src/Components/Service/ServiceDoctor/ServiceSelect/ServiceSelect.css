@@ -1,0 +1,26 @@
+p{
+    margin: 0
+}
+
+.o-patient{
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #707070;
+}
+
+.o-patient:hover{
+    background-color: #DFF1FF;
+}
+
+.o-distance{
+    color: gray;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+}
+.o-patient-service{
+    margin-left: 1rem;
+    display: flex;
+    font-weight: bold;
+
+}

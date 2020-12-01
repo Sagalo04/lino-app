@@ -8,28 +8,31 @@ import {
 } from "react-router-dom"
 import Service from './Components/Service/Service';
 import ServiceConfirm from './Components/Service/ServiceConfirm';
+import ServiceDoctor from './Components/Service/ServiceDoctor/ServiceDoctor';
 import SignIn from './Components/SignIn/SignIn';
 
 function App() {
+
   return (
     <Router>
+    <ServiceDoctor></ServiceDoctor>
       <Switch>
         <Route path="/" exact>
           <SignIn ></SignIn>
         </Route>
 
         <Route path="/Home" >
-          <Navbar/>
+          <Navbar />
           <Service></Service>
         </Route>
 
         <Route path="/Servicio">
-          <Navbar/>
+          <Navbar />
           <ServiceConfirm />
         </Route>
 
         <Route path="/Confirm">
-          <Navbar/>
+          <Navbar />
           <ServiceConfirm />
         </Route>
 

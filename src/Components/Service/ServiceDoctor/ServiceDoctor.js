@@ -1,14 +1,12 @@
 import React from 'react';
-import './Service.css'
-import ServiceHeader from './ServiceHeader/ServiceHeader';
-import OButton from '../OButton/OButton'
-import { Link } from 'react-router-dom';
-import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+//import '../Service.css'
+import ServiceHeader from '../ServiceHeader/ServiceHeader';
+import OButton from '../../OButton/OButton'
 //service Select
+
+import Map from '../../Map/Map';
+import UserProfile from '../../../UserProfile';
 import ServiceSelect from './ServiceSelect/ServiceSelect';
-import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
-import Map from '../Map/Map';
-import UserProfile from '../../UserProfile';
 
 
 
@@ -52,32 +50,7 @@ export default class Service extends React.Component {
                         states={{ home: state.home, remote: state.remote }}
                         handler={this.handleChange}
                         keys={{home: "home", remote: "remote"}} />
-
-                    {/*Seleccionar Medico/Psicologo*/}
-                    <ServiceSelect 
-                        label={"Deseo un:"}
-                        title={"Médico/Psicólogo"}
-                        options={this.typeOfService}
-                        handler={this.handleChange}
-                        value= {state.service}
-                        k ="service" />
-
-                    {/*Seleccionar especialidad*/}
-                    <ServiceSelect 
-                        label={"Especialidad:"}
-                        title={"General"}
-                        options={this.specialtyOptions}
-                        handler={this.handleChange}
-                        value= {state.specialty}
-                        k ="specialty"/>
-
-                    {/*Seleccionar fecha*/}
-                    <ServiceDatePicker
-                        handler={this.handleChange}
-                        k="date"/>
-                    
-                    {/*Boton para confimar servicio*/}
-                    
+                    <ServiceSelect></ServiceSelect>
                         <OButton label={"Aceptar"} onClick={this.request}></OButton>
                     
                 </div>
