@@ -13,20 +13,21 @@ export default class ServiceSelect extends React.Component{
     }
 
     handleChange = (e)=>{
-        this.props.handler(this.props.k,!this.props.checked)
+        this.props.handler(this.props.k, )
     }
 
     render(){
         
         const label = this.props.label;
-        const initialValue = this.props.initialValue;
+        const title = this.props.title;
         const options = this.props.options;
+        const value = this.props.value;
         return (
             <div>
                 <div className="o-select">
                     <p className='o-label'>{label}</p>
                     <FormControl>
-                        <InputLabel id="simple-select-label">{initialValue}</InputLabel>
+                        <InputLabel id="simple-select-label">{title}</InputLabel>
                         <Select
                             labelId="simple-select-label"
                             id="simple-select"

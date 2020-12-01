@@ -18,8 +18,8 @@ export default class Service extends React.Component {
         this.state = {
             home: false,  //servicio hogar
             remote: false, //servicio remoto
-            service: "", //medico o psicologo
-            specialty: "",
+            service: '', //medico o psicologo
+            specialty:'',
         }
     }
 
@@ -37,13 +37,15 @@ export default class Service extends React.Component {
                     {/*Tipos de servicio*/}
                     <ServiceHeader
                         states={{ home: state.home, remote: state.remote }}
-                        handleChange={this.handleChange}
+                        handler={this.handleChange}
                         keys={{home: "home", remote: "remote"}} />
                     {/*Seleccionar Medico/Psicologo*/}
                     <ServiceSelect label={"Deseo un:"}
-                        initialValue={"Médico/Psicólogo"}
+                        title={"Médico/Psicólogo"}
                         options={["Médico", "Psicólogo"]}
-                        handleChange={this.handleChange} />
+                        handler={this.handleChange}
+                        value= {state.service}
+                        k ="service" />
 
                     {/*Seleccionar especialidad*/}
                     <ServiceSelect label={"Especialidad:"} initialValue={"General"} options={this.specialtyOptions} />
