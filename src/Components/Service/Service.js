@@ -21,6 +21,7 @@ export default class Service extends React.Component {
             remote: false, //servicio remoto
             service: 0, //medico o psicologo
             specialty: 0,
+            date: new Date()
         }
     }
 
@@ -60,8 +61,10 @@ export default class Service extends React.Component {
                         k ="specialty"/>
 
                     {/*Seleccionar fecha*/}
-                    <ServiceDatePicker />
-                    <hr />
+                    <ServiceDatePicker
+                        handler={this.handleChange}
+                        k="date"/>
+                    
                     {/*Boton para confimar servicio*/}
                     <Link to="/Servicio">
                         <OButton label={"Aceptar"}></OButton>

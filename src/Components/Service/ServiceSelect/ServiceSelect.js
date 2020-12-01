@@ -2,8 +2,7 @@ import React from 'react';
 import './ServiceSelect.css';
 //material ui components
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
-//material ui styles
-import { makeStyles } from '@material-ui/core/styles';
+
 
 
 
