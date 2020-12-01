@@ -10,7 +10,8 @@ import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 
 export default class Service extends React.Component {
 
-    specialtyOptions = ["General", "Cardiólogo"];
+    specialtyOptions = ["General", "Cardiólogo", "Pediatra"];
+    typeOfService = ["Médico", "Psicólogo"];
     services = {};
 
     constructor(props) {
@@ -18,8 +19,8 @@ export default class Service extends React.Component {
         this.state = {
             home: false,  //servicio hogar
             remote: false, //servicio remoto
-            service: '', //medico o psicologo
-            specialty:'',
+            service: 0, //medico o psicologo
+            specialty: 0,
         }
     }
 
@@ -39,16 +40,25 @@ export default class Service extends React.Component {
                         states={{ home: state.home, remote: state.remote }}
                         handler={this.handleChange}
                         keys={{home: "home", remote: "remote"}} />
+
                     {/*Seleccionar Medico/Psicologo*/}
-                    <ServiceSelect label={"Deseo un:"}
+                    <ServiceSelect 
+                        label={"Deseo un:"}
                         title={"Médico/Psicólogo"}
-                        options={["Médico", "Psicólogo"]}
+                        options={this.typeOfService}
                         handler={this.handleChange}
                         value= {state.service}
                         k ="service" />
 
                     {/*Seleccionar especialidad*/}
-                    <ServiceSelect label={"Especialidad:"} initialValue={"General"} options={this.specialtyOptions} />
+                    <ServiceSelect 
+                        label={"Especialidad:"}
+                        title={"General"}
+                        options={this.specialtyOptions}
+                        handler={this.handleChange}
+                        value= {state.specialty}
+                        k ="specialty"/>
+
                     {/*Seleccionar fecha*/}
                     <ServiceDatePicker />
                     <hr />

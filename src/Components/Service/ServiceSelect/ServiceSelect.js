@@ -13,7 +13,7 @@ export default class ServiceSelect extends React.Component{
     }
 
     handleChange = (e)=>{
-        this.props.handler(this.props.k, )
+        this.props.handler(this.props.k, e.target.value)
     }
 
     render(){
@@ -33,7 +33,7 @@ export default class ServiceSelect extends React.Component{
                             id="simple-select"
                             value={value}
                             onChange={this.handleChange}>
-
+                            {/*Options*/}    
                             {options.map((option, index) => {
                                 return <MenuItem value={index}>{option}</MenuItem>
                             })} 
