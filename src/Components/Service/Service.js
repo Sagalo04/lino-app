@@ -67,6 +67,7 @@ export default class Service extends React.Component {
 
                     {/*Seleccionar fecha*/}
                     <ServiceDatePicker
+                        value={state.date}
                         handler={this.handleChange}
                         k="date"/>
                     
