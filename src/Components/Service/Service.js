@@ -11,6 +11,10 @@ import Map from '../Map/Map';
 import UserProfile from '../../UserProfile';
 
 
+//web socket comunication
+import io from 'socket.io-client'
+const socket = io.connect('http://localhost:4000')
+
 
 export default class Service extends React.Component {
 
@@ -21,6 +25,7 @@ export default class Service extends React.Component {
         console.log(UserProfile.getMail())
         super(props);
         this.state = {
+            user: '123',
             home: false,  //servicio hogar
             remote: false, //servicio remoto
             service: 0, //medico o psicologo
@@ -37,7 +42,8 @@ export default class Service extends React.Component {
 
     //envio solicitud de servicio
     request = _=>{
-        console.log(this.state)
+        //console.log(socket)
+        socket.emit('request', this.state);
     }
     
 
@@ -73,6 +79,7 @@ export default class Service extends React.Component {
 
                     {/*Seleccionar fecha*/}
                     <ServiceDatePicker
+                        value={state.date}
                         handler={this.handleChange}
                         k="date"/>
                     

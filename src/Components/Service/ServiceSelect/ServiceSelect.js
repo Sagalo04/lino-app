@@ -34,7 +34,7 @@ export default class ServiceSelect extends React.Component{
                             onChange={this.handleChange}>
                             {/*Options*/}    
                             {options.map((option, index) => {
-                                return <MenuItem value={index}>{option}</MenuItem>
+                                return <MenuItem value={index} key={index}>{option}</MenuItem>
                             })} 
                         </Select>
                     </FormControl>
