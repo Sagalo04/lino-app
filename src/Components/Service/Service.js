@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 //service Select
 import ServiceSelect from './ServiceSelect/ServiceSelect';
 import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
-import { render } from '@testing-library/react';
+
 
 export default class Service extends React.Component{
 
@@ -22,12 +22,17 @@ export default class Service extends React.Component{
         }
     }
 
+    //levantamiento de estado
+    handleHomeChange = (value) => {
+        this.setState({home: value});
+    }
+
     render(){
         let state = this.state;
         return (
             <div className="o-body">
                 <div className="o-service">
-                    <ServiceHeader home={state.home} remote={state.remote}/>
+                    <ServiceHeader home={state.home} onHomeChange = {this.handleHomeChange}/>
                     {/*Seleccionar Medico/Psicologo*/}
                     <ServiceSelect label={"Deseo un:"} initialValue={"Médico/Psicólogo"} options={["Médico", "Psicólogo"]} />
     

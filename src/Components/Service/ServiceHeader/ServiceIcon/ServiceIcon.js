@@ -47,16 +47,46 @@ const AntSwitch = withStyles((theme) => ({
     checked: {},
 }))(Switch);
 
-function ServiceIcon({icon, label, checked, dataHandler}) {
+export default class ServiceIcon extends React.Component{
 
-    console.log(checked)
+    constructor(props){
+        super(props);
+    }
+
+    handleChange = (e)=>{
+        this.props.onHomeChange(!this.props.checked)
+    }
+
+    render(){
+        const icon = this.props.icon
+        const label = this.props.label
+        const checked = this.props.checked
+        return(
+            <FormControl component="fieldset">
+            <FormGroup aria-label="position" row>
+                <FormControlLabel
+                    value="top"
+                    control={<AntSwitch checked={checked} onChange={this.handleChange} name="checked" />}
+                    label={<div>
+                        <h5>{label}</h5>
+                        {GetServIcon(icon)}
+                    </div>}
+                    labelPlacement="top" />
+            </FormGroup>
+        </FormControl>
+        );
+    }
+}
+/*
+function ServiceIcon({icon, label, checked, dataHandler}) {
 
     const [state, setState] = React.useState({
         checked: checked,
     })
 
     const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
+        //setState({ ...state, [event.target.name]: event.target.checked });
+        
     }
 
     return (
@@ -75,4 +105,4 @@ function ServiceIcon({icon, label, checked, dataHandler}) {
     );
 }
 
-export default ServiceIcon;
+export default ServiceIcon;*/
