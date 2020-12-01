@@ -21,6 +21,7 @@ export default class Service extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            user: '123',
             home: false,  //servicio hogar
             remote: false, //servicio remoto
             service: 0, //medico o psicologo

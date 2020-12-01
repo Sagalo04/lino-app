@@ -12,6 +12,7 @@ const io = SocketIO(servidor,{
 io.on('connection', socket =>{
     socket.on('request', (info)=>{
         console.log('service request info',info)
+        console.log('from', info.user)
     })
 })
 
