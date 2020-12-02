@@ -56,3 +56,47 @@
     font-weight: 500;
     margin-top: 0.8rem;
 }
+/* Mediaquerys para mobil */
+@media only screen and (max-width: 700px){
+
+.o-help{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.o-content-help{
+    max-width: 100%;
+    min-width: 100%;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2rem;
+
+}
+.makeStyles-root-5{
+    width: 1rem !important;
+}
+
+.o-helpTitle{
+    font-size: 1.5rem;
+}
+
+.o-helpinput{
+display: flex;
+flex-direction: column;
+max-width: 100%;
+}
+
+
+.o-helpDefine{
+    margin: 0;
+    width: 100%;
+}
+
+.o-help-option{
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+}
