@@ -11,6 +11,7 @@ import ServiceConfirm from './Components/Service/ServiceConfirm';
 import ServiceDoctor from './Components/Service/ServiceDoctor/ServiceDoctor';
 import SignIn from './Components/SignIn/SignIn';
 import UserProfile from './UserProfile';
+import Help from './Components/Help/Help';
 
 //ingreso un doctor o un paciente?
 function ServiceType(props){
@@ -42,6 +43,11 @@ function App() {
         <Route path="/Confirm">
           <Navbar />
           <ServiceConfirm />
+        </Route>
+
+        <Route path="/Ayuda">
+          <Navbar />
+          <Help />
         </Route>
 
         <Route>

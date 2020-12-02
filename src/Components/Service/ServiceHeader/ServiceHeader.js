@@ -2,10 +2,10 @@ import React from 'react';
 import ServiceIcon from './ServiceIcon/ServiceIcon';
 import './ServiceHeader.css'
 
-function ServiceHeader({states:{home, remote}, handler, keys}) {
+function ServiceHeader({states:{home, remote}, handler, keys,title}) {
     return (
         <div className="o-service-header">
-            <h3>¿Qué servicio deseas?</h3>
+            <h3>{title}</h3>
             <div className="o-service-icons">
                 <ServiceIcon label={"Hogar"} icon={"Home"} checked={home} handler ={handler} k={keys.home}></ServiceIcon>
                 <ServiceIcon label={"Remoto"} icon={"Remote"} checked={remote} handler ={handler} k={keys.remote}></ServiceIcon>

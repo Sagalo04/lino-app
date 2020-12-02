@@ -16,13 +16,7 @@ function Navbar(props) {
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse navbar-toggleable-xs o-collapse" id="navbarTogglerDemo01">
-                    <div className="o-nav-2">
-                        <div className="o-reput">
-                            <NavLink to="/Reputacion" className="o-navlink">
-                                <NavIcon title={"Reputación"} icon={"star"} />
-                            </NavLink>
-                        </div>
-                        <div className="o-container-icons">
+                        <div className="o-container-icons o-nav-2">
                             <NavLink to="/Ayuda" className="o-navlink">
                                 <NavIcon title={"Ayuda"} icon={"question"} />
                             </NavLink>
@@ -33,7 +27,6 @@ function Navbar(props) {
                                 <NavIcon title={"Cerrar Sesión"} icon={"close"} />
                             </NavLink>
                         </div>
-                    </div>
                 </div>
             </nav>
         </header>

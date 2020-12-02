@@ -4,7 +4,7 @@ import ServiceHeader from '../ServiceHeader/ServiceHeader';
 import OButton from '../../OButton/OButton'
 //service Select
 
-import Map from '../../Map/Map';
+import Map from '../../Map/MapDoc';
 import UserProfile from '../../../UserProfile';
 import ServiceRequest from './ServiceRequest/ServiceRequest';
 
@@ -71,6 +71,7 @@ const ServiceDoctor = ()=> {
             <div className="o-service">
                 {/*Tipos de servicio*/}
                 <ServiceHeader
+                title={"Activa tu Servicio a prestar"}
                     states={{ home: home, remote: remote }}
                     handler={handleChange}
                     keys={{ home: "home", remote: "remote" }} />
@@ -119,14 +120,23 @@ export default class ServiceDoctor extends React.Component {
 
     render() {
         let state = this.state;
+        let location= {lat: 3.4143397,long: -76.53682194444444}
         return (
             <div className="o-body">
-                <Map></Map>
+                <Map location={location}></Map>
                 <div className="o-service">
                    
                     <ServiceHeader
                         states={{ home: state.home, remote: state.remote }}
                         handler={this.handleChange}
+<<<<<<< HEAD
+                        keys={{home: "home", remote: "remote"}} />
+                    <ServiceSelect ></ServiceSelect>
+                    <ServiceSelect ></ServiceSelect>
+                    <ServiceSelect ></ServiceSelect>
+                    <OButton label={"Aceptar"} onClick={this.request}></OButton>
+                    
+=======
                         keys={{ home: "home", remote: "remote" }} />
 
                    
@@ -136,6 +146,7 @@ export default class ServiceDoctor extends React.Component {
                                     info={request}/>
                     })}
                     <OButton label={"Aceptar"} onClick={this.request}></OButton>
+>>>>>>> 9d4a614404bf966fac677dd2cd429f919eeb2836
                 </div>
             </div>
         );
