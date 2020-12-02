@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 //service Select
 import ServiceSelect from './ServiceSelect/ServiceSelect';
-import ServiceDoctor from './ServiceDoctor/ServiceDoctor';
 import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 import Map from '../Map/Map';
 import UserProfile from '../../UserProfile';
 
+//import specialtyOptions
+import {typeOfService, specialtyOptions} from '../../Constants/Services'
 
 //web socket comunication
 import io from 'socket.io-client'
@@ -22,8 +23,9 @@ socket.on('response', (message) => {
 
 export default class Service extends React.Component {
 
-    specialtyOptions = ["General", "Cardiólogo", "Pediatra"];
-    typeOfService = ["Médico", "Psicólogo"];
+    specialtyOptions = specialtyOptions;
+    typeOfService = typeOfService;
+    
     services = {};
     constructor(props) {
         super(props);
@@ -45,7 +47,6 @@ export default class Service extends React.Component {
 
     //envio solicitud de servicio
     request = _ => {
-        //console.log(socket)
         socket.emit('request', this.state);
     }
 

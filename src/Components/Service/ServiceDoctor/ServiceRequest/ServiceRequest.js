@@ -1,8 +1,14 @@
 import React from 'react';
 import { Avatar } from '@material-ui/core';
-import './ServiceSelect.css'
+import './ServiceRequest.css'
 
-function ServiceSelect(props) {
+function serviceString(hogar, remoto){
+    if(hogar && remoto) return 'Servicio Hogar o Remoto';
+    if(hogar) return 'Servicio Hogar';
+    if(remoto) return 'Servicio Remoto';
+}
+function ServiceRequest({info}) {
+    
     return (
         <div className="o-patient">
             <div>
@@ -10,9 +16,9 @@ function ServiceSelect(props) {
             </div>
             <div >
                 <div className="o-patient-service">
-                    <p>Paciente 2</p>
+                    <p>{info.user}</p>
                     <p className="o-pat-between">  -  </p>
-                    <p> Servicio Hogar</p>
+                    <p>{serviceString(info.home, info.remote)}</p>
                 </div>
                 <div className="o-patient-service">
                     <p>Carrera 98a #25-9</p>
@@ -25,4 +31,4 @@ function ServiceSelect(props) {
     );
 }
 
-export default ServiceSelect;
+export default ServiceRequest;
