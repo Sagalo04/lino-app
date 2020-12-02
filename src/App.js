@@ -15,7 +15,6 @@ function App() {
 
   return (
     <Router>
-    <ServiceDoctor></ServiceDoctor>
       <Switch>
         <Route path="/" exact>
           <SignIn ></SignIn>
