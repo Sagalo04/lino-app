@@ -12,9 +12,13 @@ import ServiceDoctor from './Components/Service/ServiceDoctor/ServiceDoctor';
 import SignIn from './Components/SignIn/SignIn';
 import UserProfile from './UserProfile';
 
-function getServiceType(){
-  return UserProfile.getProvide() ?
-  <ServiceDoctor/> : <Service></Service>
+//ingreso un doctor o un paciente?
+function ServiceType(props){
+  if(UserProfile.getProvide()){
+    return <ServiceDoctor/>;
+  }else{
+    return <Service></Service>;
+  }
 }
 
 function App() {
@@ -27,7 +31,7 @@ function App() {
         </Route>
 
         <Route path="/Home" >
-          <Navbar /> {getServiceType()}
+          <Navbar /> <ServiceType/>
         </Route>
 
         <Route path="/Servicio">
