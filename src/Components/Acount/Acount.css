@@ -1,11 +1,16 @@
 .o-Acount{
     display: flex;
     color: #888065;
+    justify-content: space-between;
+    
 }
 
 .o-contentAcount{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-right: 12rem;
 
 }
 
@@ -13,6 +18,10 @@
 .o-contentTopAcount{
     display: flex;
     align-items: center;
+    margin-bottom: 1.5rem;
+}
+.o-img-acount{
+    width: 42.87rem;
 }
 
 .o-topAcount{
@@ -31,4 +40,62 @@
 .o-itemsAcount{
     display: flex;
     justify-content: space-between;
+}
+
+/* Mediaquerys para tablet */
+@media only screen and (max-width: 768px){
+    .o-Acount{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .o-contentAcount{
+        margin-right:0;
+        margin-top: 2rem;
+        padding: 1rem;
+
+    }
+
+    .o-img-acount{
+        width: 0rem;
+    }
+
+    .makeStyles-large-16{
+        margin: 0 !important;
+    }
+
+    .o-contentTopAcount{
+
+        flex-direction: column;
+    }
+
+}
+
+/* Mediaquerys para mobil */
+@media only screen and (max-width: 700px){
+    .o-Acount{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .o-contentAcount{
+        margin-right:0;
+        margin-top: 2rem;
+        padding: 1rem;
+
+    }
+
+    .o-img-acount{
+        width: 0rem;
+    }
+
+    .o-user-logo{
+        margin: 0 !important;
+    }
+
+    .o-contentTopAcount{
+
+        flex-direction: column;
+    }
+
 }
