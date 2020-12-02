@@ -4,7 +4,7 @@ import ServiceHeader from '../ServiceHeader/ServiceHeader';
 import OButton from '../../OButton/OButton'
 //service Select
 
-import Map from '../../Map/Map';
+import Map from '../../Map/MapDoc';
 import UserProfile from '../../../UserProfile';
 import ServiceSelect from './ServiceSelect/ServiceSelect';
 
@@ -41,9 +41,10 @@ export default class ServiceDoctor extends React.Component {
 
     render() {
         let state = this.state;
+        let location= {lat: 3.4143397,long: -76.53682194444444}
         return (
             <div className="o-body">
-                <Map></Map>
+                <Map location={location}></Map>
                 <div className="o-service">
                     {/*Tipos de servicio*/}
                     <ServiceHeader
