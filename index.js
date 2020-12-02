@@ -28,8 +28,11 @@ io.on('connection', socket =>{
 
     //are you a doctor?
     socket.on('doctorSubscription', ()=>{
-        console.log(socket.id)
         socket.join(DOCTOR_ROOM)
+    })
+
+    socket.on('retrievePrevRequests', _=>{
+        io.to(DOCTOR_ROOM).emit('requestDoctor', requests);
     })
 })
 
