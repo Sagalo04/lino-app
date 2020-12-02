@@ -57,7 +57,7 @@ function Help(props) {
                 <div className="o-helpinput">
                     <RedditTextField
                         label="Escribe tu problema"
-                        className={classes.margin + " o-input-form"}
+                        className={classes.margin}
                         defaultValue=""
                         variant="filled"
                         id="reddit-input"
