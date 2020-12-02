@@ -18,6 +18,22 @@ const ServiceDoctor = ()=> {
     const [remote, setRemote] = useState(false);
     const [requests, setRequests] = useState([]);
 
+    const filterRequests = (requests) =>{
+        return requests.filter(request =>
+                {
+                    let homeBool = false;
+                    let remoteBool = false;
+                    if(home){
+                        if(request.home) homeBool = true
+                    }
+                    if(remote){
+                        if(request.remote) remoteBool = true
+                    }
+                    return homeBool || remoteBool;
+                }
+        )
+    }
+
     useEffect(() => {
         //subscribe as a doctor
         socket.emit('doctorSubscription');
@@ -27,11 +43,12 @@ const ServiceDoctor = ()=> {
 
     useEffect(() => {
         socket.on('requestDoctor', (requests)=>{
-            setRequests(requests);
+            const filtered = filterRequests(requests);
+            setRequests(filtered);
         })
         return ()=> socket.off();
     }, [requests])
-    
+
     //levantamiento de estado
     const handleChange = (k, value) => {
         switch(k){
@@ -43,7 +60,10 @@ const ServiceDoctor = ()=> {
         }
     }
 
-    const request = () =>{}
+    const request = () =>{
+        const filtered = filterRequests(requests);
+        console.log(filtered);
+    }
 
     return (
         <div className="o-body">
