@@ -29,7 +29,7 @@ function Acount(props) {
     return (
 
         <div className="o-Acount">
-            <img src={imagens} width="600rem" alt="" />
+            <img src={imagens} className="o-img-acount" alt="" />
             <div className="o-contentAcount">
                 <div className="o-contentTopAcount">
                     <Avatar alt="name" src="" className={classes.large}></Avatar>
