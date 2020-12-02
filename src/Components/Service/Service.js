@@ -25,10 +25,9 @@ export default class Service extends React.Component {
     typeOfService = ["Médico", "Psicólogo"];
     services = {};
     constructor(props) {
-        console.log(UserProfile.getMail())
         super(props);
         this.state = {
-            user: '123',
+            user: UserProfile.getMail(),
             home: false,  //servicio hogar
             remote: false, //servicio remoto
             service: 0, //medico o psicologo
