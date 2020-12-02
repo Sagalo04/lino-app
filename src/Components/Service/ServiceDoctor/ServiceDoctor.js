@@ -61,8 +61,7 @@ const ServiceDoctor = ()=> {
     }
 
     const request = () =>{
-        const filtered = filterRequests(requests);
-        console.log(filtered);
+        console.log(requests);
     }
 
     return (
