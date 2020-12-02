@@ -7,11 +7,16 @@ p{
     align-items: center;
     padding: 0.5rem;
     border-bottom: 1px solid #707070;
+    cursor: pointer;
 }
 
 .o-patient:hover{
     background-color: #DFF1FF;
 }
+.o-pat-between{
+    margin: 0rem 0.5rem    
+}
+
 
 .o-distance{
     color: gray;
