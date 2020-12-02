@@ -16,7 +16,7 @@ import UserProfile from '../../UserProfile';
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
 
-socket.on('response', (message)=>{
+socket.on('response', (message) => {
     console.log(message);
 })
 
@@ -52,56 +52,48 @@ export default class Service extends React.Component {
 
     render() {
         let state = this.state;
-        if (UserProfile.getProvide() == "user") {
-            return (
-                <div className="o-body">
-                    <Map></Map>
-                    <div className="o-service">
-                        {/*Tipos de servicio*/}
-                        <ServiceHeader
-                            states={{ home: state.home, remote: state.remote }}
-                            handler={this.handleChange}
-                            keys={{ home: "home", remote: "remote" }} />
 
-                        {/*Seleccionar Medico/Psicologo*/}
-                        <ServiceSelect
-                            label={"Deseo un:"}
-                            title={"Médico/Psicólogo"}
-                            options={this.typeOfService}
-                            handler={this.handleChange}
-                            value={state.service}
-                            k="service" />
+        return (
+            <div className="o-body">
+                <Map></Map>
+                <div className="o-service">
+                    {/*Tipos de servicio*/}
+                    <ServiceHeader
+                        states={{ home: state.home, remote: state.remote }}
+                        handler={this.handleChange}
+                        keys={{ home: "home", remote: "remote" }} />
 
-                        {/*Seleccionar especialidad*/}
-                        <ServiceSelect
-                            label={"Especialidad:"}
-                            title={"General"}
-                            options={this.specialtyOptions}
-                            handler={this.handleChange}
-                            value={state.specialty}
-                            k="specialty" />
+                    {/*Seleccionar Medico/Psicologo*/}
+                    <ServiceSelect
+                        label={"Deseo un:"}
+                        title={"Médico/Psicólogo"}
+                        options={this.typeOfService}
+                        handler={this.handleChange}
+                        value={state.service}
+                        k="service" />
 
-                        {/*Seleccionar fecha*/}
-                        <ServiceDatePicker
-                            value={state.date}
-                            handler={this.handleChange}
-                            k="date" />
+                    {/*Seleccionar especialidad*/}
+                    <ServiceSelect
+                        label={"Especialidad:"}
+                        title={"General"}
+                        options={this.specialtyOptions}
+                        handler={this.handleChange}
+                        value={state.specialty}
+                        k="specialty" />
 
-                        {/*Boton para confimar servicio*/}
+                    {/*Seleccionar fecha*/}
+                    <ServiceDatePicker
+                        value={state.date}
+                        handler={this.handleChange}
+                        k="date" />
 
-                        <OButton label={"Aceptar"} onClick={this.request}></OButton>
+                    {/*Boton para confimar servicio*/}
 
-                    </div>
+                    <OButton label={"Aceptar"} onClick={this.request}></OButton>
 
                 </div>
-
-            );
-        }
-        else if (UserProfile.getProvide() == "doctor") {
-            return (
-                <ServiceDoctor></ServiceDoctor>
-            )
-        }
+            </div>
+        );
     }
 }
 

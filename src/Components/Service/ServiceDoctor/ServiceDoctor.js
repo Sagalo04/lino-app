@@ -10,7 +10,7 @@ import ServiceSelect from './ServiceSelect/ServiceSelect';
 
 
 
-export default class Service extends React.Component {
+export default class ServiceDoctor extends React.Component {
 
     specialtyOptions = ["General", "Cardiólogo", "Pediatra"];
     typeOfService = ["Médico", "Psicólogo"];

@@ -57,11 +57,12 @@ function SignIn(props) {
 
     const handleOnSubmit = () => {
         if(values.mail != ""){
-            UserProfile.setMail(values.mail)
+            UserProfile.setMail(values.mail);
+
             if(values.mail.includes('@doctor')){
-                UserProfile.setProvide('doctor')
+                UserProfile.setProvide(true)
             }else{
-                UserProfile.setProvide('user')
+                UserProfile.setProvide(false)
             }
             console.log(UserProfile.getProvide())
             history.push(`/Home`);

@@ -1,6 +1,6 @@
 var UserProfile = (function () {
     var email = "";
-    var provider = "";
+    var provider = false;
 
     var getMail = function () {
         return email;    // Or pull this from cookie/localStorage

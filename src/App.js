@@ -10,6 +10,12 @@ import Service from './Components/Service/Service';
 import ServiceConfirm from './Components/Service/ServiceConfirm';
 import ServiceDoctor from './Components/Service/ServiceDoctor/ServiceDoctor';
 import SignIn from './Components/SignIn/SignIn';
+import UserProfile from './UserProfile';
+
+function getServiceType(){
+  return UserProfile.getProvide() ?
+  <ServiceDoctor/> : <Service></Service>
+}
 
 function App() {
 
@@ -21,8 +27,7 @@ function App() {
         </Route>
 
         <Route path="/Home" >
-          <Navbar />
-          <Service></Service>
+          <Navbar /> {getServiceType()}
         </Route>
 
         <Route path="/Servicio">
