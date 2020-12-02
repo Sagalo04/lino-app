@@ -13,6 +13,10 @@ io.on('connection', socket =>{
     socket.on('request', (info)=>{
         console.log('service request info',info)
         console.log('from', info.user)
+        //subscribe to my own channel to receive response
+        socket.join(info.user);
+        //wmit only to who ask
+        io.to(info.user).emit('response', 'hola');
     })
 })
 

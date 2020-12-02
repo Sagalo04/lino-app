@@ -11,6 +11,9 @@ import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
 
+socket.on('response', (message)=>{
+    console.log(message);
+})
 
 export default class Service extends React.Component {
 
