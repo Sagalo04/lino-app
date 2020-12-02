@@ -23,6 +23,7 @@ export class CurrentLocation extends React.Component {
             }
         };
     }
+
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.google !== this.props.google) {
             this.loadMap();
@@ -30,6 +31,7 @@ export class CurrentLocation extends React.Component {
         if (prevState.currentLocation !== this.state.currentLocation) {
             this.recenterMap();
         }
+        
     }
 
     recenterMap() {
@@ -42,6 +44,7 @@ export class CurrentLocation extends React.Component {
             let center = new maps.LatLng(current.lat, current.lng);
             map.panTo(center);
         }
+        this.props.handler(this.props.k, this.state.currentLocation)
     }
 
     componentDidMount() {
@@ -74,6 +77,7 @@ export class CurrentLocation extends React.Component {
 
             let { zoom } = this.props;
             const { lat, lng } = this.state.currentLocation;
+            
             const center = new maps.LatLng(lat, lng);
 
             const mapConfig = Object.assign(
@@ -87,13 +91,13 @@ export class CurrentLocation extends React.Component {
             // maps.Map() is constructor that instantiates the map
             this.map = new maps.Map(node, mapConfig);
         }
+        
     }
 
     renderChildren() {
         const { children } = this.props;
 
         if (!children) return;
-
         return React.Children.map(children, c => {
             if (!c) return;
 
@@ -108,6 +112,7 @@ export class CurrentLocation extends React.Component {
 
     render() {
         const style = Object.assign({}, mapStyles.map);
+        
         // console.log(this.state.currentLocation)
         return (
             <div>

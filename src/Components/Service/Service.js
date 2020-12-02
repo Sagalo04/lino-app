@@ -35,8 +35,8 @@ export default class Service extends React.Component {
             remote: false, //servicio remoto
             service: 0, //medico o psicologo
             specialty: 0,
-            date: new Date()
-
+            date: new Date(),
+            location: ''
         }
     }
 
@@ -47,6 +47,7 @@ export default class Service extends React.Component {
 
     //envio solicitud de servicio
     request = _ => {
+        console.log(this.state)
         socket.emit('request', this.state);
     }
 
@@ -56,7 +57,10 @@ export default class Service extends React.Component {
 
         return (
             <div className="o-body">
-                <Map></Map>
+                <Map value={state.location}
+                    k="location"
+                    handler={this.handleChange}
+                />
                 <div className="o-service">
                     {/*Tipos de servicio*/}
                     <ServiceHeader
