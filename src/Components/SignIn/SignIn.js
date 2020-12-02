@@ -64,7 +64,6 @@ function SignIn(props) {
             }else{
                 UserProfile.setProvide(false)
             }
-            console.log(UserProfile.getProvide())
             history.push(`/Home`);
         }
         
