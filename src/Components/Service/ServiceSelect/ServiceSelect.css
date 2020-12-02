@@ -1,6 +1,6 @@
 .o-select{
     display: flex;
-    /* justify-content: space-around; */
+    margin-top: 0.4rem;
     align-items: center;
 }
 
@@ -11,6 +11,14 @@
 hr{
     width: 90%;
     border-top: 0.5px solid rgba(0,0,0,.2)
+}
+.o-selector{
+    margin-left: 0.5rem !important;
+    margin-top: 1rem !important;
+}
+.o-title{
+   
+    margin-left: 0.5rem;
 }
 
 .o-label{
