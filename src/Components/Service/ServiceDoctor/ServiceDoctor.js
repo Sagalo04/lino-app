@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 //import '../Service.css'
 import ServiceHeader from '../ServiceHeader/ServiceHeader';
 import OButton from '../../OButton/OButton'
@@ -12,25 +12,25 @@ import ServiceRequest from './ServiceRequest/ServiceRequest';
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
 
-const ServiceDoctor = ()=> {
-    
+const ServiceDoctor = () => {
+
     const [home, setHome] = useState(false);
     const [remote, setRemote] = useState(false);
     const [requests, setRequests] = useState([]);
+    const [index, Setindex] = useState(0)
 
-    const filterRequests = (requests) =>{
-        return requests.filter(request =>
-                {
-                    let homeBool = false;
-                    let remoteBool = false;
-                    if(home){
-                        if(request.home) homeBool = true
-                    }
-                    if(remote){
-                        if(request.remote) remoteBool = true
-                    }
-                    return homeBool || remoteBool;
-                }
+    const filterRequests = (requests) => {
+        return requests.filter(request => {
+            let homeBool = false;
+            let remoteBool = false;
+            if (home) {
+                if (request.home) homeBool = true
+            }
+            if (remote) {
+                if (request.remote) remoteBool = true
+            }
+            return homeBool || remoteBool;
+        }
         )
     }
 
@@ -42,16 +42,16 @@ const ServiceDoctor = ()=> {
     });
 
     useEffect(() => {
-        socket.on('requestDoctor', (requests)=>{
+        socket.on('requestDoctor', (requests) => {
             const filtered = filterRequests(requests);
             setRequests(filtered);
         })
-        return ()=> socket.off();
+        return () => socket.off();
     }, [requests])
 
     //levantamiento de estado
     const handleChange = (k, value) => {
-        switch(k){
+        switch (k) {
             case "home":
                 setHome(value);
                 break;
@@ -60,25 +60,48 @@ const ServiceDoctor = ()=> {
         }
     }
 
-    const request = () =>{
+    const request = () => {
         const filtered = filterRequests(requests);
         console.log(filtered);
     }
 
+    const changeActive = (index) => {
+        Setindex(index)
+        //console.log(requests[index].location)
+    }
+
+    const checkActive = (indexa) => {
+        let color = "#FFFFFF"
+        if (index == indexa) {
+            color = "#B9E1FF"
+
+        }
+
+        return color
+    }
+
+
+
+
     return (
         <div className="o-body">
-            <Map></Map>
+            <Map 
+            location={requests[index]}
+            />
             <div className="o-service">
                 {/*Tipos de servicio*/}
                 <ServiceHeader
-                title={"Activa tu Servicio a prestar"}
+                    title={"Activa tu Servicio a prestar"}
                     states={{ home: home, remote: remote }}
                     handler={handleChange}
                     keys={{ home: "home", remote: "remote" }} />
-                    {requests.map((request, index)=>{
+                {requests.map((request, index) => {
                     return <ServiceRequest
-                                key={index}
-                                info={request}/>
+                        key={index}
+                        info={request}
+                        changeActive={changeActive.bind(this, index)}
+                        color={checkActive(index)}
+                        location={requests[index]}/>       
                 })}
                 <OButton label={"Aceptar"} onClick={request}></OButton>
             </div>
@@ -103,8 +126,8 @@ export default class ServiceDoctor extends React.Component {
 
     //Define socket operations
     componentDidMount(){
-        
-        
+
+
     }
 
     //levantamiento de estado
@@ -125,7 +148,7 @@ export default class ServiceDoctor extends React.Component {
             <div className="o-body">
                 <Map location={location}></Map>
                 <div className="o-service">
-                   
+
                     <ServiceHeader
                         states={{ home: state.home, remote: state.remote }}
                         handler={this.handleChange}
@@ -135,11 +158,11 @@ export default class ServiceDoctor extends React.Component {
                     <ServiceSelect ></ServiceSelect>
                     <ServiceSelect ></ServiceSelect>
                     <OButton label={"Aceptar"} onClick={this.request}></OButton>
-                    
+
 =======
                         keys={{ home: "home", remote: "remote" }} />
 
-                   
+
                     {state.requests.map((request, index)=>{
                         return <ServiceRequest
                                     key={index}

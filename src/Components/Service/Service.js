@@ -47,7 +47,6 @@ export default class Service extends React.Component {
 
     //envio solicitud de servicio
     request = _ => {
-        console.log(this.state)
         socket.emit('request', this.state);
     }
 
