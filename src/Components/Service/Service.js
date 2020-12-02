@@ -3,9 +3,13 @@ import './Service.css'
 import ServiceHeader from './ServiceHeader/ServiceHeader';
 import OButton from '../OButton/OButton'
 import { Link } from 'react-router-dom';
+import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 //service Select
 import ServiceSelect from './ServiceSelect/ServiceSelect';
 import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
+import Map from '../Map/Map';
+import UserProfile from '../../UserProfile';
+
 
 //web socket comunication
 import io from 'socket.io-client'
@@ -20,8 +24,8 @@ export default class Service extends React.Component {
     specialtyOptions = ["General", "Cardiólogo", "Pediatra"];
     typeOfService = ["Médico", "Psicólogo"];
     services = {};
-
     constructor(props) {
+        console.log(UserProfile.getMail())
         super(props);
         this.state = {
             user: '123',
@@ -30,9 +34,10 @@ export default class Service extends React.Component {
             service: 0, //medico o psicologo
             specialty: 0,
             date: new Date()
+            
         }
     }
-
+    
     //levantamiento de estado
     handleChange = (k, value) => {
         this.setState({ [k]: value });
@@ -49,6 +54,7 @@ export default class Service extends React.Component {
         let state = this.state;
         return (
             <div className="o-body">
+                <Map></Map>
                 <div className="o-service">
                     {/*Tipos de servicio*/}
                     <ServiceHeader
@@ -85,7 +91,9 @@ export default class Service extends React.Component {
                         <OButton label={"Aceptar"} onClick={this.request}></OButton>
                     
                 </div>
+                
             </div>
+            
         );
     }
 }
