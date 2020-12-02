@@ -123,7 +123,6 @@ export class CurrentLocation extends React.Component {
 
     render() {
         const style = Object.assign({}, mapStyles.map);
-        console.log(this.state.currentLocation)
         return (
             <div>
                 <div style={style} ref="map">

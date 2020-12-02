@@ -51,8 +51,10 @@ export default class ServiceDoctor extends React.Component {
                         states={{ home: state.home, remote: state.remote }}
                         handler={this.handleChange}
                         keys={{home: "home", remote: "remote"}} />
-                    <ServiceSelect></ServiceSelect>
-                        <OButton label={"Aceptar"} onClick={this.request}></OButton>
+                    <ServiceSelect ></ServiceSelect>
+                    <ServiceSelect ></ServiceSelect>
+                    <ServiceSelect ></ServiceSelect>
+                    <OButton label={"Aceptar"} onClick={this.request}></OButton>
                     
                 </div>
                 

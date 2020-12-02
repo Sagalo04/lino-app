@@ -1,0 +1,58 @@
+.o-help{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 90vh;
+    justify-content: space-between;
+}
+
+.o-helpTitle{
+    font-size: 3rem;
+
+}
+
+.o-content-help{
+    padding: 3rem 0 0 3rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-wrap: wrap;
+    color: white;
+    min-height: 27rem;
+    min-width: 30rem;
+    width: 50rem;
+    height: 47rem;
+    background-image: url('../../Resources/Images/help.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.o-helpinput{
+    display: flex;
+    align-items: center;
+}
+
+.o-helpDefine{
+    color: #888065;
+    margin-right: 15rem;
+
+}
+
+.o-help-option{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #888065;
+    font-size: 2.3rem;
+    font-weight: 400;
+    cursor: pointer;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.helpicon{
+    margin-left: 1.5rem;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 0.8rem;
+}
