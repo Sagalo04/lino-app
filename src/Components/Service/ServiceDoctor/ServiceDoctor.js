@@ -51,6 +51,7 @@ const ServiceDoctor = ()=> {
             <div className="o-service">
                 {/*Tipos de servicio*/}
                 <ServiceHeader
+                title={"Activa tu Servicio a prestar"}
                     states={{ home: home, remote: remote }}
                     handler={handleChange}
                     keys={{ home: "home", remote: "remote" }} />

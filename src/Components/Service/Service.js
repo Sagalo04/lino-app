@@ -11,7 +11,7 @@ import Map from '../Map/Map';
 import UserProfile from '../../UserProfile';
 
 //import specialtyOptions
-import {typeOfService, specialtyOptions} from '../../Constants/Services'
+import { typeOfService, specialtyOptions } from '../../Constants/Services'
 
 //web socket comunication
 import io from 'socket.io-client'
@@ -25,7 +25,7 @@ export default class Service extends React.Component {
 
     specialtyOptions = specialtyOptions;
     typeOfService = typeOfService;
-    
+
     services = {};
     constructor(props) {
         super(props);
@@ -60,6 +60,7 @@ export default class Service extends React.Component {
                 <div className="o-service">
                     {/*Tipos de servicio*/}
                     <ServiceHeader
+                        title={"¿Qué servicio deseas?"}
                         states={{ home: state.home, remote: state.remote }}
                         handler={this.handleChange}
                         keys={{ home: "home", remote: "remote" }} />
