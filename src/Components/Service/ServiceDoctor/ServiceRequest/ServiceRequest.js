@@ -8,6 +8,7 @@ function serviceString(hogar, remoto){
     if(remoto) return 'Servicio Remoto';
 }
 function ServiceRequest({info}) {
+    
     return (
         <div className="o-patient">
             <div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 //import '../Service.css'
 import ServiceHeader from '../ServiceHeader/ServiceHeader';
 import OButton from '../../OButton/OButton'
@@ -12,10 +12,62 @@ import ServiceRequest from './ServiceRequest/ServiceRequest';
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
 
-export default class ServiceDoctor extends React.Component {
+const ServiceDoctor = ()=> {
+    
+    const [home, setHome] = useState(false);
+    const [remote, setRemote] = useState(false);
+    const [requests, setRequests] = useState([]);
 
-    specialtyOptions = ["General", "Cardiólogo", "Pediatra"];
-    typeOfService = ["Médico", "Psicólogo"];
+    useEffect(() => {
+        //subscribe as a doctor
+        socket.emit('doctorSubscription');
+        //bring back old requests
+        socket.emit('retrievePrevRequests');
+    });
+
+    useEffect(() => {
+        socket.on('requestDoctor', (requests)=>{
+            setRequests(requests);
+        })
+        return ()=> socket.off();
+    }, [requests])
+    
+    //levantamiento de estado
+    const handleChange = (k, value) => {
+        switch(k){
+            case "home":
+                setHome(value);
+                break;
+            case "remote":
+                setRemote(value);
+        }
+    }
+
+    const request = () =>{}
+
+    return (
+        <div className="o-body">
+            <Map></Map>
+            <div className="o-service">
+                {/*Tipos de servicio*/}
+                <ServiceHeader
+                    states={{ home: home, remote: remote }}
+                    handler={handleChange}
+                    keys={{ home: "home", remote: "remote" }} />
+                    {requests.map((request, index)=>{
+                    return <ServiceRequest
+                                key={index}
+                                info={request}/>
+                })}
+                <OButton label={"Aceptar"} onClick={request}></OButton>
+            </div>
+        </div>
+    );
+}
+
+export default ServiceDoctor
+/*
+export default class ServiceDoctor extends React.Component {
 
     constructor(props) {
         super(props);
@@ -30,12 +82,8 @@ export default class ServiceDoctor extends React.Component {
 
     //Define socket operations
     componentDidMount(){
-        //subscribe as a doctor
-        socket.emit('doctorSubscription');
-        socket.emit('retrievePrevRequests');
-        socket.on('requestDoctor', (requests)=>{
-            this.setState({requests})
-        })
+        
+        
     }
 
     //levantamiento de estado
@@ -55,13 +103,13 @@ export default class ServiceDoctor extends React.Component {
             <div className="o-body">
                 <Map></Map>
                 <div className="o-service">
-                    {/*Tipos de servicio*/}
+                   
                     <ServiceHeader
                         states={{ home: state.home, remote: state.remote }}
                         handler={this.handleChange}
                         keys={{ home: "home", remote: "remote" }} />
 
-                    {/*Services available*/}
+                   
                     {state.requests.map((request, index)=>{
                         return <ServiceRequest
                                     key={index}
@@ -75,3 +123,4 @@ export default class ServiceDoctor extends React.Component {
 }
 
 
+*/
