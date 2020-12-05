@@ -39,15 +39,12 @@ const ServiceDoctor = () => {
         socket.emit('doctorSubscription');
         //bring back old requests
         socket.emit('retrievePrevRequests');
-    });
-
-    useEffect(() => {
         socket.on('requestDoctor', (requests) => {
             const filtered = filterRequests(requests);
             setRequests(filtered);
         })
         return () => socket.off();
-    }, [requests])
+    });
 
     //levantamiento de estado
     const handleChange = (k, value) => {

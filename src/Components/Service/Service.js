@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Service.css'
 import ServiceHeader from './ServiceHeader/ServiceHeader';
 import OButton from '../OButton/OButton'
@@ -22,47 +22,67 @@ socket.on('response', (message) => {
     console.log(message);
 })
 
-export default class Service extends React.Component {
-
-    specialtyOptions = specialtyOptions;
-    typeOfService = typeOfService;
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: UserProfile.getMail(),
-            home: false,  //servicio hogar
-            remote: false, //servicio remoto
-            service: 0, //medico o psicologo
-            specialty: 0,
-            date: new Date(),
-            location: '',
-            ServiceState: ServiceStates.initial, //start in initial state
-            error: false,
-        }
-    }
+const Service = () => {
+    //states
+    const [user, setUser] = useState(UserProfile.getMail());
+    const [home, setHome] = useState(false);
+    const [remote, setRemote] = useState(false);
+    const [service, setService] = useState(0);
+    const [specialty, setSpecialty] = useState(0);
+    const [date, setDate] = useState(new Date());
+    const [location, setLocation] = useState('');
+    const [ServiceState, setServiceState] = useState(ServiceStates.initial);
+    const [error, setError] = useState()
 
     //levantamiento de estado
-    handleChange = (k, value) => {
-        this.setState({ [k]: value });
+    const handleChange = (k, value) => {
+        switch (k) {
+            case "user":
+                setUser(value);
+                break;
+            case "home":
+                setHome(value);
+                break;
+            case "remote":
+                setRemote(value);
+                break;
+            case "service":
+                setService(value);
+                break;
+            case "specialty":
+                setSpecialty(value);
+                break;
+            case "date":
+                setDate(value);
+                break;
+            case "location":
+                setLocation(value);
+                break;
+        }
     }
 
     //envio solicitud de servicio
-    request = _ => {
-        let state = this.state;
+    const request = _ => {
         //validar si ha seleccionado un tipo de servicio
-        if(!state.home && !state.remote){
-            this.setState({error: true})
-        }else{
-            socket.emit('request', this.state);
-            this.setState({error: false, ServiceState: ServiceStates.pending})
+        if (!home && !remote) {
+            setError(true);
+        } else {
+            const info = { user, home, remote, service, specialty, date, location };
+            socket.emit('request', info);
+            setError(false);
+            setServiceState(ServiceStates.pending);
         }
     }
 
-    checkServiceState = () => {
-        let state = this.state;
+    useEffect(() => {
+        //cuando responden a la peticion
+        socket.on('response', (message) => {
+            console.log('RESPONDIERON!!');
+        })
+    })
 
-        switch(state.ServiceState){
+    const checkServiceState = () => {
+        switch (ServiceState) {
             //initial state render
             case ServiceStates.initial:
                 return (
@@ -70,65 +90,64 @@ export default class Service extends React.Component {
                         {/*Tipos de servicio*/}
                         <ServiceHeader
                             title={"¿Qué servicio deseas?"}
-                            states={{ home: state.home, remote: state.remote }}
-                            handler={this.handleChange}
+                            states={{ home: home, remote: remote }}
+                            handler={handleChange}
                             keys={{ home: "home", remote: "remote" }} />
                         {/*Seleccionar Medico/Psicologo*/}
                         <ServiceSelect
                             label={"Deseo un:"}
                             title={"Médico/Psicólogo"}
-                            options={this.typeOfService}
-                            handler={this.handleChange}
-                            value={state.service}
+                            options={typeOfService}
+                            handler={handleChange}
+                            value={service}
                             k="service" />
                         {/*Seleccionar especialidad*/}
                         <ServiceSelect
                             label={"Especialidad:"}
                             title={"General"}
-                            options={this.specialtyOptions}
-                            handler={this.handleChange}
-                            value={state.specialty}
+                            options={specialtyOptions}
+                            handler={handleChange}
+                            value={specialty}
                             k="specialty" />
                         {/*Seleccionar fecha*/}
                         <ServiceDatePicker
-                            value={state.date}
-                            handler={this.handleChange}
+                            value={date}
+                            handler={handleChange}
                             k="date" />
                         {/*mensaje de error por si no selecciona el tipo de servicio*/}
-                        {state.error? <div className="o-error-message-service">
-                                <p>Debes seleccionar un al menos un tipo de servicio.<br/> Inténtalo de nuevo</p>
-                            </div>
-                        :null}
+                        {error ? <div className="o-error-message-service">
+                            <p>Debes seleccionar un al menos un tipo de servicio.<br /> Inténtalo de nuevo</p>
+                        </div>
+                            : null}
                         {/*Boton para enviar servicio*/}
-                        <OButton label={"Aceptar"} onClick={this.request}></OButton>
+                        <OButton label={"Aceptar"} onClick={request}></OButton>
                     </div>
                 );
             //pending state render
             case ServiceStates.pending:
                 return (
                     <div className="o-service">
-                        <ServicePending/>
+                        <ServicePending />
                     </div>
                 );
             //resolved state render
             case ServiceStates.resolved:
-                return(
+                return (
                     <div className="o-service">Hola</div>
                 );
         }
     }
 
-    render() {
-        return (
-            <div className="o-body">
-                <Map value={this.state.location}
-                    k="location"
-                    handler={this.handleChange}
-                />
-                {this.checkServiceState()}
-            </div>
-        );
-    }
+    return (
+        <div className="o-body">
+            <Map value={location}
+                k="location"
+                handler={handleChange}
+            />
+            {checkServiceState()}
+        </div>
+    );
 }
 
+export default Service
 
