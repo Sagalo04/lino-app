@@ -14,15 +14,15 @@ export class CurrentLocation extends React.Component {
     constructor(props) {
         super(props);
 
-        const { lat, lng } = this.props.initialCenter;
+        //const { lat, lng } = this.props.initialCenter;
 
-        const { latitude, long } = this.props.location;
-        this.latitude = latitude
-        this.longitude = long
+        const { lat, lng } = this.props.location;
+        this.latitude = lat
+        this.longitude = lng
         this.state = {
             currentLocation: {
-                lat: latitude,
-                lng: long
+                lat: lat,
+                lng: lng
             }
         };
     }
@@ -48,18 +48,18 @@ export class CurrentLocation extends React.Component {
     }
 
     componentDidMount() {
-        const apikey = "RqKj4UStDiwdpMnDcPC5hGzDGaCqchf_NVyU41ZiqWk"
-        const url = `https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json?apiKey=${apikey}&mode=retrieveAddresses&prox=${this.state.currentLocation.lat},${this.state.currentLocation.lng}`
-        fetch(url)
-            .then(res => res.json())
-            .then((resJson) => {
+        // const apikey = "RqKj4UStDiwdpMnDcPC5hGzDGaCqchf_NVyU41ZiqWk"
+        // const url = `https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json?apiKey=${apikey}&mode=retrieveAddresses&prox=${this.state.currentLocation.lat},${this.state.currentLocation.lng}`
+        // fetch(url)
+        //     .then(res => res.json())
+        //     .then((resJson) => {
 
-                console.log(resJson.Response.View[0].Result[0].Location.Address.Label)
+        //         console.log(resJson.Response.View[0].Result[0].Location.Address.Label)
 
-            })
-            .catch((e) => {
-                console.log('Error in getAddressFromCoordinates', e)
-            })
+        //     })
+        //     .catch((e) => {
+        //         console.log('Error in getAddressFromCoordinates', e)
+        //     })
         if (this.props.centerAroundCurrentLocation) {
             if (navigator && navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos => {
