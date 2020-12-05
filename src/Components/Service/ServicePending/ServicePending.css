@@ -1,0 +1,44 @@
+.o-service-pending{
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.o-service-pending .o-message-pending{
+    font-size: 1.2rem;
+}
+
+svg.pending{
+    height: 100px;
+    animation: rotate 3s linear infinite;
+}
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+svg.pending circle{
+    fill: none;
+    stroke-width: 5;
+    stroke: #888065;
+    stroke-linecap: round;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate
+{
+    0%, 100%
+    {
+        stroke-dashoffset: 200;
+    }
+    50%
+    {
+        stroke-dashoffset: 0;
+    }
+    
+}
