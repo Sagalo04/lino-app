@@ -30,7 +30,7 @@ export class MapContainer extends Component {
 
     }
 
-
+    
     onMarkerClick = (props, marker, e) =>
         this.setState({
             selectedPlace: props,
@@ -57,7 +57,7 @@ export class MapContainer extends Component {
                 location={this.state.location}
             //location={{lat:3.4143397,lng:-76.53682194444444}}
             >
-                <Marker onClick={this.onMarkerClick} name={'Current Location'} position={this.state.location} />
+                {/* <Marker onClick={this.onMarkerClick} name={'Current Location'} position={this.state.location} />
                 <InfoWindow
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}
@@ -66,7 +66,7 @@ export class MapContainer extends Component {
                     <div>
                         <h4>{this.state.selectedPlace.name}</h4>
                     </div>
-                </InfoWindow>
+                </InfoWindow> */}
             </CurrentLocation>
         );
     }

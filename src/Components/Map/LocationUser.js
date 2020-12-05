@@ -21,22 +21,21 @@ export class CurrentLocation extends React.Component {
             currentLocation: {
                 lat: lat,
                 lng: lng
-            }
+            }, markers: []
         };
     }
     componentDidUpdate(prevProps, prevState) {
+
         if (prevProps.google !== this.props.google) {
             this.loadMap();
         }
-        // if (prevState.currentLocation !== this.state.currentLocation) {
-        //     this.recenterMap();
-        // }
-        
-        if (this.props.location.lat !== this.state.currentLocation.lat 
+
+        if (this.props.location.lat !== this.state.currentLocation.lat
             && this.props.location.lng !== this.state.currentLocation.lng) {
-            this.setState({currentLocation: this.props.location})
             console.log(this.props.location)
             console.log(this.state.currentLocation)
+            this.setState({ currentLocation: this.props.location })
+
         }
         if (prevState.currentLocation != this.state.currentLocation) {
             this.recenterMap();
@@ -45,22 +44,34 @@ export class CurrentLocation extends React.Component {
     }
 
     recenterMap() {
+        console.log(this.state.markers)
+        if (this.state.markers.length > 0) {
+            this.state.markers[0].setMap(null);
+        }
         const map = this.map;
-
         const current = this.state.currentLocation;
         const google = this.props.google;
         const maps = google.maps;
-
-        if (map) {
-            let center = new maps.LatLng(current.lat, current.lng);
-            map.panTo(center);
-        }
         var marker = new google.maps.Marker({
             position: this.state.currentLocation,
             title: "Hello World!"
         });
+        this.setState(state => {
+            const marks = state.markers
+            marks.push(marker)
+            return (
+                marks
+            )
+        })
+        if (map) {
+            let center = new maps.LatLng(current.lat, current.lng);
+            map.panTo(center);
+            console.log(this.state.markers[0])
+            marker.setMap(map);
+        }
 
-        marker.setMap(marker);
+
+
     }
 
     componentDidMount() {
