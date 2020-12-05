@@ -58,7 +58,13 @@ const ServiceDoctor = () => {
     }
 
     const request = () => {
-        socket.emit('response', requests[index].id);
+        //doctor info
+        let info = {
+            name: UserProfile.getMail().split('@')[0],
+            specialty: 'Médico General',
+            sourceImg: ''
+        }
+        socket.emit('response', requests[index].id, info);
     }
 
     const changeActive = (index) => {

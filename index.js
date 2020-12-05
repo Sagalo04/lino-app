@@ -31,8 +31,8 @@ io.on('connection', socket =>{
         io.to(id).emit('requestDoctor', requests);
     })
 
-    socket.on('response', (id)=>{
-        io.to(id).emit('response');
+    socket.on('response', (id, docInfo)=>{
+        io.to(id).emit('response', docInfo);
     })
 })
 

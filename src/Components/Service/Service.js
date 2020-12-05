@@ -8,7 +8,7 @@ import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 import Map from '../Map/Map';
 import UserProfile from '../../UserProfile';
 import ServicePending from './ServicePending/ServicePending'
-
+import ServiceConfirm from './ServiceConfirm'
 //import specialtyOptions
 import { typeOfService, specialtyOptions } from '../../Constants/Services'
 //import service states
@@ -29,7 +29,8 @@ function Service() {
     const [date, setDate] = useState(new Date());
     const [location, setLocation] = useState('');
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
-    const [error, setError] = useState()
+    const [error, setError] = useState();
+    const [doctor, setDoctor] = useState({});
 
     //levantamiento de estado
     const handleChange = (k, value) => {
@@ -73,7 +74,8 @@ function Service() {
 
     useEffect(() => {
         //cuando responden a la peticion
-        socket.on('response', () => {
+        socket.on('response', (docInfo) => {
+            setDoctor(docInfo)
             setServiceState(ServiceStates.resolved);
         })
     })
@@ -130,7 +132,14 @@ function Service() {
             //resolved state render
             case ServiceStates.resolved:
                 return (
-                    <div className="o-service">Hola</div>
+                    <div className="o-service">
+                        <ServiceConfirm
+                            name={doctor.name}
+                            info={doctor.specialty}
+                            sourceImg={doctor.sourceImg}
+                            date={`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`}
+                        />
+                    </div>
                 );
         }
     }
