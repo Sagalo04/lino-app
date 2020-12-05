@@ -38,7 +38,7 @@ const ServiceDoctor = () => {
         //subscribe as a doctor
         socket.emit('doctorSubscription');
         //bring back old requests
-        socket.emit('retrievePrevRequests');
+        socket.emit('retrievePrevRequests', socket.id);
         socket.on('requestDoctor', (requests) => {
             const filtered = filterRequests(requests);
             setRequests(filtered);
@@ -58,8 +58,7 @@ const ServiceDoctor = () => {
     }
 
     const request = () => {
-        const filtered = filterRequests(requests);
-        console.log(filtered);
+        socket.emit('response', requests[index].id);
     }
 
     const changeActive = (index) => {
@@ -71,14 +70,9 @@ const ServiceDoctor = () => {
         let color = "#FFFFFF"
         if (index == indexa) {
             color = "#B9E1FF"
-
         }
-
         return color
     }
-
-
-
 
     return (
         <div className="o-body">
@@ -149,14 +143,6 @@ export default class ServiceDoctor extends React.Component {
                     <ServiceHeader
                         states={{ home: state.home, remote: state.remote }}
                         handler={this.handleChange}
-<<<<<<< HEAD
-                        keys={{home: "home", remote: "remote"}} />
-                    <ServiceSelect ></ServiceSelect>
-                    <ServiceSelect ></ServiceSelect>
-                    <ServiceSelect ></ServiceSelect>
-                    <OButton label={"Aceptar"} onClick={this.request}></OButton>
-
-=======
                         keys={{ home: "home", remote: "remote" }} />
 
 
@@ -166,7 +152,6 @@ export default class ServiceDoctor extends React.Component {
                                     info={request}/>
                     })}
                     <OButton label={"Aceptar"} onClick={this.request}></OButton>
->>>>>>> 9d4a614404bf966fac677dd2cd429f919eeb2836
                 </div>
             </div>
         );

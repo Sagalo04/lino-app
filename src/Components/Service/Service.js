@@ -18,11 +18,8 @@ import ServiceStates from '../../Constants/ServiceStates'
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
 
-socket.on('response', (message) => {
-    console.log(message);
-})
 
-const Service = () => {
+function Service() {
     //states
     const [user, setUser] = useState(UserProfile.getMail());
     const [home, setHome] = useState(false);
@@ -67,7 +64,7 @@ const Service = () => {
         if (!home && !remote) {
             setError(true);
         } else {
-            const info = { user, home, remote, service, specialty, date, location };
+            const info = {id: socket.id, user, home, remote, service, specialty, date, location };
             socket.emit('request', info);
             setError(false);
             setServiceState(ServiceStates.pending);
@@ -76,8 +73,8 @@ const Service = () => {
 
     useEffect(() => {
         //cuando responden a la peticion
-        socket.on('response', (message) => {
-            console.log('RESPONDIERON!!');
+        socket.on('response', () => {
+            setServiceState(ServiceStates.resolved);
         })
     })
 
