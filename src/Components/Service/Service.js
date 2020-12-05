@@ -13,6 +13,8 @@ import ServicePending from './ServicePending/ServicePending'
 
 //import specialtyOptions
 import { typeOfService, specialtyOptions } from '../../Constants/Services'
+//import service states
+import ServiceStates from '../../Constants/ServiceStates'
 
 //web socket comunication
 import io from 'socket.io-client'
@@ -21,6 +23,11 @@ const socket = io.connect('http://localhost:4000')
 socket.on('response', (message) => {
     console.log(message);
 })
+
+//request service content
+const RequestService = ()=>{
+    
+}
 
 export default class Service extends React.Component {
 
@@ -38,7 +45,7 @@ export default class Service extends React.Component {
             specialty: 0,
             date: new Date(),
             location: '',
-            pending: false
+            ServiceState: ServiceStates.initial //start in initial state
         }
     }
 
@@ -51,52 +58,60 @@ export default class Service extends React.Component {
     request = _ => {
         console.log(this.state)
         socket.emit('request', this.state);
-        this.setState({pending: true})
+        this.setState({ServiceState: ServiceStates.pending})
     }
 
-    checkIfPending = () => {
+    checkServiceState = () => {
         let state = this.state;
 
-        if (!state.pending) {
-            return (
-                <div className="o-service">
-                    {/*Tipos de servicio*/}
-                    <ServiceHeader
-                        title={"¿Qué servicio deseas?"}
-                        states={{ home: state.home, remote: state.remote }}
-                        handler={this.handleChange}
-                        keys={{ home: "home", remote: "remote" }} />
-                    {/*Seleccionar Medico/Psicologo*/}
-                    <ServiceSelect
-                        label={"Deseo un:"}
-                        title={"Médico/Psicólogo"}
-                        options={this.typeOfService}
-                        handler={this.handleChange}
-                        value={state.service}
-                        k="service" />
-                    {/*Seleccionar especialidad*/}
-                    <ServiceSelect
-                        label={"Especialidad:"}
-                        title={"General"}
-                        options={this.specialtyOptions}
-                        handler={this.handleChange}
-                        value={state.specialty}
-                        k="specialty" />
-                    {/*Seleccionar fecha*/}
-                    <ServiceDatePicker
-                        value={state.date}
-                        handler={this.handleChange}
-                        k="date" />
-                    {/*Boton para enviar servicio*/}
-                    <OButton label={"Aceptar"} onClick={this.request}></OButton>
-                </div>
-            );
-        } else {
-            return (
-                <div className="o-service">
-                    <ServicePending/>
-                </div>
-            );
+        switch(state.ServiceState){
+            //initial state render
+            case ServiceStates.initial:
+                return (
+                    <div className="o-service">
+                        {/*Tipos de servicio*/}
+                        <ServiceHeader
+                            title={"¿Qué servicio deseas?"}
+                            states={{ home: state.home, remote: state.remote }}
+                            handler={this.handleChange}
+                            keys={{ home: "home", remote: "remote" }} />
+                        {/*Seleccionar Medico/Psicologo*/}
+                        <ServiceSelect
+                            label={"Deseo un:"}
+                            title={"Médico/Psicólogo"}
+                            options={this.typeOfService}
+                            handler={this.handleChange}
+                            value={state.service}
+                            k="service" />
+                        {/*Seleccionar especialidad*/}
+                        <ServiceSelect
+                            label={"Especialidad:"}
+                            title={"General"}
+                            options={this.specialtyOptions}
+                            handler={this.handleChange}
+                            value={state.specialty}
+                            k="specialty" />
+                        {/*Seleccionar fecha*/}
+                        <ServiceDatePicker
+                            value={state.date}
+                            handler={this.handleChange}
+                            k="date" />
+                        {/*Boton para enviar servicio*/}
+                        <OButton label={"Aceptar"} onClick={this.request}></OButton>
+                    </div>
+                );
+            //pending state render
+            case ServiceStates.pending:
+                return (
+                    <div className="o-service">
+                        <ServicePending/>
+                    </div>
+                );
+            //resolved state render
+            case ServiceStates.resolved:
+                return(
+                    <div className="">Hola</div>
+                );
         }
     }
 
@@ -107,7 +122,7 @@ export default class Service extends React.Component {
                     k="location"
                     handler={this.handleChange}
                 />
-                {this.checkIfPending()}
+                {this.checkServiceState()}
             </div>
         );
     }
