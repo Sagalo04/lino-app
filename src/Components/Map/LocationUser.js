@@ -17,8 +17,6 @@ export class CurrentLocation extends React.Component {
         //const { lat, lng } = this.props.initialCenter;
 
         const { lat, lng } = this.props.location;
-        this.latitude = lat
-        this.longitude = lng
         this.state = {
             currentLocation: {
                 lat: lat,
@@ -30,13 +28,25 @@ export class CurrentLocation extends React.Component {
         if (prevProps.google !== this.props.google) {
             this.loadMap();
         }
-        if (prevState.currentLocation !== this.state.currentLocation) {
+        // if (prevState.currentLocation !== this.state.currentLocation) {
+        //     this.recenterMap();
+        // }
+        
+        if (this.props.location.lat !== this.state.currentLocation.lat 
+            && this.props.location.lng !== this.state.currentLocation.lng) {
+            this.setState({currentLocation: this.props.location})
+            console.log(this.props.location)
+            console.log(this.state.currentLocation)
+        }
+        if (prevState.currentLocation != this.state.currentLocation) {
             this.recenterMap();
         }
+        //this.recenterMap();
     }
 
     recenterMap() {
         const map = this.map;
+
         const current = this.state.currentLocation;
         const google = this.props.google;
         const maps = google.maps;
@@ -45,30 +55,21 @@ export class CurrentLocation extends React.Component {
             let center = new maps.LatLng(current.lat, current.lng);
             map.panTo(center);
         }
+        var marker = new google.maps.Marker({
+            position: this.state.currentLocation,
+            title: "Hello World!"
+        });
+
+        marker.setMap(marker);
     }
 
     componentDidMount() {
-        // const apikey = "RqKj4UStDiwdpMnDcPC5hGzDGaCqchf_NVyU41ZiqWk"
-        // const url = `https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json?apiKey=${apikey}&mode=retrieveAddresses&prox=${this.state.currentLocation.lat},${this.state.currentLocation.lng}`
-        // fetch(url)
-        //     .then(res => res.json())
-        //     .then((resJson) => {
-
-        //         console.log(resJson.Response.View[0].Result[0].Location.Address.Label)
-
-        //     })
-        //     .catch((e) => {
-        //         console.log('Error in getAddressFromCoordinates', e)
-        //     })
         if (this.props.centerAroundCurrentLocation) {
             if (navigator && navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos => {
                     const coords = pos.coords;
                     this.setState({
-                        currentLocation: {
-                            lat: this.latitude,
-                            lng: this.longitude
-                        }
+                        currentLocation: this.props.location
                     });
                 });
             }
@@ -88,19 +89,22 @@ export class CurrentLocation extends React.Component {
             const node = ReactDOM.findDOMNode(mapRef);
 
             let { zoom } = this.props;
+
             const { lat, lng } = this.state.currentLocation;
+
             const center = new maps.LatLng(lat, lng);
 
             const mapConfig = Object.assign(
                 {},
                 {
                     center: center,
-                    zoom: zoom + 2.5
+                    zoom: zoom + 3.5
                 }
             );
 
             // maps.Map() is constructor that instantiates the map
             this.map = new maps.Map(node, mapConfig);
+
         }
     }
 
