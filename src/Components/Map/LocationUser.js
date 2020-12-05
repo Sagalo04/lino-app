@@ -15,13 +15,22 @@ export class CurrentLocation extends React.Component {
         super(props);
 
         //const { lat, lng } = this.props.initialCenter;
-
+        //cont gogle =  
         const { lat, lng } = this.props.location;
+        const location = {
+            lat: lat,
+            lng: lng
+        }
+        var mark = new this.props.google.maps.Marker({
+            position: location,
+            title: "Hello World!"
+        });
         this.state = {
             currentLocation: {
                 lat: lat,
                 lng: lng
-            }, markers: []
+            },
+            markerts: mark
         };
     }
     componentDidUpdate(prevProps, prevState) {
@@ -32,49 +41,46 @@ export class CurrentLocation extends React.Component {
 
         if (this.props.location.lat !== this.state.currentLocation.lat
             && this.props.location.lng !== this.state.currentLocation.lng) {
-            console.log(this.props.location)
-            console.log(this.state.currentLocation)
+            //console.log(this.props.location)
+            //console.log(this.state.currentLocation)
             this.setState({ currentLocation: this.props.location })
-
         }
         if (prevState.currentLocation != this.state.currentLocation) {
+            
             this.recenterMap();
         }
-        //this.recenterMap();
     }
 
     recenterMap() {
-        console.log(this.state.markers)
-        if (this.state.markers.length > 0) {
-            this.state.markers[0].setMap(null);
-        }
+
+        
+
         const map = this.map;
         const current = this.state.currentLocation;
         const google = this.props.google;
         const maps = google.maps;
-        var marker = new google.maps.Marker({
-            position: this.state.currentLocation,
-            title: "Hello World!"
-        });
-        this.setState(state => {
-            const marks = state.markers
-            marks.push(marker)
-            return (
-                marks
-            )
-        })
+
         if (map) {
+            if(this.mark){
+                this.mark.setMap(null)
+
+            }
+            console.log(this.state.markerts)
+            var marker = new google.maps.Marker({
+                position: this.state.currentLocation,
+                title: "Hello World!"
+            });
+            this.mark = marker
+            console.log(this.state.markerts)
             let center = new maps.LatLng(current.lat, current.lng);
+            this.mark.setMap(map)
             map.panTo(center);
-            console.log(this.state.markers[0])
-            marker.setMap(map);
+;
         }
-
-
-
     }
 
     componentDidMount() {
+
         if (this.props.centerAroundCurrentLocation) {
             if (navigator && navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos => {
@@ -131,7 +137,6 @@ export class CurrentLocation extends React.Component {
                 map: this.map,
                 google: this.props.google,
                 mapCenter: this.state.currentLocation
-
             });
         });
     }
