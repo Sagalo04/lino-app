@@ -24,11 +24,6 @@ socket.on('response', (message) => {
     console.log(message);
 })
 
-//request service content
-const RequestService = ()=>{
-    
-}
-
 export default class Service extends React.Component {
 
     specialtyOptions = specialtyOptions;
@@ -45,7 +40,8 @@ export default class Service extends React.Component {
             specialty: 0,
             date: new Date(),
             location: '',
-            ServiceState: ServiceStates.initial //start in initial state
+            ServiceState: ServiceStates.initial, //start in initial state
+            error: false,
         }
     }
 
@@ -56,8 +52,14 @@ export default class Service extends React.Component {
 
     //envio solicitud de servicio
     request = _ => {
-        socket.emit('request', this.state);
-        this.setState({ServiceState: ServiceStates.pending})
+        let state = this.state;
+        //validar si ha seleccionado un tipo de servicio
+        if(!state.home && !state.home){
+            this.setState({error: true})
+        }else{
+            socket.emit('request', this.state);
+            this.setState({error: false, ServiceState: ServiceStates.pending})
+        }
     }
 
     checkServiceState = () => {
@@ -95,6 +97,11 @@ export default class Service extends React.Component {
                             value={state.date}
                             handler={this.handleChange}
                             k="date" />
+                        {/*mensaje de error por si no selecciona el tipo de servicio*/}
+                        {state.error? <div className="o-error-message-service">
+                                <p>Debes seleccionar un al menos un tipo de servicio.<br/> Inténtalo de nuevo</p>
+                            </div>
+                        :null}
                         {/*Boton para enviar servicio*/}
                         <OButton label={"Aceptar"} onClick={this.request}></OButton>
                     </div>

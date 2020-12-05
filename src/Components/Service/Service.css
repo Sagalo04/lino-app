@@ -22,6 +22,16 @@
     margin-left: 2.5rem;
     margin-right: 4rem;
 }
+
+.o-error-message-service{
+    background-color: rgb(252, 206, 206);
+    margin: 0 0.8rem;
+}
+.o-error-message-service p{
+    color: #721c24;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+}
 /* Mediaquerys para movil */
 @media only screen and (max-width: 700px){
     .o-body{
