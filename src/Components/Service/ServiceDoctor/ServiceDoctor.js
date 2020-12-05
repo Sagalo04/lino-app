@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 //import '../Service.css'
 import ServiceHeader from '../ServiceHeader/ServiceHeader';
 import OButton from '../../OButton/OButton'
-//service Select
-
 import Map from '../../Map/MapDoc';
 import UserProfile from '../../../UserProfile';
 import ServiceRequest from './ServiceRequest/ServiceRequest';
@@ -19,20 +17,22 @@ const ServiceDoctor = () => {
     const [requests, setRequests] = useState([]);
     const [index, Setindex] = useState(0);
     const [serviceAccepted, setServiceAccepted] = useState(false);
+    //valores quemados para pruebas
+    const service = 0 //medico
+    const specialty = 0 //general
 
+    //criterios para filtrar una peticion
+    const checkModality = (request) => {
+        //verifica que el tipo de servicio de la peticion (hogar o remoto) coincida con los del medico
+        return (home && request.home) || (remote && request.remote)
+    }
+    const checkKindOfService = (request)=>{
+        //verifica que el tipo de servicio y especialidad de la peticion coincidan con el el medico
+        return request.service === service && request.specialty === specialty;
+    }
+    //funcion para filtrar de acuerdo a los criterios
     const filterRequests = (requests) => {
-        return requests.filter(request => {
-            let homeBool = false;
-            let remoteBool = false;
-            if (home) {
-                if (request.home) homeBool = true
-            }
-            if (remote) {
-                if (request.remote) remoteBool = true
-            }
-            return homeBool || remoteBool;
-        }
-        )
+        return requests.filter(request => checkModality(request) && checkKindOfService(request))
     }
 
     useEffect(() => {
@@ -115,7 +115,7 @@ const ServiceDoctor = () => {
 
     return (
         <div className="o-body">
-            <Map location={requests[index]}/>
+            <Map location={requests[index]} />
             {checkServiceState()}
         </div>
     );

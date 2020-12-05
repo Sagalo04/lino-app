@@ -10,7 +10,7 @@ import UserProfile from '../../UserProfile';
 import ServicePending from './ServicePending/ServicePending'
 import ServiceConfirm from './ServiceConfirm'
 //import specialtyOptions
-import { typeOfService, specialtyOptions } from '../../Constants/Services'
+import {services} from '../../Constants/Services'
 //import service states
 import ServiceStates from '../../Constants/ServiceStates'
 
@@ -96,7 +96,7 @@ function Service() {
                         <ServiceSelect
                             label={"Deseo un:"}
                             title={"Médico/Psicólogo"}
-                            options={typeOfService}
+                            options={services.map(e => e.label)}
                             handler={handleChange}
                             value={service}
                             k="service" />
@@ -104,7 +104,7 @@ function Service() {
                         <ServiceSelect
                             label={"Especialidad:"}
                             title={"General"}
-                            options={specialtyOptions}
+                            options={services[service].specialties}
                             handler={handleChange}
                             value={specialty}
                             k="specialty" />
