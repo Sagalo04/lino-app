@@ -30,7 +30,6 @@ export class CurrentLocation extends React.Component {
                 lat: lat,
                 lng: lng
             },
-            markerts: mark
         };
     }
     componentDidUpdate(prevProps, prevState) {
