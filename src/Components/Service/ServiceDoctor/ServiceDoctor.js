@@ -17,6 +17,7 @@ const ServiceDoctor = () => {
     const [requests, setRequests] = useState([]);
     const [index, Setindex] = useState(0);
     const [serviceAccepted, setServiceAccepted] = useState(false);
+    
     //valores quemados para pruebas
     const service = 0 //medico
     const specialty = 0 //general
