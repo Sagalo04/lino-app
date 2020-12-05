@@ -22,25 +22,15 @@ export class MapContainer extends Component {
         }
     }
     componentDidUpdate(prevProps, prevState) {
-        // if (prevProps.google !== this.props.google) {
-        //     this.loadMap();
-        // }
         if (this.props.location) {
-
             if (this.props.location !== prevProps.location) {
                 this.setState({ location: this.props.location.location })
-                //console.log(this.state.location)
-                return <Marker onClick={this.onMarkerClick} name={'Current Location'}></Marker>
             }
         }
-        // if (prevState.location !== this.state.location) {
-        //     this.setState({location: this.props.location});
-        // }
-    }
-
-    changeLocation = () => {
 
     }
+
+
     onMarkerClick = (props, marker, e) =>
         this.setState({
             selectedPlace: props,
@@ -67,7 +57,7 @@ export class MapContainer extends Component {
                 location={this.state.location}
             //location={{lat:3.4143397,lng:-76.53682194444444}}
             >
-                <Marker onClick={this.onMarkerClick} name={'Current Location'} />
+                <Marker onClick={this.onMarkerClick} name={'Current Location'} position={this.state.location} />
                 <InfoWindow
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}
