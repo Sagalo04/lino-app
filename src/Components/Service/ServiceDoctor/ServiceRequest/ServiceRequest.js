@@ -12,8 +12,8 @@ function serviceString(hogar, remoto) {
 function ServiceRequest({ info, changeActive, color, location }) {
     const [direction, setDirection] = useState('');
     const [city, setCity] = useState('');
+
     const locationAdress = (location) => {
-        
         const apikey = "Wj9_EjUtlEwzDVI2NJjCoSOsRc2iFSIDISNitVRusfk"
         const url = `https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json?apiKey=${apikey}&mode=retrieveAddresses&prox=${location.lat},${location.lng}`
         fetch(url)
