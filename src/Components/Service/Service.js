@@ -2,8 +2,6 @@ import React from 'react';
 import './Service.css'
 import ServiceHeader from './ServiceHeader/ServiceHeader';
 import OButton from '../OButton/OButton'
-import { Link } from 'react-router-dom';
-import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 //service Select
 import ServiceSelect from './ServiceSelect/ServiceSelect';
 import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
@@ -29,7 +27,6 @@ export default class Service extends React.Component {
     specialtyOptions = specialtyOptions;
     typeOfService = typeOfService;
 
-    services = {};
     constructor(props) {
         super(props);
         this.state = {
@@ -54,7 +51,7 @@ export default class Service extends React.Component {
     request = _ => {
         let state = this.state;
         //validar si ha seleccionado un tipo de servicio
-        if(!state.home && !state.home){
+        if(!state.home && !state.remote){
             this.setState({error: true})
         }else{
             socket.emit('request', this.state);
@@ -116,7 +113,7 @@ export default class Service extends React.Component {
             //resolved state render
             case ServiceStates.resolved:
                 return(
-                    <div className="">Hola</div>
+                    <div className="o-service">Hola</div>
                 );
         }
     }
