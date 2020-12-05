@@ -17,7 +17,8 @@ const ServiceDoctor = () => {
     const [home, setHome] = useState(false);
     const [remote, setRemote] = useState(false);
     const [requests, setRequests] = useState([]);
-    const [index, Setindex] = useState(0)
+    const [index, Setindex] = useState(0);
+    const [serviceAccepted, setServiceAccepted] = useState(false);
 
     const filterRequests = (requests) => {
         return requests.filter(request => {
@@ -65,6 +66,7 @@ const ServiceDoctor = () => {
             sourceImg: ''
         }
         socket.emit('response', requests[index].id, info);
+        setServiceAccepted(true);
     }
 
     const changeActive = (index) => {
@@ -79,28 +81,42 @@ const ServiceDoctor = () => {
         return color
     }
 
+    const checkServiceState = () => {
+        if (serviceAccepted) {
+            return (
+                <div className="o-service">
+                    <div className='o-service-header'>
+                        <h3>{`${requests[index].user} está esperando por ti`}</h3>
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className="o-service">
+                    {/*Tipos de servicio*/}
+                    <ServiceHeader
+                        title={"Activa tu Servicio a prestar"}
+                        states={{ home: home, remote: remote }}
+                        handler={handleChange}
+                        keys={{ home: "home", remote: "remote" }} />
+                    {requests.map((request, index) => {
+                        return <ServiceRequest
+                            key={index}
+                            info={request}
+                            changeActive={changeActive.bind(this, index)}
+                            color={checkActive(index)}
+                            location={requests[index]} />
+                    })}
+                    <OButton label={"Aceptar"} onClick={request}></OButton>
+                </div>
+            )
+        }
+    }
+
     return (
         <div className="o-body">
-            <Map 
-            location={requests[index]}
-            />
-            <div className="o-service">
-                {/*Tipos de servicio*/}
-                <ServiceHeader
-                    title={"Activa tu Servicio a prestar"}
-                    states={{ home: home, remote: remote }}
-                    handler={handleChange}
-                    keys={{ home: "home", remote: "remote" }} />
-                {requests.map((request, index) => {
-                    return <ServiceRequest
-                        key={index}
-                        info={request}
-                        changeActive={changeActive.bind(this, index)}
-                        color={checkActive(index)}
-                        location={requests[index]}/>       
-                })}
-                <OButton label={"Aceptar"} onClick={request}></OButton>
-            </div>
+            <Map location={requests[index]}/>
+            {checkServiceState()}
         </div>
     );
 }
