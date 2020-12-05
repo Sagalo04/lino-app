@@ -63,7 +63,6 @@ const ServiceDoctor = () => {
 
     const changeActive = (index) => {
         Setindex(index)
-        //console.log(requests[index].location)
     }
 
     const checkActive = (indexa) => {
@@ -101,62 +100,3 @@ const ServiceDoctor = () => {
 }
 
 export default ServiceDoctor
-/*
-export default class ServiceDoctor extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            home: false,  //servicio hogar
-            remote: false, //servicio remoto
-            service: 0, //medico o psicologo
-            specialty: 0,
-            requests: []
-        }
-    }
-
-    //Define socket operations
-    componentDidMount(){
-
-
-    }
-
-    //levantamiento de estado
-    handleChange = (k, value) => {
-        this.setState({ [k]: value });
-    }
-
-    //envio solicitud de servicio
-    request = _ => {
-        console.log(this.state)
-    }
-
-
-    render() {
-        let state = this.state;
-        let location= {lat: 3.4143397,long: -76.53682194444444}
-        return (
-            <div className="o-body">
-                <Map location={location}></Map>
-                <div className="o-service">
-
-                    <ServiceHeader
-                        states={{ home: state.home, remote: state.remote }}
-                        handler={this.handleChange}
-                        keys={{ home: "home", remote: "remote" }} />
-
-
-                    {state.requests.map((request, index)=>{
-                        return <ServiceRequest
-                                    key={index}
-                                    info={request}/>
-                    })}
-                    <OButton label={"Aceptar"} onClick={this.request}></OButton>
-                </div>
-            </div>
-        );
-    }
-}
-
-
-*/
