@@ -80,6 +80,12 @@ function Service() {
         })
     })
 
+    //funcion para cancelar servicio
+    const deleteRequest = ()=>{
+        socket.emit('delete');
+        setServiceState(ServiceStates.initial);
+    }
+
     const checkServiceState = () => {
         switch (ServiceState) {
             //initial state render
@@ -126,7 +132,7 @@ function Service() {
             case ServiceStates.pending:
                 return (
                     <div className="o-service">
-                        <ServicePending />
+                        <ServicePending deleteRequest={deleteRequest}/>
                     </div>
                 );
             //resolved state render
