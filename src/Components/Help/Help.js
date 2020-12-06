@@ -74,19 +74,19 @@ function Help(props) {
                 <div className="o-bottom-help"> 
                     <div className="o-help-option">
                         <p >Reporta un problema</p>
-                        <i class="fas fa-chevron-right helpicon o-icono"></i>
+                        <i class="fas fa-chevron-right helpicon"></i>
                     </div>
                     <div className="o-help-option">
                         <p >Emergencia</p>
-                        <i class="fas fa-chevron-right helpicon o-icono"></i>
+                        <i class="fas fa-chevron-right helpicon"></i>
                     </div>
                     <div className="o-help-option">
                         <p >Opciones de pago</p>
-                        <i class="fas fa-chevron-right helpicon o-icono"></i>
+                        <i class="fas fa-chevron-right helpicon"></i>
                     </div>
                     <div className="o-help-option">
                         <p >Desembolsos </p>
-                        <i class="fas fa-chevron-right helpicon o-icono"></i>
+                        <i class="fas fa-chevron-right helpicon"></i>
                     </div>
                 </div>
             </div>

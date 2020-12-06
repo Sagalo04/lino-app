@@ -63,7 +63,6 @@
 .o-help-option{
     justify-content: space-between;
     display: flex;
-    align-items: center;
     font-size: 1.3rem;
     width: 14rem;
     font-weight: 400;
@@ -73,9 +72,7 @@
     font-weight: lighter;
    
 }
-.o-icono{
-    color: black;
-}
+
 
 .o-middle-help{
     background-color: #F8F8F8;
@@ -96,7 +93,8 @@
     margin-left: 1.5rem;
     font-size: 1rem;
     font-weight: 500;
-    margin-top: 0.8rem;
+    margin-top: 0.5rem;
+    color: black;
 }
 
 /* Mediaquerys para mobil */
