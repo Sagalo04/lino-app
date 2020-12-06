@@ -56,17 +56,17 @@ function SignIn(props) {
     };
 
     const handleOnSubmit = () => {
-        if(values.mail != ""){
+        if (values.mail != "") {
             UserProfile.setMail(values.mail);
 
-            if(values.mail.includes('@doctor')){
+            if (values.mail.includes('@doctor')) {
                 UserProfile.setProvide(true)
-            }else{
+            } else {
                 UserProfile.setProvide(false)
             }
             history.push(`/Home`);
         }
-        
+
     };
     return (
         <div className="o-contain">
@@ -109,10 +109,10 @@ function SignIn(props) {
                     />
 
 
-                    <p className="mb-5">¿Olvidaste tu contraseña?</p>
+                    <p className="mb-3">¿Olvidaste tu contraseña?</p>
+                    <p className="o-text">¿No tienes una cuenta? <Link to="/">Registrate acá</Link> </p>
                 </div>
 
-                <p className="o-text">¿No tienes una cuenta? <Link to="/">Registrate acá</Link> </p>
             </div>
         </div>
     );

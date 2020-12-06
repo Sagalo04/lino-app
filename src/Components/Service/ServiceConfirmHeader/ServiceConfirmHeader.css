@@ -1,9 +1,13 @@
 .o-service-confirm-header{
     padding: 1rem;
-    background-color: #078998;
+    background-color: #FFFFFF;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #677D8A;
     
+}
+
+.o-confirmTitle{
+    font-size: 1.7rem ;
 }
