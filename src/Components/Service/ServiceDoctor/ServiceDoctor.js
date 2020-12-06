@@ -75,9 +75,9 @@ const ServiceDoctor = () => {
     }
 
     const checkActive = (indexa) => {
-        let color = "#FFFFFF"
+        let color = "#FAFAFA"
         if (index == indexa) {
-            color = "#B9E1FF"
+            color = "#E1F4FF"
         }
         return color
     }

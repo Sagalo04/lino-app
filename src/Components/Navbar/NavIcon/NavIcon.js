@@ -16,7 +16,7 @@ function GetNavIcon(iconState) {
 function NavIcon({ title, icon }) {
     return (
         <div className="o-nav-icon">
-            {GetNavIcon(icon)}
+            {/* {GetNavIcon(icon)} */}
             <p className="o-nav-icon-title">{title}</p>
         </div>
     );

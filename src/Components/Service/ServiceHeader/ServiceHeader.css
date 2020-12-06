@@ -1,15 +1,22 @@
 .o-service-header{
     padding: 1rem;
-    background-color: #078998;
+    background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #677D8A;
     
+    
+}
+
+h3{
+    font-weight: 300 !important; 
+    margin-bottom: 1.5rem;
+    margin-top: 0.7rem;
 }
 .o-service-icons{
     width: 70%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }

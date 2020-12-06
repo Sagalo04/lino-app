@@ -16,33 +16,34 @@ function GetServIcon(iconState) {
 
 const AntSwitch = withStyles((theme) => ({
     root: {
-        width: 28,
-        height: 16,
-        padding: 0,
+        width: 33,
+        height: 21,
+        padding: 2,
     },
     switchBase: {
-        padding: 2,
-        color: theme.palette.common.white,
+        padding: 3.5,
+        color: '#D7D0B7',
         '&$checked': {
-            transform: 'translateX(12px)',
-            color: theme.palette.common.white,
+             transform: 'translateX(13px)',
+            color: '#FAFAFA',
+            
             '& + $track': {
                 opacity: 1,
-                backgroundColor: '#54BEDF',
+                backgroundColor: '#47FFA7',
                 borderColor: '#54BEDF',
             },
         },
     },
     thumb: {
-        width: 12,
-        height: 12,
+        width: 14,
+        height: 14,
         boxShadow: 'none',
     },
     track: {
-        border: `1px solid ${theme.palette.grey[500]}`,
+        border: `1px solid '#E9E9E9'`,
         borderRadius: 16 / 2,
         opacity: 1,
-        backgroundColor: '#959595',
+        backgroundColor: '#E9E9E9',
     },
     checked: {},
 }))(Switch);
@@ -68,8 +69,9 @@ export default class ServiceIcon extends React.Component{
                     value="top"
                     control={<AntSwitch checked={checked} onChange={this.handleChange} name="checked" />}
                     label={<div>
-                        <h5>{label}</h5>
+                        
                         {GetServIcon(icon)}
+                        <h5>{label}</h5>
                     </div>}
                     labelPlacement="top" />
             </FormGroup>

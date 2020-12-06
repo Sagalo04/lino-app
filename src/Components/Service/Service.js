@@ -88,7 +88,7 @@ function Service() {
                     <div className="o-service">
                         {/*Tipos de servicio*/}
                         <ServiceHeader
-                            title={"¿Qué servicio deseas?"}
+                            title={"¿Qué tipo de servicio deseas?"}
                             states={{ home: home, remote: remote }}
                             handler={handleChange}
                             keys={{ home: "home", remote: "remote" }} />

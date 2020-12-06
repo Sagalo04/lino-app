@@ -10,11 +10,17 @@
 
 hr{
     width: 90%;
-    border-top: 0.5px solid rgba(0,0,0,.2)
+    border-top: 0.5px solid rgba(0,0,0,0)
 }
 .o-selector{
     margin-left: 0.5rem !important;
     margin-top: 1rem !important;
+    font-weight: 300 !important;
+    /* width: 10.2rem; */
+    width: 10.2rem;
+    text-align: start;
+    /* padding-right: 87px; */
+
 }
 .o-title{
    
@@ -43,6 +49,7 @@ hr{
     }
     .o-selector{
         margin-right: 3rem !important;
+        width: 7.5rem;
         margin-top: 1rem !important;
     }
     .o-title{

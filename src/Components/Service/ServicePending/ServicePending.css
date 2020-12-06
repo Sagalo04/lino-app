@@ -5,6 +5,7 @@
 
 .o-service-pending .o-message-pending{
     font-size: 1.2rem;
+    font-weight: 300;
 }
 
 svg.pending{
