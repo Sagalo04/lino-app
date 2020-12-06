@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
     },
     textField: {
         width: '20rem',
-        marginBottom: '2rem'
+        marginBottom: '2rem',
+        textAlign: 'center',
     },
 }));
 
@@ -76,8 +77,7 @@ function SignIn(props) {
                     <TextField
                         className={classes.textField}
                         id="input-with-icon-textfield"
-                        label="Nombre de usuario"
-                        required
+                        label="Correo"
                         value={values.mail}
                         onChange={handleChange2('mail')}
                     />
@@ -110,7 +110,7 @@ function SignIn(props) {
 
 
                     <p className="mb-3">¿Olvidaste tu contraseña?</p>
-                    <p className="o-text">¿No tienes una cuenta? <Link to="/">Registrate acá</Link> </p>
+                    <p className="o-text">¿No tienes una cuenta? <Link className="o-linkLogin" to="/">Registrate aquí</Link> </p>
                 </div>
 
             </div>
