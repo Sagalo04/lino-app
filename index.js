@@ -14,12 +14,6 @@ const DOCTOR_ROOM = 'DOCTOR_ROOM';
 //requests
 var requests = [];
 
-function deleteRequest(id){
-    
-    //console.log('new', requestsNew)
-    console.log('hola')
-}
-
 io.on('connection', socket =>{
     socket.on('request', (info)=>{
         requests.push(info);
@@ -44,7 +38,6 @@ io.on('connection', socket =>{
     socket.on('delete', ()=>{
         requests = requests.filter(request => request.id !== socket.id);
         io.to(DOCTOR_ROOM).emit('requestDoctor', requests);
-        console.log('holi')
     })
 })
 

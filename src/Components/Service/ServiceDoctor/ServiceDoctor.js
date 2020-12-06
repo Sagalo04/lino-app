@@ -100,6 +100,7 @@ const ServiceDoctor = () => {
                         states={{ home: home, remote: remote }}
                         handler={handleChange}
                         keys={{ home: "home", remote: "remote" }} />
+                    {/*requests*/}
                     {requests.map((request, index) => {
                         return <ServiceRequest
                             key={index}
@@ -108,7 +109,8 @@ const ServiceDoctor = () => {
                             color={checkActive(index)}
                             location={requests[index]} />
                     })}
-                    <OButton label={"Aceptar"} onClick={request}></OButton>
+                    {requests.length === 0? null:
+                    <OButton label={"Aceptar"} onClick={request}></OButton>}
                 </div>
             )
         }
