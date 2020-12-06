@@ -1,7 +1,8 @@
 import React from 'react';
 import './ServicePending.css';
+import OButton from '../../OButton/OButton'
 
-function ServicePending(){
+function ServicePending({deleteRequest}){
     return(
         <div>
             <div className="o-service-header">
@@ -14,6 +15,7 @@ function ServicePending(){
                 <svg  className="pending">
                     <circle r="30" cx="50%" cy="50%"/>
                 </svg>
+                <OButton label={"Cancelar Servicio"} onClick={deleteRequest}/>
             </div>
         </div>
     );

@@ -26,7 +26,7 @@ export default class ServiceDatePicker extends React.Component{
                             clearable
                             format="dd/MM/yyyy"
                             width='20'
-                            label="Día de la cita"
+                            // label="Día de la cita"
                             onChange={this.handleDateChange}
                             value={value}
                         />

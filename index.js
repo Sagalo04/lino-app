@@ -12,7 +12,13 @@ const io = SocketIO(servidor,{
 //Doctor room
 const DOCTOR_ROOM = 'DOCTOR_ROOM';
 //requests
-const requests = [];
+var requests = [];
+
+function deleteRequest(id){
+    
+    //console.log('new', requestsNew)
+    console.log('hola')
+}
 
 io.on('connection', socket =>{
     socket.on('request', (info)=>{
@@ -33,6 +39,12 @@ io.on('connection', socket =>{
 
     socket.on('response', (id, docInfo)=>{
         io.to(id).emit('response', docInfo);
+    })
+
+    socket.on('delete', ()=>{
+        requests = requests.filter(request => request.id !== socket.id);
+        io.to(DOCTOR_ROOM).emit('requestDoctor', requests);
+        console.log('holi')
     })
 })
 
