@@ -6,17 +6,25 @@ import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 
 
 
-export default class ServiceSelect extends React.Component{
-    constructor(props){
+export default class ServiceSelect extends React.Component {
+    constructor(props) {
         super(props);
     }
 
-    handleChange = (e)=>{
+    handleChange = (e) => {
         this.props.handler(this.props.k, e.target.value)
     }
 
-    render(){
-        
+    drawOptions = () => {
+        const options = this.props.options;
+        if(options.length === 0) return null
+        return options.map((option, index) => {
+            return <MenuItem value={index} key={index}>{option}</MenuItem>
+        })
+    }
+
+    render() {
+
         const label = this.props.label;
         const title = this.props.title;
         const options = this.props.options;
@@ -26,23 +34,21 @@ export default class ServiceSelect extends React.Component{
                 <div className="o-select">
                     <p className='o-label'>{label}</p>
                     <FormControl>
-                        <InputLabel  className="o-title" id="simple-select-label">{title}</InputLabel>
+                        <InputLabel className="o-title" id="simple-select-label">{title}</InputLabel>
                         <Select
-                         className="o-selector"
+                            className="o-selector"
                             labelId="simple-select-label"
                             id="simple-select"
                             value={value}
                             onChange={this.handleChange}>
-                            {/*Options*/}    
-                            {options.map((option, index) => {
-                                return <MenuItem value={index} key={index}>{option}</MenuItem>
-                            })} 
+                            {/*Options*/}
+                            {this.drawOptions()}
                         </Select>
                     </FormControl>
                 </div>
                 <hr />
             </div>
-    
+
         );
     }
 }

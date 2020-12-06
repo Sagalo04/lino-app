@@ -18,10 +18,6 @@ io.on('connection', socket =>{
     socket.on('request', (info)=>{
         requests.push(info);
         console.log('requests',requests)
-        //subscribe to my own channel to receive response
-        socket.join(info.user);
-        //emit only to who ask
-        //io.to(info.user).emit('response', 'hola');
         //emit to all doctors
         io.to(DOCTOR_ROOM).emit('requestDoctor', requests);
     });
@@ -31,8 +27,12 @@ io.on('connection', socket =>{
         socket.join(DOCTOR_ROOM)
     })
 
-    socket.on('retrievePrevRequests', _=>{
-        io.to(DOCTOR_ROOM).emit('requestDoctor', requests);
+    socket.on('retrievePrevRequests', (id)=>{
+        io.to(id).emit('requestDoctor', requests);
+    })
+
+    socket.on('response', (id, docInfo)=>{
+        io.to(id).emit('response', docInfo);
     })
 })
 
