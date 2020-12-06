@@ -1,8 +1,5 @@
 /*Estilos del navbar*/
 .o-navbar{
-    -webkit-box-shadow: 0px 3px 13px -4px rgba(97,97,97,0.84);
-    -moz-box-shadow: 0px 3px 13px -4px rgba(97,97,97,0.84);
-    box-shadow: 0px 3px 13px -4px rgba(97,97,97,0.84);
     padding-left: 3rem;
     padding-right: 3rem;
     text-align: center;
