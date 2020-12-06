@@ -44,7 +44,6 @@ io.on('connection', socket =>{
     socket.on('delete', ()=>{
         requests = requests.filter(request => request.id !== socket.id);
         io.to(DOCTOR_ROOM).emit('requestDoctor', requests);
-        console.log('holi')
     })
 })
 
