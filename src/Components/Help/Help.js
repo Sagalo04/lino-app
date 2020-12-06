@@ -61,13 +61,7 @@ function Help(props) {
             <div className="o-content-help">
                 <h1 className="o-helpTitle">¿Problemas? <br /> Queremos ayudarte</h1>
                 <div className="o-helpinput">
-                    <RedditTextField
-                        label="Escribe tu problema"
-                        className={classes.margin}
-                        defaultValue=""
-                        variant="filled"
-                        id="reddit-input"
-                    />
+            <input className="o-input-help" placeholder="Escribe tu problema"/>
                     <OButton label={"Buscar"}></OButton>
                 </div>
             </div>
