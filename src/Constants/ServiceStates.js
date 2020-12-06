@@ -1,7 +1,8 @@
  const ServiceStates ={
     initial: 'Initial',
     pending: 'Pending',
-    resolved: 'Resolved'
+    resolved: 'Resolved',
+    ended: 'Ended'
 }
 
 export default ServiceStates;
