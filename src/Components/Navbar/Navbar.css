@@ -64,13 +64,19 @@
         justify-content: center ;
         text-align: center;
         margin-left: 1rem;
+       
     }  
     /* Estilos de los iconos con el texto */
     .o-nav-2 .o-nav-icon{
         display: flex;
         width: 80vw;
+        font-size: 0.9rem;
         align-items: center;
-        border-bottom: 0.0001rem solid gray;
+        color: #677D8A;
+        font-weight: lighter;
+    }
+    .o-col{
+        color: #BCBCBC;
     }
     /* estilos para el icono dentro del menu hamburgesa */
     .o-nav-2 .o-nav-icon .fas{
