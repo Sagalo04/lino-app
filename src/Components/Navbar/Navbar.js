@@ -13,7 +13,7 @@ function Navbar(props) {
                     </NavLink>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars o-col"></i>
                 </button>
                 <div class="collapse navbar-collapse navbar-toggleable-xs o-collapse" id="navbarTogglerDemo01">
                         <div className="o-container-icons o-nav-2">

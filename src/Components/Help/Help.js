@@ -10,10 +10,15 @@ const useStyles = makeStyles((theme) => ({
     },
     margin: {
         margin: theme.spacing(1),
+        border: 'none',
+        borderRadius:'0',
+        height:'2.5rem',
+        
     },
     withoutLabel: {
         marginTop: theme.spacing(3),
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+       
     },
     textField: {
         //width: '20rem',
@@ -75,15 +80,15 @@ function Help(props) {
                 <div className="o-bottom-help"> 
                     <div className="o-help-option">
                         <p >Reporta un problema</p>
-                        <i class="fas fa-chevron-right helpicon"></i>
+                        <i class="fas fa-chevron-right helpicon o-icono"></i>
                     </div>
                     <div className="o-help-option">
                         <p >Emergencia</p>
-                        <i class="fas fa-chevron-right helpicon"></i>
+                        <i class="fas fa-chevron-right helpicon o-icono"></i>
                     </div>
                     <div className="o-help-option">
                         <p >Opciones de pago</p>
-                        <i class="fas fa-chevron-right helpicon"></i>
+                        <i class="fas fa-chevron-right helpicon o-icono"></i>
                     </div>
                     <div className="o-help-option">
                         <p >Desembolsos </p>
