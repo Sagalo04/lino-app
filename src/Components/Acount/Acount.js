@@ -1,4 +1,4 @@
-import { Avatar, makeStyles } from '@material-ui/core';
+import { Avatar, fade, FormControl, InputBase, InputLabel, makeStyles, withStyles } from '@material-ui/core';
 import React from 'react';
 import imagens from '../../Resources/Images/help.png'
 import UserProfile from '../../UserProfile';
@@ -21,7 +21,29 @@ const useStyles = makeStyles((theme) => ({
         marginRight: '10rem'
     },
 }));
+const BootstrapInput = withStyles((theme) => ({
+    root: {
+        'label + &': {
+            marginTop: theme.spacing(3),
+        },
+    },
+    input: {
+        borderRadius: 0,
+        position: 'relative',
+        backgroundColor: '#F4F4F4',
+        color: '#717171',
+        fontWeight: '300',
+        width: 'auto',
+        padding: '6px 12px',
+        height: '1rem',
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
 
+        '&:focus': {
+            boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}))(InputBase);
 
 function Acount(props) {
     const mail = UserProfile.getMail();
@@ -31,31 +53,79 @@ function Acount(props) {
         <div className="o-Acount">
             <img src={imagens} className="o-img-acount" alt="" />
             <div className="o-contentAcount">
-                <div className="o-contentTopAcount">
-                    <Avatar alt="name" src="" className={classes.large + " "+"o-user-logo"}></Avatar>
+                <h3 className="o-personalTitle">Información personal</h3>
+                <div className="o-contentPersonalAcount">
                     <div className="o-topAcount">
-                        <p>Camilo García</p>
-                        <div className="o-reputation">
-                            <p>Reputación 5.0</p>
-                            <i className='fas fa-star AcountIcon' size="2x"></i>
+                        <div className="o-changeInfo">
+                            <p className='o-labeled'>Nombre</p>
+                            <FormControl className={classes.margin}>
+                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                            </FormControl>
                         </div>
+                        <div className="o-changeInfo">
+                            <p className='o-labeled'>Apellido</p>
+                            <FormControl className={classes.margin}>
+                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                            </FormControl>
+                        </div>
+                        <div className="o-changeInfo">
+                            <p className='o-labeled'>Correo</p>
+                            <FormControl className={classes.margin}>
+                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                            </FormControl>
+                        </div>
+                        <div className="o-changeInfo">
+                            <p className='o-labeled'>Edad</p>
+                            <FormControl className={classes.margin}>
+                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                            </FormControl>
+                        </div>
+                        <div className="o-changeInfo">
+                            <p className='o-labeled'>Edad</p>
+                            <FormControl className={classes.margin}>
+                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                            </FormControl>
+                        </div>
+                        <div className="o-changeInfo">
+                            <p className='o-labeled'>Teléfono</p>
+                            <FormControl className={classes.margin}>
+                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                            </FormControl>
+                        </div>
+                        <div className="o-changeInfo">
+                            <p className='o-labeled'>Idioma</p>
+                            <FormControl className={classes.margin}>
+                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                            </FormControl>
+                        </div>
+                        <div className="o-changeInfo">
+                            <p className='o-labeled'>Foto de perfil</p>
+                            <div className="o-avatarChange">
+                                <Avatar alt="name" src="" className={classes.large + " " + "o-change-logo"}></Avatar>
+                                <p className="o-pchange">Cambiar</p>
+                            </div>
+                        </div>
+                        <div className="o-changeButton">
+                            <OButton label={"Guardar"}></OButton>
+
+                        </div>
+
                     </div>
                 </div>
                 <div>
-                    <div className="o-itemsAcount">
-                        <p>País</p>
-                        <p>Colombia</p>
+                    <h3 className="o-personalTitle">Reputación</h3>
+                    <div className="o-reputation">
+                        <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
+                        <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
+                        <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
+                        <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
+                        <i className='fas fa-star fa-2x iconProfile' size="2x"></i>                        
                     </div>
-                    <div className="o-itemsAcount">
-                        <p>Correo asociado</p>
-                        <p>{mail}</p>
-                    </div>
-                    <div className="o-itemsAcount">
-                        <p>Edad</p>
-                        <p>41</p>
+                    <div className="o-comments">
+                        <p >Ver comentarios </p>
+                        <i class="fas fa-chevron-right iconComments"></i>
                     </div>
                 </div>
-                <OButton label={"Editar"}></OButton>
             </div>
         </div>
     );
