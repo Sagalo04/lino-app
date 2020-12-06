@@ -5,6 +5,7 @@ import OButton from '../../OButton/OButton'
 import Map from '../../Map/MapDoc';
 import UserProfile from '../../../UserProfile';
 import ServiceRequest from './ServiceRequest/ServiceRequest';
+import Acept from './serviceAccept/serviceAccept'
 
 //web socket comunication
 import io from 'socket.io-client'
@@ -85,11 +86,7 @@ const ServiceDoctor = () => {
     const checkServiceState = () => {
         if (serviceAccepted) {
             return (
-                <div className="o-service">
-                    <div className='o-service-header'>
-                        <h3>{`${requests[index].user} está esperando por ti`}</h3>
-                    </div>
-                </div>
+         <Acept user={requests[index].user}></Acept>
             );
         } else {
             return (
