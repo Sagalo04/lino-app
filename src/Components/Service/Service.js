@@ -8,7 +8,7 @@ import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 import Map from '../Map/Map';
 import UserProfile from '../../UserProfile';
 import ServicePending from './ServicePending/ServicePending'
-import ServiceConfirm from './ServiceConfirm'
+import ServiceConfirm from './ServiceConfirm/ServiceConfirm'
 //import specialtyOptions
 import {services} from '../../Constants/Services'
 //import service states
@@ -147,6 +147,12 @@ function Service() {
                         />
                     </div>
                 );
+            case ServiceStates.ended:
+                return(
+                    <div className="o-service">
+                        Hola
+                    </div>
+                )
         }
     }
 
