@@ -21,11 +21,11 @@ const AntSwitch = withStyles((theme) => ({
         padding: 2,
     },
     switchBase: {
-        padding: 3.7,
+        padding: 3.5,
         color: '#D7D0B7',
         '&$checked': {
              transform: 'translateX(13px)',
-            color: '#D7D0B7',
+            color: '#FAFAFA',
             
             '& + $track': {
                 opacity: 1,
