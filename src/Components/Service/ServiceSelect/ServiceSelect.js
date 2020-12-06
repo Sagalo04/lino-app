@@ -34,7 +34,7 @@ export default class ServiceSelect extends React.Component {
                 <div className="o-select">
                     <p className='o-label'>{label}</p>
                     <FormControl>
-                        <InputLabel className="o-title" id="simple-select-label">{title}</InputLabel>
+                        {/* <InputLabel className="o-title" id="simple-select-label">{title}</InputLabel> */}
                         <Select
                             className="o-selector"
                             labelId="simple-select-label"
