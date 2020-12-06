@@ -21,7 +21,11 @@ p{
     /* background-color: #DFF1FF !important; */
 }
 .o-pat-between{
-    margin: 0rem 0.5rem    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2rem;
 }
 
 
@@ -32,7 +36,7 @@ p{
     text-align: initial;
 }
 .o-patient-service{
-    height: 4.5rem;
+    height: 4rem;
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
@@ -42,6 +46,4 @@ p{
 
 }
 
-.o-infoUser{
-    margin-top: 0.5rem;
-}
+.o-infoUser{}
