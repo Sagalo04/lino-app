@@ -51,7 +51,13 @@ function Acount(props) {
     return (
 
         <div className="o-Acount">
-            <img src={imagens} className="o-img-acount" alt="" />
+            <div className="o-img-acount">
+                <p style={{marginTop: '30rem'}}>
+                    Bienvenido <label style={{fontWeight: 'bold'}}>Camilo</label> <br/>
+                    Aquí podrás ver y modificar tu información
+                </p>
+            </div>
+            {/* <img src={imagens} className="o-img-acount" alt="" /> */}
             <div className="o-contentAcount">
                 <h3 className="o-personalTitle">Información personal</h3>
                 <div className="o-contentPersonalAcount">
@@ -119,7 +125,7 @@ function Acount(props) {
                         <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
                         <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
                         <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
-                        <i className='fas fa-star fa-2x iconProfile' size="2x"></i>                        
+                        <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
                     </div>
                     <div className="o-comments">
                         <p >Ver comentarios </p>
