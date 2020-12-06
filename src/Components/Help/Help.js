@@ -2,6 +2,7 @@ import { fade, makeStyles, TextField } from '@material-ui/core';
 import React, { Component } from 'react';
 import OButton from '../OButton/OButton';
 import './Help.css'
+import lupa from '../../Resources/Images/lupa.svg'
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -68,7 +69,7 @@ function Help(props) {
             <div className="o-helpDefine">
                 <p className="o-title-top">Resultados de búsqueda</p>
                 <div className="o-middle-help">
-                <i class="fas fa-search fa-4x"></i>
+                <img className="o-lupa" src={lupa}/>
                 <p>Sin resultados</p>
                 </div>
                 <div className="o-bottom-help"> 
@@ -86,7 +87,7 @@ function Help(props) {
                     </div>
                     <div className="o-help-option">
                         <p >Desembolsos </p>
-                        <i class="fas fa-chevron-right helpicon"></i>
+                        <i class="fas fa-chevron-right helpicon o-icono"></i>
                     </div>
                 </div>
             </div>
