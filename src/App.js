@@ -7,7 +7,6 @@ import {
   Route,
 } from "react-router-dom"
 import Service from './Components/Service/Service';
-import ServiceConfirm from './Components/Service/ServiceConfirm';
 import ServiceDoctor from './Components/Service/ServiceDoctor/ServiceDoctor';
 import SignIn from './Components/SignIn/SignIn';
 import UserProfile from './UserProfile';
@@ -34,16 +33,6 @@ function App() {
 
         <Route path="/Home" >
           <Navbar /> <ServiceType/>
-        </Route>
-
-        <Route path="/Servicio">
-          <Navbar />
-          <ServiceConfirm />
-        </Route>
-
-        <Route path="/Confirm">
-          <Navbar />
-          <ServiceConfirm />
         </Route>
 
         <Route path="/Ayuda">

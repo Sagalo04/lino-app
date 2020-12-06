@@ -1,7 +1,6 @@
 .o-button{
     outline: none;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin: 1rem 0;
     padding: 0.5rem 3rem 0.5rem 3rem;
     background-color: #54BEDF;
     background-color: #ABC6D6;
@@ -17,3 +16,4 @@
     transition: 0.7s;
     outline: none;
 }
+

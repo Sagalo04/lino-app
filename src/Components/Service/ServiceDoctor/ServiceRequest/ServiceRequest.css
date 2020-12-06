@@ -9,7 +9,8 @@ p{
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
-    /* border-bottom: 1px solid #707070; */
+    font-weight: 300;
+    color: #677D8A;
     cursor: pointer;
     margin-bottom: 0.7rem;
     border: 3px solid rgba(0,0,0,0);
@@ -20,7 +21,11 @@ p{
     /* background-color: #DFF1FF !important; */
 }
 .o-pat-between{
-    margin: 0rem 0.5rem    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2rem;
 }
 
 
@@ -31,7 +36,7 @@ p{
     text-align: initial;
 }
 .o-patient-service{
-    height: 3.8rem;
+    height: 4rem;
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
@@ -40,3 +45,5 @@ p{
     /* font-weight: bold; */
 
 }
+
+.o-infoUser{}

@@ -39,14 +39,19 @@ body{
 }
 
 .o-title{
+    font-size: 2.2rem;
     margin-bottom: 2rem;
-    font-weight: 400;
+    font-weight: 300;
     color: #677D8A;
 }
 
 .o-text{
     justify-self: center;
     margin-bottom: 2rem;
+}
+
+.o-linkLogin{
+    color: #84A3DB
 }
 /* Mediaquerys para movil */
 @media only screen and (max-width: 700px){

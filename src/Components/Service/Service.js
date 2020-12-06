@@ -7,12 +7,14 @@ import ServiceSelect from './ServiceSelect/ServiceSelect';
 import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 import Map from '../Map/Map';
 import UserProfile from '../../UserProfile';
-import ServicePending from './ServicePending/ServicePending'
-import ServiceConfirm from './ServiceConfirm'
-//import specialtyOptions
-import {services} from '../../Constants/Services'
 //import service states
 import ServiceStates from '../../Constants/ServiceStates'
+import ServicePending from './ServicePending/ServicePending'
+import ServiceConfirm from './ServiceConfirm/ServiceConfirm'
+import ServiceRate from './ServiceRate/ServiceRate'
+//import specialtyOptions
+import {services} from '../../Constants/Services'
+
 
 //web socket comunication
 import io from 'socket.io-client'
@@ -147,6 +149,12 @@ function Service() {
                         />
                     </div>
                 );
+            case ServiceStates.ended:
+                return(
+                    <div className="o-service">
+                        <ServiceRate rateTo="doctor" name={doctor.name}/>
+                    </div>
+                )
         }
     }
 

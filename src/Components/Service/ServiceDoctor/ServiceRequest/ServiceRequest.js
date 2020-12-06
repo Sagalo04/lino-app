@@ -36,9 +36,9 @@ function ServiceRequest({ info, changeActive, color, location }) {
     locationAdress(location.location)
     return (
         <div style={{ backgroundColor: `${color}` }} className="o-patient" onClick={changeActive}>
-            <div>
+            <div className="o-pat-between">
                 <Avatar alt="name" src=""></Avatar>
-                    <p>{info.user}</p>
+                <p className="o-infoUser">{info.user}</p>
             </div>
             <div className="o-patient-service">
                     <p>{serviceString(info.home, info.remote)}</p>
