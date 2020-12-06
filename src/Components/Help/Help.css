@@ -31,10 +31,20 @@
     display: flex;
     align-items: center;
 }
+.o-title-top{
+
+    font-size: 2.5rem;
+
+}
 
 .o-helpDefine{
-    color: #888065;
-    margin-right: 15rem;
+    color: #677D8A;
+   display: flex;
+   flex-direction: column;
+   padding-right: 2rem;
+   width: 45%;
+   height: 95%;
+   justify-content: space-between;
 
 }
 
@@ -42,17 +52,27 @@
     justify-content: space-between;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #888065;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    width: 14rem;
     font-weight: 400;
     cursor: pointer;
     padding-bottom: 0.8rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.o-middle-help{
+    background-color: #F8F8F8;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
 }
 
 .helpicon{
     margin-left: 1.5rem;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 500;
     margin-top: 0.8rem;
 }
@@ -98,6 +118,25 @@
         padding: 1rem;
         font-size: 1rem;
     }
+    .o-helpDefine{
+        
+        padding-right: 0;
+        width: 100vw;
+     
+     }
+     
+     .o-bottom-help{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+    }
+     .o-help-option{
+         width: 30%;
+         margin: 0;
+     }
+    
 
 }
 
@@ -142,6 +181,23 @@ max-width: 100%;
 .o-help-option{
     padding: 1rem;
     font-size: 1rem;
+}
+
+.o-title-top{
+
+    font-size: 1.3rem;
+
+}
+
+.o-helpDefine{
+
+   padding-right: 0;
+   width: 100vw;
+
+}
+.o-help-option{
+    width: 100vw;
+    margin: 0;
 }
 
 }
