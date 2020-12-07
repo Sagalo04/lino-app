@@ -16,12 +16,13 @@ export class CurrentLocation extends React.Component {
 
         //const { lat, lng } = this.props.initialCenter;
         //cont gogle =  
+        this.user = this.props.user
         const { lat, lng } = this.props.location;
         const location = {
             lat: lat,
             lng: lng
         }
-        var mark = new this.props.google.maps.Marker({
+        this.mark = new this.props.google.maps.Marker({
             position: location,
             title: "Hello World!"
         });
@@ -38,21 +39,25 @@ export class CurrentLocation extends React.Component {
             this.loadMap();
         }
 
+        if(prevProps.user !== this.props.user){
+            this.user = this.props.user
+        }
+
         if (this.props.location.lat !== this.state.currentLocation.lat
-            && this.props.location.lng !== this.state.currentLocation.lng) {
-            //console.log(this.props.location)
-            //console.log(this.state.currentLocation)
+            || this.props.location.lng !== this.state.currentLocation.lng || prevProps.user !== this.props.user) {
             this.setState({ currentLocation: this.props.location })
+            // this.setState({user:this.props.user})
+            
         }
         if (prevState.currentLocation != this.state.currentLocation) {
-            
+
             this.recenterMap();
         }
     }
 
     recenterMap() {
 
-        
+
 
         const map = this.map;
         const current = this.state.currentLocation;
@@ -60,21 +65,27 @@ export class CurrentLocation extends React.Component {
         const maps = google.maps;
 
         if (map) {
-            if(this.mark){
+            if (this.mark) {
                 this.mark.setMap(null)
 
             }
-            console.log(this.state.markerts)
             var marker = new google.maps.Marker({
                 position: this.state.currentLocation,
+                animation: google.maps.Animation.DROP,
                 title: "Hello World!"
             });
+            const contentString =
+                '<h2> ' + `${this.user}`+ '<h2>';
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+            }); 
+            marker.addListener("click", () => {
+                infowindow.open(map, marker);
+              });
             this.mark = marker
-            console.log(this.state.markerts)
             let center = new maps.LatLng(current.lat, current.lng);
             this.mark.setMap(map)
             map.panTo(center);
-;
         }
     }
 
@@ -114,7 +125,7 @@ export class CurrentLocation extends React.Component {
                 {},
                 {
                     center: center,
-                    zoom: zoom + 2.5
+                    zoom: zoom + 2
                 }
             );
 

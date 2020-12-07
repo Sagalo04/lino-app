@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 //import '../Service.css'
+import './ServiceDoctor.css'
 import ServiceHeader from '../ServiceHeader/ServiceHeader';
 import OButton from '../../OButton/OButton'
 import Map from '../../Map/MapDoc';
@@ -18,7 +19,7 @@ const ServiceDoctor = () => {
     const [requests, setRequests] = useState([]);
     const [index, Setindex] = useState(0);
     const [serviceAccepted, setServiceAccepted] = useState(false);
-    
+
     //valores quemados para pruebas
     const service = 0 //medico
     const specialty = 0 //general
@@ -28,7 +29,7 @@ const ServiceDoctor = () => {
         //verifica que el tipo de servicio de la peticion (hogar o remoto) coincida con los del medico
         return (home && request.home) || (remote && request.remote)
     }
-    const checkKindOfService = (request)=>{
+    const checkKindOfService = (request) => {
         //verifica que el tipo de servicio y especialidad de la peticion coincidan con el el medico
         return request.service === service && request.specialty === specialty;
     }
@@ -86,7 +87,7 @@ const ServiceDoctor = () => {
     const checkServiceState = () => {
         if (serviceAccepted) {
             return (
-         <Acept user={requests[index].user}></Acept>
+                <Acept user={requests[index].user}></Acept>
             );
         } else {
             return (
@@ -98,16 +99,18 @@ const ServiceDoctor = () => {
                         handler={handleChange}
                         keys={{ home: "home", remote: "remote" }} />
                     {/*requests*/}
-                    {requests.map((request, index) => {
-                        return <ServiceRequest
-                            key={index}
-                            info={request}
-                            changeActive={changeActive.bind(this, index)}
-                            color={checkActive(index)}
-                            location={requests[index]} />
-                    })}
-                    {requests.length === 0? null:
-                    <OButton label={"Aceptar"} onClick={request}></OButton>}
+                    <div className="o-request-container">
+                        {requests.map((request, index) => {
+                            return <ServiceRequest
+                                key={index}
+                                info={request}
+                                changeActive={changeActive.bind(this, index)}
+                                color={checkActive(index)}
+                                location={requests[index]} />
+                        })}
+                    </div>
+                    {requests.length === 0 ? null :
+                        <OButton label={"Aceptar"} onClick={request}></OButton>}
                 </div>
             )
         }

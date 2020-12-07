@@ -22,9 +22,59 @@
     resize: none;
     background-color: #f8f8f8;
     padding: 0.5rem;
+    outline: none;
+    font-weight: 100;
 }
 
 .o-rate-info{
     font-weight: lighter;
     font-size: 1rem;
+}
+
+/*Rate stars*/
+.rating{
+    width: fit-content;
+    position: relative;
+    display: flex;
+    transform: rotateY(180deg);
+}
+
+.rating label{
+    display: block;
+    cursor: pointer;
+    width: 2rem;
+    margin-right: 0.5rem;
+}
+
+.rating input{
+    display: none;
+}
+
+.rating label::before{
+    content: '\f005';
+    font-family: 'Font Awesome 5 free';
+    font-weight: 900;
+    position: relative;
+    display: block;
+    font-size: 2rem;
+    color: #BDBDBD;
+}
+
+.rating label::after{
+    content: '\f005';
+    font-family: 'Font Awesome 5 free';
+    font-weight: 900;
+    font-size: 2rem;
+    position: absolute;
+    top: 0%;
+    opacity: 0;
+    display: block;
+    color: #D7D0B7;
+}
+
+.rating label:hover::after,
+.rating label:hover ~ label::after,
+.rating input:checked ~ label::after
+{
+    opacity: 1;
 }

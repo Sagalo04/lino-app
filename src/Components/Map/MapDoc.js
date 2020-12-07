@@ -1,31 +1,38 @@
 import React, { Component } from 'react';
-import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import { GoogleApiWrapper } from 'google-maps-react';
 import CurrentLocation from './LocationUser';
 
 export class MapContainer extends Component {
 
     constructor(props) {
         super(props)
+        
         let location = ""
+        let user = "Me"
         if (this.props.location) {
             console.log('do something')
             location = this.props.location.location
+            user= this.props.location.user
         } else {
             location = { lat: 3.4143397, lng: -76.53682194444444 }
+            user = "Me"
         }
 
         this.state = {
             showingInfoWindow: false,
             activeMarker: {},
             selectedPlace: {},
-            location: location
+            location: location,
+            user: user
         }
     }
     componentDidUpdate(prevProps, prevState) {
         if (this.props.location) {
             if (this.props.location !== prevProps.location) {
                 this.setState({ location: this.props.location.location })
+                this.setState({ user: this.props.location.user })
             }
+            
         }
 
     }
@@ -49,24 +56,15 @@ export class MapContainer extends Component {
 
 
     render() {
-        //console.log(this.state.location)
+        
         return (
             <CurrentLocation
                 centerAroundCurrentLocation
                 google={this.props.google}
                 location={this.state.location}
+                user = {this.state.user}
             //location={{lat:3.4143397,lng:-76.53682194444444}}
             >
-                {/* <Marker onClick={this.onMarkerClick} name={'Current Location'} position={this.state.location} />
-                <InfoWindow
-                    marker={this.state.activeMarker}
-                    visible={this.state.showingInfoWindow}
-                    onClose={this.onClose}
-                >
-                    <div>
-                        <h4>{this.state.selectedPlace.name}</h4>
-                    </div>
-                </InfoWindow> */}
             </CurrentLocation>
         );
     }

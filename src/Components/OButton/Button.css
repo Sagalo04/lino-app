@@ -8,12 +8,16 @@
     border-radius: 1px;
     border: 0;
     transition: 0.7s;
-    
+    outline: none;
 }
 
 .o-button:hover{
     background-color: #007DA4;
     transition: 0.7s;
+    outline: none;
+}
+
+.o-button:focus{
     outline: none;
 }
 
