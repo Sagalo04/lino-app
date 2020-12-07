@@ -51,16 +51,21 @@ const ServiceDoctor = () => {
 
     //similar a componentDidMount
     useEffect(()=>{
+        //subscribe as a doctor
+        socket.emit('doctorSubscription');
         //bring back old requests
         socket.emit('retrievePrevRequests', socket.id);
     },[])
 
+    useEffect(()=>{
+        //bring back old requests
+        socket.emit('retrievePrevRequests', socket.id);
+    }, [home, remote, ServiceState])
+
     //similar a componentDidUpdate
     useEffect(() => {
-        //subscribe as a doctor
-        socket.emit('doctorSubscription');
-        
         socket.on('requestDoctor', (requests) => {
+            console.log('Hola', requests)
             const filtered = filterRequests(requests);
             setRequests(filtered);
         })
