@@ -45,6 +45,55 @@ const BootstrapInput = withStyles((theme) => ({
     },
 }))(InputBase);
 
+const BootstrapInput2 = withStyles((theme) => ({
+    root: {
+        'label + &': {
+            marginTop: theme.spacing(3),
+        },
+    },
+    input: {
+        borderRadius: 0,
+        position: 'relative',
+        backgroundColor: '#F4F4F4',
+        color: '#717171',
+        fontWeight: '300',
+        width: '2rem',
+        padding: '6px 12px',
+        height: '1rem',
+        marginRight: '1rem',
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+
+        '&:focus': {
+            boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}))(InputBase);
+
+const BootstrapInput3 = withStyles((theme) => ({
+    root: {
+        'label + &': {
+            marginTop: theme.spacing(3),
+        },
+    },
+    input: {
+        borderRadius: 0,
+        position: 'relative',
+        backgroundColor: '#F4F4F4',
+        color: '#717171',
+        fontWeight: '300',
+        width: '7rem',
+        padding: '6px 12px',
+        height: '1rem',
+        marginRight: '1rem',
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+
+        '&:focus': {
+            boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}))(InputBase);
 function Acount(props) {
     const mail = UserProfile.getMail();
     const classes = useStyles();
@@ -95,7 +144,10 @@ function Acount(props) {
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Teléfono</p>
                             <FormControl className={classes.margin}>
-                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                                <BootstrapInput2 defaultValue="+57" id="bootstrap-input2" />
+                            </FormControl>
+                            <FormControl className={classes.margin}>
+                                <BootstrapInput3 defaultValue="" id="bootstrap-input" />
                             </FormControl>
                         </div>
                         <div className="o-changeInfo">
