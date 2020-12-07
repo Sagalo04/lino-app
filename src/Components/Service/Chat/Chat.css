@@ -23,6 +23,11 @@
     margin-right: 0.3rem;
 }
 
+.o-chatHeaderText .btn{
+    padding: 0;
+}
+
+
 /* estilos del nombre de la persona */
 .o-chatPerson{
     margin-top: 0.3rem;
@@ -71,9 +76,8 @@
 .o-chatMsg{
     font-size: 1rem;
 }
-/* estilos de la linea divisora */
+/* estilos de la Hora */
 .o-chatHr{
-    margin-top: -0.8rem;
     align-self: flex-end;
     font-size: 0.6rem;
 }
