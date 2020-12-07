@@ -37,12 +37,8 @@ const BootstrapInput = withStyles((theme) => ({
     },
 }))(InputBase);
 
-<<<<<<< HEAD
 function Chat({messages,other, handler, k}) {
 
-=======
-function Chat({other, handler, k, send, value, end}) {
->>>>>>> ca2c8d2dcd0b2a4addd6e815b3304014033fb96a
 
     const handleChange = (e)=>{
         handler(k, e.target.value)

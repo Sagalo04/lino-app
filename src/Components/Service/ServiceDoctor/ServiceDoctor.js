@@ -203,11 +203,7 @@ const ServiceDoctor = () => {
                 return <Accept home={false} user={patient.user} onClick={remoteStart} />
             //servicio remoto iniciado
             case ServiceStates.remoteServiceStarted:
-<<<<<<< HEAD
                 return <Chat messages={messages} other={patient.user} handler={handleChange} k={'message'} />
-=======
-                return <Chat other={patient.user} handler={handleChange} k={'message'} send={sendMessage} value={chat} end={terminate}/>
->>>>>>> ca2c8d2dcd0b2a4addd6e815b3304014033fb96a
             //servicio finalizado
             case ServiceStates.ended:
                 return (
