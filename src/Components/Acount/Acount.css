@@ -142,6 +142,7 @@ h3{
     .o-img-acount{
         width: 100%;
         padding-left: 1rem;
+        margin-bottom: 1rem;
     }
 
 
@@ -159,6 +160,7 @@ h3{
         flex-direction: column;
         width: 100%;
         padding-left: 0.5rem !important;
+        margin-bottom: 2rem;
     }
     .o-topAcount{
         width: 100%;
