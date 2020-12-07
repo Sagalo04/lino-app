@@ -81,6 +81,10 @@ const ServiceDoctor = () => {
             setMessages(messages.concat(message));
             console.log(messages)
         });
+        //cuando terminan el servicio
+        socket.on('terminate', () => {
+            setServiceState(ServiceStates.ended);
+        });
         return () => socket.off();
     });
 

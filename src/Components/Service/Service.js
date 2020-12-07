@@ -93,6 +93,7 @@ function Service() {
         //cuando terminan el servicio
         socket.on('terminate', () => {
             setServiceState(ServiceStates.ended);
+            setMessages([]);
         });
         socket.on('message', (message) => {
             console.log(messages)
@@ -130,6 +131,13 @@ function Service() {
         let message = { to: doctor.id, from: socket.id, content: chat, time: new Date().toLocaleTimeString() };
         setChat('');
         socket.emit('message', message);
+    }
+
+    //acabar con la consulta
+    const terminate = () => {
+        socket.emit('terminate', patient.id);
+        setServiceState(ServiceStates.ended)
+        setMessages([]);
     }
 
     const checkServiceState = () => {
