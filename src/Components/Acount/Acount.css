@@ -1,10 +1,11 @@
+/* estilos de la pagina completa */
 .o-Acount{
     display: flex;
     color: #888065;
     justify-content: space-between;
     
 }
-
+/* estilos de la imagen lateral */
 .o-img-acount{
     padding: 3rem 0 0 3rem;
     display: flex;
@@ -12,16 +13,13 @@
     overflow: hidden;
     flex-wrap: wrap;
     color: white;
-    /* min-height: 27rem;
-    min-width: 30rem; */
     width: 50rem;
-    /* height: 100vh; */
     background-image: url('../../Resources/Images/myAccount.png');
     background-position: center;
     background-size: cover;
     
 }
-
+/* estilos del contenedor derecho */
 .o-contentAcount{
     width: 50%;
     display: flex;
@@ -32,13 +30,13 @@
     margin-left: 2rem;
 }
 
-
+/* estilos del top del contenedor derecho */
 .o-contentTopAcount{
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
 }
-
+/* estilos de los lables con el input */
 .o-changeInfo{
     display: flex;
     justify-content: flex-start;
@@ -59,27 +57,33 @@
 h3{
     margin-top: 0 !important;
 }
+/* estilos del avatar */
 .o-avatarChange{
     width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+/* estilos del boton */
 .o-changeButton{
     margin-left: 11rem;
 }
+/* estilos del logo */
 .o-change-logo{
     margin:0 !important;   
 }
+/* estilos del boton de cambiar */
 .o-pchange{
     font-size: 0.75rem;
     font-weight: 300;
     color: #677D8A;
 }
+/* estilos para la reputation */
 .o-reputation{
     display: flex;
     align-items: center;
 }
+/* estilos para el icono de cuenta */
 .AcountIcon{
     margin-left: 0.6rem;
 }
@@ -92,7 +96,7 @@ h3{
 .iconProfile{
     color:#D7D0B7;
 }
-
+/* estilos del comentario */
 .o-comments{
     color:#677D8A;
     margin-top: 1rem;
@@ -105,30 +109,34 @@ h3{
     cursor: pointer;
     margin-bottom: 4rem;
 }
+/* esitlos de los iconos de comment */
 .iconComments{
     font-family: "Font Awesome 5 Pro";
     font-weight: 300;
 }
-
+/* estilos para el texto de bienvenido */
 .o-bienvenido{
     margin-top: 20rem;
     font-size: 2rem;
 }
 
-/* Mediaquerys para tablet */
+/* Mediaquerys para tablet y los diferentes componentes descritos*/
 @media only screen and (max-width: 768px){
+    /* estilos para el contenedor mayor */
     .o-Acount{
         display: flex;
         flex-direction: row;
         padding-right: 0.5rem;
         
     }
+    /* estilos para el conetedor de la imagen */
     .o-contentPersonalAcount{
         display: flex;
        justify-content: center;
         width: 100%;
         padding-left: 0.5rem ;
     }
+    /* estilos para el panel de abajo */
     .o-contentAcount{
         margin-right:0;
         margin-top: 0;
@@ -138,23 +146,23 @@ h3{
         margin-left: 1rem;
      
     }
-
+/* estilos de la imagen */
     .o-img-acount{
         width: 100%;
         padding-left: 1rem;
         margin-bottom: 1rem;
     }
 
-
+/* estilos del contenedor derecho */
     .o-contentTopAcount{
-
         flex-direction: column;
     }
 
 }
 
-/* Mediaquerys para mobil */
+/* Mediaquerys para movil y los diferentes componentes descritos*/
 @media only screen and (max-width: 700px){
+    /* estilos del contenedor de la imagen */
     .o-contentPersonalAcount{
         display: flex;
         flex-direction: column;
@@ -162,6 +170,7 @@ h3{
         padding-left: 0.5rem !important;
         margin-bottom: 2rem;
     }
+    /* estilos para el contenedor de abajo */
     .o-topAcount{
         width: 100%;
         display: flex;
@@ -169,23 +178,25 @@ h3{
         align-items: flex-start;
         justify-content: center;
     }
+    /* estilos generales del contenedor mayor */
     .o-Acount{
         display: flex;
         flex-direction: column;
         padding-right: 0;
         
     }
+    /* estilos del titulo de reputacion */
     .o-personalTitle{
         width: 100%;
         
     }
 
-
+/* estilos para el titulo de bienvenido */
     .o-bienvenido{
         margin-top: 20rem;
         font-size: 1.5rem;
     }
-
+/* estilos del contenedor de la informacion personal */
     .o-contentAcount{
         margin-right:0;
         margin-top: 0;
@@ -195,10 +206,11 @@ h3{
         padding: 0;
 
     }
+    /* estilos del boton */
     .o-changeButton{
         margin-left: 4rem;
     }
-
+/* estilos para la imagen */
     .o-img-acount{
         width: 100%;
         padding: 0rem 0 0 0.5rem;
@@ -210,16 +222,17 @@ h3{
         padding: 0;
         
     }
+    /* estilos de los label de texto */
     .o-labeled{
         width: 5rem;
         margin-right: 1rem;
 
     }
-
+/* estilos del logo de user */
     .o-user-logo{
         margin: 0 !important;
     }
-
+/* estilos para el contenido superior del panel de abajo */
     .o-contentTopAcount{
         flex-direction: column;
     }

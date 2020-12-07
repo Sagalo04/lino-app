@@ -1,3 +1,4 @@
+/* estilos para el contenedor general */
 .o-help{
     display: flex;
     flex-direction: row;
@@ -5,7 +6,7 @@
     height: 90vh;
     justify-content: space-between;
 }
-
+/* estilos del titulo */
 .o-helpTitle{
     margin-top:1rem;
     font-size: 2rem;
@@ -13,7 +14,7 @@
     align-self: flex-start;
 
 }
-
+/* estilos para el input de busqueda */
 .o-input-help{
     border: 0.1rem solid #FFFFFF;
     padding: 1rem;
@@ -25,7 +26,7 @@
     font-weight: 100;
    
 }
-
+/* estilos para la imagen lateral */
 .o-content-help{
     padding: 3rem 0 0 3rem;
     display: flex;
@@ -41,16 +42,18 @@
     background-position: center;
     background-size: cover;
 }
-
+/* estilos internos del input */
 .o-helpinput{
     display: flex;
     align-items: center;
 }
+/* estilos del titulo */
 .o-title-top{
     font-size: 2.5rem;
     font-weight: lighter;
 }
 
+/* estilos del contendor derecho */
 .o-helpDefine{
     color: #677D8A;
    display: flex;
@@ -62,7 +65,7 @@
    justify-content: space-between;
 
 }
-
+/* estilos de las opciones de busqueda */
 .o-help-option{
     justify-content: space-between;
     display: flex;
@@ -76,7 +79,7 @@
    
 }
 
-
+/* estilos para el panel de resultados */
 .o-middle-help{
     background-color: #F8F8F8;
     height: 30rem;
@@ -88,10 +91,11 @@
     font-weight: lighter;
     margin-bottom: 2rem;
 }
+/* estilos de la lupa */
 .o-lupa{
     width: 3.5rem;
 }
-
+/* estilos para iconos */
 .helpicon{
     font-family: "Font Awesome 5 Pro";
     margin-left: 1.5rem;
@@ -101,8 +105,9 @@
     color: black;
 }
 
-/* Mediaquerys para mobil */
+/* Mediaquerys para pc medianos y los diferentes componentes descritos*/
 @media only screen and (max-width: 1250px){
+    /* estilos del contenedor derecho */
     .o-helpDefine{
         width: 49%;
         padding: 0rem 1rem 0rem 1rem;
@@ -113,11 +118,13 @@
         width: 50rem;
         padding: 5rem 0 0 3rem;
     }
+    /* estilos del input */
     .o-helpinput{
         width: fit-content;
         flex-direction: column;
         align-items: flex-start;
     }
+    /* estilos del titulo de la seccion derecha */
     .o-title-top{
         font-size: 2.1rem;
     }
@@ -126,18 +133,21 @@
         max-width: 30rem;
         width: 28rem;
     }
+    /* estilos del boton */
     .o-button{
         align-self: flex-end;
         margin-right: 1rem;
     }
 }
+/* mediaquerys para tables y los diferentes componentes descritos */
 @media only screen and (max-width: 768px){
+    /* estilos generales del contenedor mayor */
     .o-help{
         display: flex;
         flex-direction: column;
         width: 100vw;
     }
-    
+    /* estilos del contenedor de la imagen */
     .o-content-help{
         max-width: 100%;
         min-width: 100%;   
@@ -147,20 +157,23 @@
         padding-right: 2rem;
     
     }
+    /* estilos del titulo */
     .o-title-top{
         font-size: 2.5rem;
         font-weight: lighter;
         margin: 0.5rem 0;
     }
+
     .o-input-help{
         max-width: 42rem;
         width: 42rem;
     }
+    /* estilos para el boton */
     .o-button {
         align-self: flex-end;
         margin-right: 1rem;
     }
-
+/* estilos para el titulo dentro de la imagen */
     
     .o-helpTitle{
         font-size: 1.5rem;
@@ -172,7 +185,7 @@
     max-width: 100%;
     }
     
-    
+    /* estilos del contenedor de abajo */
     .o-helpDefine{
         margin: 0;
         width: 100%;
@@ -199,14 +212,15 @@
 
 }
 
-/* Mediaquerys para mobil */
+/* Mediaquerys para mobil y los diferentes componentes descritos*/
 @media only screen and (max-width: 700px){
-
+/* estilos generales del contenedor mayor */
 .o-help{
     display: flex;
     flex-direction: column;
     width: 100vw;
 }
+/* estilos del panel de resultado de busqueda */
 .o-middle-help{
     height: 12rem;
 }
@@ -219,28 +233,29 @@
     padding-right: 2rem;
 
 }
-
+/* estilos para el input dentro de la imagen */
 .o-input-help{
     align-self: center;
     width: 19rem;
 }
+/* estilos del boton  */
 .o-button {
     align-self: center;
     margin-right: 0rem;
 }
-
+/* estilos del titulo dentro de la imagen */
 .o-helpTitle{
     align-self: center;
     text-align: center;
     font-size: 1.5rem;
 }
-
+/* estilos de los inputs */
 .o-helpinput{
 display: flex;
 flex-direction: column;
 max-width: 100%;
 }
-
+/* estilosl panel de abajo */
 .o-helpDefine{
     margin: 0;
     width: 100%;
@@ -252,7 +267,7 @@ max-width: 100%;
     padding: 1rem;
     font-size: 1rem;
 }
-
+/* estilos del titulo del segundo panel */
 .o-title-top{
 
     font-size: 1.3rem;
