@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 const BootstrapInput = withStyles((theme) => ({
     root: {
         'label + &': {
@@ -36,12 +37,13 @@ const BootstrapInput = withStyles((theme) => ({
     },
 }))(InputBase);
 
-function Chat({other, handler, k, send, value, end}) {
+function Chat({messages,other, handler, k}) {
+
 
     const handleChange = (e)=>{
         handler(k, e.target.value)
     }
-
+console.log(messages)
     const classes = useStyles();
     return (
         <div className="o-chat">
