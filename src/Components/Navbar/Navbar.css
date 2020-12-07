@@ -10,6 +10,7 @@
 }
 /*Estilos del titulo LINO*/
 .o-nav-title{
+    font-family: Impact,Haettenschweiler,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif; 
     color: #D7D0B7;
     font-weight: bolder;
     margin: 0;
@@ -17,6 +18,10 @@
     text-decoration: none;
     margin-right: 5rem;
     transform: scale(1);
+}
+.o-nav-title h2{
+    font-size: 2.5rem;
+    margin: 0;
 }
 /*Estilos del titulo LINO*/
 .o-nav-title:hover{
