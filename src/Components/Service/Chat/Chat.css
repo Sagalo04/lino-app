@@ -1,0 +1,80 @@
+.o-chat{
+    margin: 3rem;
+    margin-top: 5rem;
+    height: fit-content;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    width: 35rem;
+    background-color: white;
+    /* text-align: center; */
+    padding: 0rem 2rem;
+}
+
+.o-chatHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #677D8A;
+    font-weight: 300;
+    justify-content: space-between;
+}
+
+.o-chatHeaderText{
+    font-size: 1.5rem;
+    margin-right: 0.3rem;
+}
+
+
+.o-chatPerson{
+    margin-top: 0.3rem;
+    font-size: 1.1rem;
+}
+.o-chatContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #EEEEEE;
+    height: 25rem;
+    margin:0;
+    font-weight: 300;
+}
+
+.o-recive{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 60%;
+    margin: 0.5rem 1rem;
+    padding: 0.5rem;
+}
+
+.o-send{
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    background-color: #E1F4FF;
+    width: 60%;
+    margin: 0.5rem 1rem;
+    padding: 0.5rem;
+}
+
+.o-chatName{
+    font-size: 0.8rem;
+    color: #677D8A;
+}
+
+.o-chatMsg{
+    font-size: 1rem;
+}
+
+.o-chatHr{
+    margin-top: -0.8rem;
+    align-self: flex-end;
+    font-size: 0.6rem;
+}
+
+.o-chatFooter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
