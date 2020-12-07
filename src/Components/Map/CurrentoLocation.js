@@ -83,7 +83,8 @@ export class CurrentLocation extends React.Component {
                 {},
                 {
                     center: center,
-                    zoom: zoom + 2.5
+                    zoom: zoom + 2.5,
+                    disableDefaultUI: true,
                 }
             );
             /*maps.Maps() es el constructor que inicializa el mapa */
