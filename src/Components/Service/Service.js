@@ -12,7 +12,7 @@ import ServicePending from './ServicePending/ServicePending';
 import ServiceConfirm from './ServiceConfirm/ServiceConfirm';
 import ServiceRate from './ServiceRate/ServiceRate';
 import ServiceStarted from './ServiceStarted/ServiceStarted';
-//import specialtyOptions
+
 import { services } from '../../Constants/Services'
 
 
@@ -40,6 +40,7 @@ function Service() {
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
     const [error, setError] = useState();
     const [doctor, setDoctor] = useState({});
+    const [messages, setMessages] = useState([]);
 
     //levantamiento de estado
     const handleChange = (k, value) => {
@@ -70,6 +71,27 @@ function Service() {
         }
     }
 
+    useEffect(() => {
+        //cuando responden a la peticion
+        socket.on('response', (docInfo) => {
+            setDoctor(docInfo)
+            setServiceState(ServiceStates.resolved);
+        });
+        //cuando inicia la consulta
+        socket.on('start', () => {
+            setServiceState(ServiceStates.serviceStarted);
+        });
+        //cuando terminan el servicio
+        socket.on('terminate', () => {
+            setServiceState(ServiceStates.ended);
+        });
+        socket.on('message', (message)=>{
+            setMessages(messages.push(message));
+            console.log('dicen: ', messages);
+        });
+    })
+
+    //CLICLO DE VIDA DEL SERVICIO
     //envio solicitud de servicio
     const request = _ => {
         //validar si ha seleccionado un tipo de servicio
@@ -87,26 +109,16 @@ function Service() {
         setServiceState(ServiceStates.initial);
     }
 
-    useEffect(() => {
-        //cuando responden a la peticion
-        socket.on('response', (docInfo) => {
-            setDoctor(docInfo)
-            setServiceState(ServiceStates.resolved);
-        })
-        //cuando inicia la consulta
-        socket.on('start', () => {
-            setServiceState(ServiceStates.serviceStarted);
-        })
-        //cuando terminan el servicio
-        socket.on('terminate', () => {
-            setServiceState(ServiceStates.ended);
-        })
-    })
-
     //funcion para cancelar servicio
     const deleteRequest = () => {
         socket.emit('delete');
         setServiceState(ServiceStates.initial);
+    }
+
+    //funcion para enviar mensaje
+    const sendMessage = ()=>{
+        let message = {to: doctor.id, from: socket.id, content: 'Hola'};
+        socket.emit(message);
     }
 
     const checkServiceState = () => {
@@ -170,9 +182,10 @@ function Service() {
                         />
                     </div>
                 );
+            //servicestarted state render
             case ServiceStates.serviceStarted:
                 return <ServiceStarted showButton={false} />;
-
+            //service ended state render
             case ServiceStates.ended:
                 return (
                     <div className="o-service">

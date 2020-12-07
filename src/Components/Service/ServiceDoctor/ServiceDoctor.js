@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-//import '../Service.css'
 import './ServiceDoctor.css'
 import ServiceHeader from '../ServiceHeader/ServiceHeader';
 import OButton from '../../OButton/OButton'
@@ -11,7 +10,7 @@ import Accept from './serviceAccept/serviceAccept'
 import ServiceRate from '../ServiceRate/ServiceRate'
 import ServiceStarted from '../ServiceStarted/ServiceStarted'
 
-//web socket comunication
+//web sockets
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
 
@@ -30,6 +29,7 @@ const ServiceDoctor = () => {
     const [index, Setindex] = useState(0);
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
     const [patient, setPatient] = useState(null);
+    const [messages, setMessages] = useState([]);
 
     //valores quemados para pruebas
     const service = 0 //medico
@@ -51,24 +51,30 @@ const ServiceDoctor = () => {
 
     //similar a componentDidMount
     useEffect(()=>{
-        //subscribe as a doctor
+        //suscribirme como doctor para recibir peticiones
         socket.emit('doctorSubscription');
-        //bring back old requests
+        //consultar peticiones antiguas
         socket.emit('retrievePrevRequests', socket.id);
     },[])
 
     useEffect(()=>{
-        //bring back old requests
+        //consultar peticiones antiguas
         socket.emit('retrievePrevRequests', socket.id);
     }, [home, remote, ServiceState])
 
     //similar a componentDidUpdate
     useEffect(() => {
+        //peticion de cita
         socket.on('requestDoctor', (requests) => {
             console.log('Hola', requests)
             const filtered = filterRequests(requests);
             setRequests(filtered);
-        })
+        });
+        //mensaje de chat
+        socket.on('message', (message)=>{
+            setMessages(messages.push(message));
+            console.log('mensajes: ', message);
+        });
         return () => socket.off();
     });
 
@@ -102,7 +108,7 @@ const ServiceDoctor = () => {
     }
 
     //CICLO DE VIDA DEL SERVICIO
-    //accept request
+    //aceptar peticion
     const request = () => {
         //doctor info
         let info = {
@@ -110,12 +116,18 @@ const ServiceDoctor = () => {
             specialty: 'Médico General',
             sourceImg: ''
         }
-        //set patient
+        //setear paciente
         setPatient(requests[index]);
         socket.emit('response', requests[index].id, info);
-        setServiceState(ServiceStates.serviceAcepted);
+        if(home) setServiceState(ServiceStates.serviceAcepted);
+        if(remote) console.log('Hola')    
     }
-    //iniciar consilta
+    //funcion para enviar mensaje
+    const sendMessage = ()=>{
+        let message = {to: patient.id, from: socket.id, content: 'Hola'};
+        socket.emit(message);
+    }
+    //iniciar consulta
     const start = () => {
         socket.emit('start', patient.id);
         setServiceState(ServiceStates.serviceStarted);

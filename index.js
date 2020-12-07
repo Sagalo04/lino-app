@@ -52,6 +52,11 @@ io.on('connection', socket =>{
     socket.on('terminate', id =>{
         io.to(id).emit('terminate');
     })
+
+    //mensajes
+    socket.on('message', message =>{
+        io.to(message.to).emit('message', message);
+    })
 })
 
 servidor.listen(4000 || process.env.PORT, _=>{
