@@ -49,7 +49,7 @@ export class CurrentLocation extends React.Component {
             // this.setState({user:this.props.user})
             
         }
-        if (prevState.currentLocation != this.state.currentLocation) {
+        if (prevState.currentLocation !== this.state.currentLocation) {
 
             this.recenterMap();
         }
@@ -75,7 +75,7 @@ export class CurrentLocation extends React.Component {
                 title: "Hello World!"
             });
             const contentString =
-                '<h2> ' + `${this.user}`+ '<h2>';
+                `<h2> ${this.user} <h2>`;
             const infowindow = new google.maps.InfoWindow({
                 content: contentString,
             }); 
@@ -94,7 +94,6 @@ export class CurrentLocation extends React.Component {
         if (this.props.centerAroundCurrentLocation) {
             if (navigator && navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos => {
-                    const coords = pos.coords;
                     this.setState({
                         currentLocation: this.props.location
                     });

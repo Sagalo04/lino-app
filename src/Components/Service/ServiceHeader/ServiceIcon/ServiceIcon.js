@@ -50,10 +50,6 @@ const AntSwitch = withStyles((theme) => ({
 
 export default class ServiceIcon extends React.Component{
 
-    constructor(props){
-        super(props);
-    }
-
     handleChange = (e)=>{
         this.props.handler(this.props.k,!this.props.checked)
     }

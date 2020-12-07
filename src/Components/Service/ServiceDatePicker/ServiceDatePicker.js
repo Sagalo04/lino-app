@@ -6,9 +6,6 @@ import {
 } from '@material-ui/pickers';
 
 export default class ServiceDatePicker extends React.Component{
-    constructor(props){
-        super(props);
-    }
 
     handleDateChange = (e) => {
         this.props.handler(this.props.k, e)

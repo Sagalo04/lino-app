@@ -127,7 +127,7 @@ function Acount(props) {
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Correo</p>
                             <FormControl className={classes.margin}>
-                                <BootstrapInput disabled defaultValue={`${UserProfile.getMail()}`} id="bootstrap-input" />
+                                <BootstrapInput disabled defaultValue={`${mail}`} id="bootstrap-input" />
                             </FormControl>
                         </div>
                         <div className="o-changeInfo">
@@ -154,7 +154,7 @@ function Acount(props) {
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Foto de perfil</p>
                             <div className="o-avatarChange">
-                                <Avatar alt="name" src="" className={classes.large + " " + "o-change-logo"}></Avatar>
+                                <Avatar alt="name" src="" className={`${classes.large} o-change-logo`}></Avatar>
                                 <p className="o-pchange">Cambiar</p>
                             </div>
                         </div>

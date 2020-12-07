@@ -58,6 +58,9 @@ const ServiceDoctor = () => {
                 break;
             case "remote":
                 setRemote(value);
+                break;
+            default:
+                break;
         }
     }
 
@@ -78,7 +81,7 @@ const ServiceDoctor = () => {
 
     const checkActive = (indexa) => {
         let color = "#FAFAFA"
-        if (index == indexa) {
+        if (index === indexa) {
             color = "#E1F4FF"
         }
         return color

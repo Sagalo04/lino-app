@@ -13,7 +13,7 @@ import ServicePending from './ServicePending/ServicePending'
 import ServiceConfirm from './ServiceConfirm/ServiceConfirm'
 import ServiceRate from './ServiceRate/ServiceRate'
 //import specialtyOptions
-import {services} from '../../Constants/Services'
+import { services } from '../../Constants/Services'
 
 
 //web socket comunication
@@ -58,6 +58,8 @@ function Service() {
             case "location":
                 setLocation(value);
                 break;
+            default:
+                break;
         }
     }
 
@@ -67,7 +69,7 @@ function Service() {
         if (!home && !remote) {
             setError(true);
         } else {
-            const info = {id: socket.id, user, home, remote, service, specialty, date, location };
+            const info = { id: socket.id, user, home, remote, service, specialty, date, location };
             socket.emit('request', info);
             setError(false);
             setServiceState(ServiceStates.pending);
@@ -83,7 +85,7 @@ function Service() {
     })
 
     //funcion para cancelar servicio
-    const deleteRequest = ()=>{
+    const deleteRequest = () => {
         socket.emit('delete');
         setServiceState(ServiceStates.initial);
     }
@@ -134,7 +136,7 @@ function Service() {
             case ServiceStates.pending:
                 return (
                     <div className="o-service">
-                        <ServicePending deleteRequest={deleteRequest}/>
+                        <ServicePending deleteRequest={deleteRequest} />
                     </div>
                 );
             //resolved state render
@@ -145,16 +147,18 @@ function Service() {
                             name={doctor.name}
                             info={doctor.specialty}
                             sourceImg={doctor.sourceImg}
-                            date={`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`}
+                            date={`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
                         />
                     </div>
                 );
             case ServiceStates.ended:
-                return(
+                return (
                     <div className="o-service">
-                        <ServiceRate rateTo="doctor" name={doctor.name}/>
+                        <ServiceRate rateTo="doctor" name={doctor.name} />
                     </div>
                 )
+                default:
+                    break;
         }
     }
 

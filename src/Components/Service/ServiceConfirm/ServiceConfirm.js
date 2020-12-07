@@ -1,7 +1,6 @@
 import React from 'react';
 import ServiceConfirmHeader from '../ServiceConfirmHeader/ServiceConfirmHeader';
 import './ServiceConfirm.css'
-import OButton from '../../OButton/OButton';
 //DocCard
 import DocCard from '../DocCard/DocCard';
 
