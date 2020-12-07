@@ -34,7 +34,8 @@ const BootstrapInput = withStyles((theme) => ({
         backgroundColor: '#F4F4F4',
         color: '#717171',
         fontWeight: '300',
-        width: 'auto',
+        width: '11rem',
+        [theme.breakpoints.up("md")]:{width:"auto",marginRight:0},
         padding: '6px 12px',
         height: '1rem',
         transition: theme.transitions.create(['border-color', 'box-shadow']),
@@ -59,9 +60,10 @@ const BootstrapInput2 = withStyles((theme) => ({
         color: '#717171',
         fontWeight: '300',
         width: '2rem',
+        marginRight: '0.5rem',
+        [theme.breakpoints.up("md")]:{width:"2rem",marginRight:"1rem"},
         padding: '6px 12px',
         height: '1rem',
-        marginRight: '1rem',
         transition: theme.transitions.create(['border-color', 'box-shadow']),
 
         '&:focus': {
@@ -84,9 +86,10 @@ const BootstrapInput3 = withStyles((theme) => ({
         color: '#717171',
         fontWeight: '300',
         width: '7rem',
+        marginRight: '0rem',
+        [theme.breakpoints.up("md")]:{marginRight:"1rem"},
         padding: '6px 12px',
         height: '1rem',
-        marginRight: '1rem',
         transition: theme.transitions.create(['border-color', 'box-shadow']),
 
         '&:focus': {

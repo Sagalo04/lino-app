@@ -151,9 +151,11 @@
         flex-direction: column;
         
     }
+
     .o-contentAcount{
         margin-right:0;
         margin-top: 0;
+        margin-left: 1rem;
         padding: 0;
 
     }
@@ -173,7 +175,7 @@
         
     }
     .o-labeled{
-        width: 7rem;
+        width: 5rem;
         margin-right: 1rem;
 
     }
