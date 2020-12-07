@@ -21,7 +21,8 @@ const ServiceStates = {
     homeServiceStarted: 'homeServiceStarted',
     remoteServiceAcepted: 'remoteServiceAcepted',
     remoteServiceStarted: 'remoteServiceStarted',
-    ended: 'Ended'
+    ended: 'Ended',
+    chat:'chat'
 }
 
 const ServiceDoctor = () => {
@@ -33,6 +34,7 @@ const ServiceDoctor = () => {
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
     const [patient, setPatient] = useState(null);
     const [messages, setMessages] = useState([]);
+    const [chat, setChat]=useState(ServiceState.initial);
 
     //valores quemados para pruebas
     const service = 0 //medico
@@ -89,6 +91,9 @@ const ServiceDoctor = () => {
                 break;
             case "remote":
                 setRemote(value);
+                break;
+            case "messege":
+                setChat(value);
                 break;
             default:
                 break;
@@ -190,7 +195,7 @@ const ServiceDoctor = () => {
                 return <Accept home={false} user={patient.user} onClick={remoteStart}/>
             //servicio remoto iniciado
             case ServiceStates.remoteServiceStarted:
-                return <Chat other={patient.user}/>
+                return <Chat other={patient.user} onchange={handleChange}/>
             //servicio finalizado
             case ServiceStates.ended:
                 return (
