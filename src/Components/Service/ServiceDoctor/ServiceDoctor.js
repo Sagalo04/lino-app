@@ -60,7 +60,7 @@ const ServiceDoctor = () => {
         socket.emit('doctorSubscription');
         //consultar peticiones antiguas
         socket.emit('retrievePrevRequests', socket.id);
-       
+
     }, [])
 
     useEffect(() => {
@@ -144,9 +144,12 @@ const ServiceDoctor = () => {
     }
     //funcion para enviar mensaje
     const sendMessage = () => {
-        let message = { to: patient.id, from: socket.id, content: chat, time: new Date().toLocaleTimeString() };
-        setChat('');
-        socket.emit('message', message);
+        if (chat !== '') {
+            let message = { to: patient.id, from: socket.id, content: chat, time: new Date().toLocaleTimeString() };
+            setChat('');
+            socket.emit('message', message);
+            setMessages(messages.concat(message))
+        }
     }
     //iniciar consulta
     const homeStart = () => {
@@ -203,7 +206,7 @@ const ServiceDoctor = () => {
                 return <Accept home={false} user={patient.user} onClick={remoteStart} />
             //servicio remoto iniciado
             case ServiceStates.remoteServiceStarted:
-                return <Chat messages={messages} other={patient.user} handler={handleChange} k={'message'} send={sendMessage}/>
+                return <Chat value={chat} messages={messages} otherid={patient.id} other={patient.user} handler={handleChange} k={'message'} send={sendMessage} />
             //servicio finalizado
             case ServiceStates.ended:
                 return (

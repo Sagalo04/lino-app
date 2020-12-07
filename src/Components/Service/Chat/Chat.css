@@ -28,13 +28,18 @@
     margin-top: 0.3rem;
     font-size: 1.1rem;
 }
+/* contenedor del scroll */
+.o-scrolleable{
+    overflow: auto;
+    max-height: 25rem;
+}
 /* contenedor del chat */
 .o-chatContent{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     background-color: #EEEEEE;
-    height: 25rem;
+    min-height: 25rem;
     margin:0;
     font-weight: 300;
 }

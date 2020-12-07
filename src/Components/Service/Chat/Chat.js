@@ -37,7 +37,7 @@ const BootstrapInput = withStyles((theme) => ({
     },
 }))(InputBase);
 
-function Chat({ messages, other, handler, k, end, value, send }) {
+function Chat({ messages, other, handler, k, end, value, send, otherid }) {
 
 
     const handleChange = (e) => {
@@ -56,43 +56,37 @@ function Chat({ messages, other, handler, k, end, value, send }) {
                     <OButton label={"Abandonar"} onClick={end}></OButton>
                 </div>
             </div>
-            <div className="o-chatContent">
+            <div className="o-scrolleable">
+                <div className='o-chatContent'>    
                 {messages.map((element, index) => {
-                    return (
-                        <div className="o-recive">
-                            <p className="o-chatName">
-                                Lesly Lucumi
-                    </p>
-                            <p className="o-chatMsg">
-                                {element.content}
-                            </p>
-                            <p className="o-chatHr">
-                                {element.time}
-                            </p>
-                        </div>)
+                    if (otherid == element.from) {
+                        return (
+                            <div className="o-recive">
+                                <p className="o-chatName">
+                                    {other}
+                                </p>
+                                <p className="o-chatMsg">
+                                    {element.content}
+                                </p>
+                                <p className="o-chatHr">
+                                    {element.time}
+                                </p>
+                            </div>)
+                    } else {
+                        return (
+                            <div className="o-send">
+                                <p className="o-chatName">
+                                    Yo
+                                </p>
+                                <p className="o-chatMsg">
+                                    {element.content}
+                                </p>
+                                <p className="o-chatHr">
+                                    {element.time}
+                                </p>
+                            </div>)
+                    }
                 })}
-
-                <div className="o-recive">
-                    <p className="o-chatName">
-                        Lesly Lucumi
-                    </p>
-                    <p className="o-chatMsg">
-                        xD
-                    </p>
-                    <p className="o-chatHr">
-                        2:44 pm
-                    </p>
-                </div>
-                <div className="o-send">
-                    <p className="o-chatName">
-                        Yo
-                    </p>
-                    <p className="o-chatMsg">
-                        Hola
-                    </p>
-                    <p className="o-chatHr">
-                        2:44 pm
-                    </p>
                 </div>
             </div>
             <div className="o-chatFooter">
