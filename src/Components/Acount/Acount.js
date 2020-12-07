@@ -110,7 +110,6 @@ function Acount(props) {
                 </p>
                 <p>Aquí podrás ver y modificar tu información</p><br/>
             </div>
-            {/* <img src={imagens} className="o-img-acount" alt="" /> */}
             <div className="o-contentAcount">
                 <h3 className="o-personalTitle">Información personal</h3>
                 <div className="o-contentPersonalAcount">
