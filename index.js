@@ -39,6 +39,10 @@ io.on('connection', socket =>{
         requests = requests.filter(request => request.id !== socket.id);
         io.to(DOCTOR_ROOM).emit('requestDoctor', requests);
     })
+
+    socket.on('terminate', id =>{
+        io.to(id).emit('terminate')
+    })
 })
 
 servidor.listen(4000 || process.env.PORT, _=>{
