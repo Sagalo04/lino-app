@@ -8,7 +8,6 @@ import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 import Map from '../Map/Map';
 import UserProfile from '../../UserProfile';
 //import service states
-import ServiceStates from '../../Constants/ServiceStates'
 import ServicePending from './ServicePending/ServicePending'
 import ServiceConfirm from './ServiceConfirm/ServiceConfirm'
 import ServiceRate from './ServiceRate/ServiceRate'
@@ -20,6 +19,12 @@ import {services} from '../../Constants/Services'
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
 
+const ServiceStates ={
+    initial: 'Initial',
+    pending: 'Pending',
+    resolved: 'Resolved',
+    ended: 'Ended'
+}
 
 function Service() {
     //states
@@ -79,6 +84,10 @@ function Service() {
         socket.on('response', (docInfo) => {
             setDoctor(docInfo)
             setServiceState(ServiceStates.resolved);
+        })
+        //cuando terminan el servicio
+        socket.on('terminate', ()=>{
+            setServiceState(ServiceStates.ended);
         })
     })
 
@@ -154,7 +163,7 @@ function Service() {
                     <div className="o-service">
                         <ServiceRate rateTo="doctor" name={doctor.name}/>
                     </div>
-                )
+                );
         }
     }
 

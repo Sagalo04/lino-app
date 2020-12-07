@@ -5,12 +5,20 @@ import ServiceHeader from '../ServiceHeader/ServiceHeader';
 import OButton from '../../OButton/OButton'
 import Map from '../../Map/MapDoc';
 import UserProfile from '../../../UserProfile';
+//Service Provider states
 import ServiceRequest from './ServiceRequest/ServiceRequest';
-import Acept from './serviceAccept/serviceAccept'
+import Accept from './serviceAccept/serviceAccept'
+import ServiceRate from '../ServiceRate/ServiceRate'
 
 //web socket comunication
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
+
+const ServiceStates = {
+    initial: 'Initial',
+    serviceAcepted: 'serviceAcepted',
+    ended: 'Ended'
+}
 
 const ServiceDoctor = () => {
 
@@ -18,7 +26,7 @@ const ServiceDoctor = () => {
     const [remote, setRemote] = useState(false);
     const [requests, setRequests] = useState([]);
     const [index, Setindex] = useState(0);
-    const [serviceAccepted, setServiceAccepted] = useState(false);
+    const [ServiceState, setServiceState] = useState(ServiceStates.initial);
 
     //valores quemados para pruebas
     const service = 0 //medico
@@ -69,7 +77,12 @@ const ServiceDoctor = () => {
             sourceImg: ''
         }
         socket.emit('response', requests[index].id, info);
-        setServiceAccepted(true);
+        setServiceState(ServiceStates.serviceAcepted);
+    }
+
+    const terminate = ()=>{
+        socket.emit('terminate', requests[index].id);
+        setServiceState(ServiceStates.ended)
     }
 
     const changeActive = (index) => {
@@ -85,35 +98,47 @@ const ServiceDoctor = () => {
     }
 
     const checkServiceState = () => {
-        if (serviceAccepted) {
-            return (
-                <Acept user={requests[index].user}></Acept>
-            );
-        } else {
-            return (
-                <div className="o-service">
-                    {/*Tipos de servicio*/}
-                    <ServiceHeader
-                        title={"Activa tu Servicio a prestar"}
-                        states={{ home: home, remote: remote }}
-                        handler={handleChange}
-                        keys={{ home: "home", remote: "remote" }} />
-                    {/*requests*/}
-                    <div className="o-request-container">
-                        {requests.map((request, index) => {
-                            return <ServiceRequest
-                                key={index}
-                                info={request}
-                                changeActive={changeActive.bind(this, index)}
-                                color={checkActive(index)}
-                                location={requests[index]} />
-                        })}
+        switch(ServiceState){
+            case ServiceStates.initial:
+                return (
+                    <div className="o-service">
+                        {/*Tipos de servicio*/}
+                        <ServiceHeader
+                            title={"Activa tu Servicio a prestar"}
+                            states={{ home: home, remote: remote }}
+                            handler={handleChange}
+                            keys={{ home: "home", remote: "remote" }} />
+                        {/*requests*/}
+                        <div className="o-request-container">
+                            {requests.map((request, index) => {
+                                return <ServiceRequest
+                                    key={index}
+                                    info={request}
+                                    changeActive={changeActive.bind(this, index)}
+                                    color={checkActive(index)}
+                                    location={requests[index]} />
+                            })}
+                        </div>
+                        {requests.length === 0 ? null :
+                            <OButton label={"Aceptar"} onClick={request}></OButton>}
                     </div>
-                    {requests.length === 0 ? null :
-                        <OButton label={"Aceptar"} onClick={request}></OButton>}
-                </div>
-            )
+                );
+            case ServiceStates.serviceAcepted:
+                return (
+                    <Accept 
+                        user={requests[index].user}
+                        onClick = {terminate}
+                    ></Accept>
+                );
+            case ServiceStates.ended:
+                return(
+                    <div className="o-service">
+                        <ServiceRate rateTo="paciente"
+                        name={requests[index].user}/>
+                    </div>
+                );
         }
+        
     }
 
     return (
