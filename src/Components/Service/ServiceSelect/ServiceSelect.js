@@ -1,15 +1,12 @@
 import React from 'react';
 import './ServiceSelect.css';
 //material ui components
-import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { FormControl, MenuItem, Select } from '@material-ui/core';
 
 
 
 
 export default class ServiceSelect extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleChange = (e) => {
         this.props.handler(this.props.k, e.target.value)
@@ -26,8 +23,6 @@ export default class ServiceSelect extends React.Component {
     render() {
 
         const label = this.props.label;
-        const title = this.props.title;
-        const options = this.props.options;
         const value = this.props.value;
         return (
             <div>

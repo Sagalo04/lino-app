@@ -11,7 +11,6 @@ function serviceString(hogar, remoto) {
 
 function ServiceRequest({ info, changeActive, color, location }) {
     const [direction, setDirection] = useState('');
-    const [city, setCity] = useState('');
 
     const locationAdress = (location) => {
         const apikey = "Wj9_EjUtlEwzDVI2NJjCoSOsRc2iFSIDISNitVRusfk"
@@ -22,8 +21,6 @@ function ServiceRequest({ info, changeActive, color, location }) {
     
                 //console.log(resJson.Response.View[0].Result[0].Location.Address.Label.split(',')[1].split(" ")[2])
                 let str = resJson.Response.View[0].Result[0].Location.Address.Label.split(',')[0]
-                let strC = resJson.Response.View[0].Result[0].Location.Address.Label.split(',')[1].split(" ")[2]
-                setCity(strC)
                 setDirection(str)
             })
             .catch((e) => {
