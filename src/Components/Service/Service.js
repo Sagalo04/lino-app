@@ -165,13 +165,9 @@ function Service() {
                     <div className="o-service">
                         <ServiceRate rateTo="doctor" name={doctor.name} />
                     </div>
-<<<<<<< HEAD
                 )
                 default:
                     break;
-=======
-                );
->>>>>>> 4d82e4f53315b396af6178479dbe4f6b09723249
         }
     }
 
