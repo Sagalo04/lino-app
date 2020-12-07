@@ -139,7 +139,7 @@ function Acount(props) {
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Teléfono</p>
                             <FormControl className={classes.margin}>
-                                <BootstrapInput2 defaultValue="+57" id="bootstrap-input2" />
+                                <BootstrapInput2 defaultValue="+57" id="bootstrap-input2"  />
                             </FormControl>
                             <FormControl className={classes.margin}>
                                 <BootstrapInput3 defaultValue="3042111518" id="bootstrap-input" />

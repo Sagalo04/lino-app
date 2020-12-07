@@ -168,7 +168,7 @@
     }
 
     .MuiInputBase-root{
-        width: 8rem ;
+        width: auto  ;
         padding: 0;
         
     }
