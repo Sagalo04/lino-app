@@ -83,7 +83,7 @@ const ServiceDoctor = () => {
         setServiceState(ServiceStates.serviceAcepted);
     }
 
-    const terminate = ()=>{
+    const terminate = () => {
         socket.emit('terminate', requests[index].id);
         setServiceState(ServiceStates.ended)
     }
@@ -101,7 +101,7 @@ const ServiceDoctor = () => {
     }
 
     const checkServiceState = () => {
-        switch(ServiceState){
+        switch (ServiceState) {
             case ServiceStates.initial:
                 return (
                     <div className="o-service">
@@ -128,20 +128,22 @@ const ServiceDoctor = () => {
                 );
             case ServiceStates.serviceAcepted:
                 return (
-                    <Accept 
+                    <Accept
                         user={requests[index].user}
-                        onClick = {terminate}
+                        onClick={terminate}
                     ></Accept>
                 );
             case ServiceStates.ended:
-                return(
+                return (
                     <div className="o-service">
                         <ServiceRate rateTo="paciente"
-                        name={requests[index].user}/>
+                            name={requests[index].user} />
                     </div>
                 );
+            default:
+                break;
         }
-        
+
     }
 
     return (
