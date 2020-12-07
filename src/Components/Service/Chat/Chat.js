@@ -36,14 +36,14 @@ const BootstrapInput = withStyles((theme) => ({
     },
 }))(InputBase);
 
-function Chat(props) {
+function Chat({other}) {
     const classes = useStyles();
     return (
         <div className="o-chat">
             <div className="o-chatHeader">
                 <div className="o-chatHeader">
                     <p className="o-chatHeaderText">Chat: </p>
-                    <p className="o-chatPerson">Lesly Lucumi</p>
+                    <p className="o-chatPerson">{other}</p>
                 </div>
                 <OButton label={"Abandonar"}></OButton>
             </div>

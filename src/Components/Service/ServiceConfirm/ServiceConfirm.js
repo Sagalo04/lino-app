@@ -4,7 +4,7 @@ import './ServiceConfirm.css'
 //DocCard
 import DocCard from '../DocCard/DocCard';
 
-function ServiceConfirm({name, info, sourceImg, date}){
+function ServiceConfirm({name, info, sourceImg, date, home}){
 
     return(
         <div>
@@ -28,7 +28,7 @@ function ServiceConfirm({name, info, sourceImg, date}){
                             <p>$35.000</p>
                         </div>
                         <br/>
-                        <p>Pronto llegará donde estás</p>
+                        <p>{home? 'Pronto llegará donde estás': 'Pronto comenzará un chat entre ambos'}</p>
                         <br/><br/>
                     </div>
         </div>
