@@ -42,7 +42,7 @@ function Service() {
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
     const [error, setError] = useState();
     const [doctor, setDoctor] = useState({});
-    const [messages, setMessages] = useState([{}]);
+    const [messages, setMessages] = useState([]);
     const [chat, setChat] = useState('');
 
     //levantamiento de estado
@@ -207,7 +207,7 @@ function Service() {
                 return <ServiceStarted showButton={false} />;
             //remoteServiceStarted state render
             case ServiceStates.remoteServiceStarted:
-                return <Chat other={doctor.name} k="message" handler={handleChange} send={sendMessage} value={chat} end={terminate}/>
+                return <Chat other={doctor.name} k="message" messages={messages} handler={handleChange} send={sendMessage} value={chat} end={terminate}/>
             //service ended state render
             case ServiceStates.ended:
                 return (

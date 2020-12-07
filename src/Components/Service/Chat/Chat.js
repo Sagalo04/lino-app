@@ -37,13 +37,13 @@ const BootstrapInput = withStyles((theme) => ({
     },
 }))(InputBase);
 
-function Chat({messages,other, handler, k,end,value,send}) {
+function Chat({ messages, other, handler, k, end, value, send }) {
 
 
-    const handleChange = (e)=>{
+    const handleChange = (e) => {
         handler(k, e.target.value)
     }
-console.log(messages)
+    console.log(messages)
     const classes = useStyles();
     return (
         <div className="o-chat">
@@ -53,10 +53,24 @@ console.log(messages)
                     <p className="o-chatPerson">{other}</p>
                 </div>
                 <div className="btn">
-                <OButton label={"Abandonar"} onClick={end}></OButton>
+                    <OButton label={"Abandonar"} onClick={end}></OButton>
                 </div>
             </div>
             <div className="o-chatContent">
+                {messages.map((content, time,index) => {
+                    return(
+                    <div className="o-recive">
+                        <p className="o-chatName">
+                            Lesly Lucumi
+                    </p>
+                        <p className="o-chatMsg">
+                            {content}
+                    </p>
+                        <p className="o-chatHr">
+                            {time}
+                    </p>
+                    </div>)
+                })}
                 <div className="o-recive">
                     <p className="o-chatName">
                         Lesly Lucumi
@@ -82,10 +96,10 @@ console.log(messages)
             </div>
             <div className="o-chatFooter">
                 <FormControl className={classes.margin}>
-                    <BootstrapInput placeholder="Escribe aquí" onChange={handleChange} id="bootstrap-input" value={value}/>
+                    <BootstrapInput placeholder="Escribe aquí" onChange={handleChange} id="bootstrap-input" value={value} />
                 </FormControl>
                 <div className="btn">
-                <OButton label={"Enviar"} onClick={send}></OButton>
+                    <OButton label={"Enviar"} onClick={send}></OButton>
                 </div>
             </div>
         </div>
