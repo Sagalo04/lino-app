@@ -2,8 +2,6 @@ import React from 'react'
 import './ServiceRate.css'
 import OButton from '../../OButton/OButton'
 
-function reload() { window.location.reload() }
-
 const Rate = () => {
     return (
         <div className="rating">
@@ -16,7 +14,7 @@ const Rate = () => {
     );
 }
 
-const ServiceRate = ({ rateTo, name }) => {
+const ServiceRate = ({ rateTo, name, onClick }) => {
     return (
         <div>
             <div className='o-service-rate'>
@@ -30,7 +28,7 @@ const ServiceRate = ({ rateTo, name }) => {
                 <textarea id="textarea" cols="30" rows="5" placeholder="Escríbelo aquí..."></textarea>
             </div>
             <div className="rate-button">
-                <OButton label="Enviar" onClick={reload} />
+                <OButton label="Enviar" onClick={onClick} />
             </div>
         </div>
 
