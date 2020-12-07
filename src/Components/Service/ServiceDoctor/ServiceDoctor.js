@@ -67,6 +67,9 @@ const ServiceDoctor = () => {
                 break;
             case "remote":
                 setRemote(value);
+                break;
+            default:
+                break;
         }
     }
 
@@ -98,14 +101,14 @@ const ServiceDoctor = () => {
 
     const checkActive = (indexa) => {
         let color = "#FAFAFA"
-        if (index == indexa) {
+        if (index === indexa) {
             color = "#E1F4FF"
         }
         return color
     }
 
     const checkServiceState = () => {
-        switch(ServiceState){
+        switch (ServiceState) {
             case ServiceStates.initial:
                 return (
                     <div className="o-service">
@@ -138,13 +141,15 @@ const ServiceDoctor = () => {
                     ></Accept>
                 );
             case ServiceStates.ended:
-                return(
+                return (
                     <div className="o-service">
                         <ServiceRate rateTo="paciente" name={patient.user} onClick={refresh}/>
                     </div>
                 );
+            default:
+                break;
         }
-        
+
     }
 
     return (

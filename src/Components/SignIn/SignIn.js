@@ -1,5 +1,5 @@
 import { FormControl, IconButton, Input, InputAdornment, InputLabel, makeStyles, TextField } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -37,6 +37,7 @@ function SignIn(props) {
         showPassword: false,
         mail: '',
     });
+    const [error, setError] = useState();
 
     const history = useHistory()
 
@@ -57,7 +58,8 @@ function SignIn(props) {
     };
 
     const handleOnSubmit = () => {
-        if (values.mail != "") {
+        if (values.mail !== "" && values.password !== "") {
+            setError(false);
             UserProfile.setMail(values.mail);
 
             if (values.mail.includes('@doctor')) {
@@ -66,6 +68,8 @@ function SignIn(props) {
                 UserProfile.setProvide(false)
             }
             history.push(`/Home`);
+        }else{
+            setError(true);
         }
 
     };
@@ -102,7 +106,10 @@ function SignIn(props) {
                             }
                         />
                     </FormControl>
-
+                    {error ? <div className="o-error-message-service">
+                            <p>Debes completar los campos de correo y contraseña<br /> Inténtalo de nuevo</p>
+                        </div>
+                            : null}
 
                     <OButton label={"Ingresar"}
                         onClick={handleOnSubmit}
