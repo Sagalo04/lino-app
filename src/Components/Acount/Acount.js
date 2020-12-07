@@ -102,7 +102,7 @@ function Acount(props) {
 
         <div className="o-Acount">
             <div className="o-img-acount">
-                <p style={{marginTop: '30rem'}}>
+                <p style={{marginTop: '20rem'}}>
                     Bienvenido <label style={{fontWeight: 'bold'}}>Camilo</label> <br/>
                     Aquí podrás ver y modificar tu información
                 </p>
@@ -126,8 +126,8 @@ function Acount(props) {
                         </div>
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Correo</p>
-                            <FormControl className={classes.margin}>
-                                <BootstrapInput disabled defaultValue={`${UserProfile.getMail()}`} id="bootstrap-input" />
+                            <FormControl className={`${classes.margin}+" "+"inputs-acount"`}>
+                                <BootstrapInput disabled defaultValue={`${UserProfile.getMail()}`}  id="bootstrap-input" />
                             </FormControl>
                         </div>
                         <div className="o-changeInfo">
