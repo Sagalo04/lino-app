@@ -6,6 +6,7 @@
     background-size: cover;
     background-image: url('/src/Resources/Images/mapa.png'); 
 }
+/* estilos para la card de servicio */
 .o-service{
     /* width: 25rem; */
     margin: 3rem;
@@ -16,7 +17,7 @@
     background-color: white;
     text-align: center;
 }
-
+/* lables */
 .o-label{
     justify-self:   flex-start ;
     align-items: flex-start;
@@ -25,7 +26,7 @@
     margin-right: 4rem;
     font-weight: 300;
 }
-
+/* mensaje de error */
 .o-error-message-service{
     background-color: rgb(252, 206, 206);
     margin: 0 0.8rem;

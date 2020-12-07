@@ -1,3 +1,4 @@
+/* estilos generales del boton */
 .o-button{
     outline: none;
     margin: 1rem 0;
@@ -10,13 +11,13 @@
     transition: 0.7s;
     outline: none;
 }
-
+/* estilos del hover del boton*/
 .o-button:hover{
     background-color: #007DA4;
     transition: 0.7s;
     outline: none;
 }
-
+/* estilos del focus del boton */
 .o-button:focus{
     outline: none;
 }
