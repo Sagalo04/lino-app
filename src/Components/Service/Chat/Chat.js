@@ -37,8 +37,12 @@ const BootstrapInput = withStyles((theme) => ({
     },
 }))(InputBase);
 
+<<<<<<< HEAD
 function Chat({messages,other, handler, k}) {
 
+=======
+function Chat({other, handler, k, send, value, end}) {
+>>>>>>> ca2c8d2dcd0b2a4addd6e815b3304014033fb96a
 
     const handleChange = (e)=>{
         handler(k, e.target.value)
@@ -52,7 +56,7 @@ console.log(messages)
                     <p className="o-chatHeaderText">Chat: </p>
                     <p className="o-chatPerson">{other}</p>
                 </div>
-                <OButton label={"Abandonar"}></OButton>
+                <OButton label={"Abandonar"} onClick={end}></OButton>
             </div>
             <div className="o-chatContent">
                 <div className="o-recive">
@@ -80,9 +84,9 @@ console.log(messages)
             </div>
             <div className="o-chatFooter">
                 <FormControl className={classes.margin}>
-                    <BootstrapInput placeholder="Escribe aquí" onChange={handleChange} id="bootstrap-input" />
+                    <BootstrapInput placeholder="Escribe aquí" onChange={handleChange} id="bootstrap-input" value={value}/>
                 </FormControl>
-                <OButton label={"Enviar"} ></OButton>
+                <OButton label={"Enviar"} onClick={send}></OButton>
             </div>
         </div>
     );

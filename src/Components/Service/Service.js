@@ -42,7 +42,7 @@ function Service() {
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
     const [error, setError] = useState();
     const [doctor, setDoctor] = useState({});
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState([{}]);
     const [chat, setChat] = useState('');
 
     //levantamiento de estado
@@ -93,10 +93,12 @@ function Service() {
         //cuando terminan el servicio
         socket.on('terminate', () => {
             setServiceState(ServiceStates.ended);
+            setMessages([]);
         });
         socket.on('message', (message) => {
-            setMessages(messages.push(message));
-            console.log('dicen: ', messages);
+            console.log(messages)
+            let totales = messages.push(message)
+            setMessages(totales);
         });
     })
 
@@ -126,8 +128,16 @@ function Service() {
 
     //funcion para enviar mensaje
     const sendMessage = () => {
-        let message = { to: doctor.id, from: socket.id, content: 'Hola', time: new Date().toLocaleTimeString() };
-        socket.emit(message);
+        let message = { to: doctor.id, from: socket.id, content: chat, time: new Date().toLocaleTimeString() };
+        setChat('');
+        socket.emit('message', message);
+    }
+
+    //acabar con la consulta
+    const terminate = () => {
+        socket.emit('terminate', patient.id);
+        setServiceState(ServiceStates.ended)
+        setMessages([]);
     }
 
     const checkServiceState = () => {
@@ -197,7 +207,7 @@ function Service() {
                 return <ServiceStarted showButton={false} />;
             //remoteServiceStarted state render
             case ServiceStates.remoteServiceStarted:
-                return <Chat other={doctor.name} k="message" handler={handleChange}/>
+                return <Chat other={doctor.name} k="message" handler={handleChange} send={sendMessage} value={chat}/>
             //service ended state render
             case ServiceStates.ended:
                 return (
