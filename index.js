@@ -45,8 +45,12 @@ io.on('connection', socket =>{
         io.to(DOCTOR_ROOM).emit('requestDoctor', requests);
     })
 
+    socket.on('start', id =>{
+        io.to(id).emit('start');
+    })
+
     socket.on('terminate', id =>{
-        io.to(id).emit('terminate')
+        io.to(id).emit('terminate');
     })
 })
 

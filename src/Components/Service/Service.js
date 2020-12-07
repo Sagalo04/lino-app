@@ -8,9 +8,10 @@ import ServiceDatePicker from './ServiceDatePicker/ServiceDatePicker';
 import Map from '../Map/Map';
 import UserProfile from '../../UserProfile';
 //import service states
-import ServicePending from './ServicePending/ServicePending'
-import ServiceConfirm from './ServiceConfirm/ServiceConfirm'
-import ServiceRate from './ServiceRate/ServiceRate'
+import ServicePending from './ServicePending/ServicePending';
+import ServiceConfirm from './ServiceConfirm/ServiceConfirm';
+import ServiceRate from './ServiceRate/ServiceRate';
+import ServiceStarted from './ServiceStarted/ServiceStarted';
 //import specialtyOptions
 import { services } from '../../Constants/Services'
 
@@ -19,10 +20,11 @@ import { services } from '../../Constants/Services'
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
 
-const ServiceStates ={
+const ServiceStates = {
     initial: 'Initial',
     pending: 'Pending',
     resolved: 'Resolved',
+    serviceStarted: 'serviceStarted',
     ended: 'Ended'
 }
 
@@ -81,7 +83,7 @@ function Service() {
         }
     }
 
-    const refresh = ()=>{
+    const refresh = () => {
         setServiceState(ServiceStates.initial);
     }
 
@@ -91,8 +93,12 @@ function Service() {
             setDoctor(docInfo)
             setServiceState(ServiceStates.resolved);
         })
+        //cuando inicia la consulta
+        socket.on('start', () => {
+            setServiceState(ServiceStates.serviceStarted);
+        })
         //cuando terminan el servicio
-        socket.on('terminate', ()=>{
+        socket.on('terminate', () => {
             setServiceState(ServiceStates.ended);
         })
     })
@@ -164,14 +170,17 @@ function Service() {
                         />
                     </div>
                 );
+            case ServiceStates.serviceStarted:
+                return <ServiceStarted showButton={false} />;
+
             case ServiceStates.ended:
                 return (
                     <div className="o-service">
-                        <ServiceRate rateTo="doctor" name={doctor.name} onClick={refresh}/>
+                        <ServiceRate rateTo="doctor" name={doctor.name} onClick={refresh} />
                     </div>
                 )
-                default:
-                    break;
+            default:
+                break;
         }
     }
 
