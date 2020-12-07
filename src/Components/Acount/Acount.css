@@ -106,22 +106,38 @@
     font-weight: 300;
 }
 
+.o-bienvenido{
+    margin-top: 20rem;
+    font-size: 2rem;
+}
+
 /* Mediaquerys para tablet */
 @media only screen and (max-width: 768px){
     .o-Acount{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        padding-right: 0.5rem;
         
+    }
+    .o-contentPersonalAcount{
+        display: flex;
+       justify-content: center;
+        width: 100%;
+        padding-left: 0.5rem ;
     }
     .o-contentAcount{
         margin-right:0;
         margin-top: 0;
         padding: 0;
-
+        width: 100%;
+        display: flex;
+        margin-left: 1rem;
+     
     }
 
     .o-img-acount{
         width: 100%;
+        padding-left: 1rem;
     }
 
 
@@ -137,7 +153,8 @@
     .o-contentPersonalAcount{
         display: flex;
         flex-direction: column;
-        width: 15rem;
+        width: 100%;
+        padding-left: 0.5rem !important;
     }
     .o-topAcount{
         width: 100%;
@@ -149,13 +166,24 @@
     .o-Acount{
         display: flex;
         flex-direction: column;
+        padding-right: 0;
         
+    }
+    .o-personalTitle{
+        width: 100%;
+    }
+
+    .o-bienvenido{
+        margin-top: 20rem;
+        font-size: 1.5rem;
     }
 
     .o-contentAcount{
         margin-right:0;
         margin-top: 0;
-        margin-left: 1rem;
+        padding-left: 0.5rem !important;
+        margin-left: 0;
+        width: 100%;
         padding: 0;
 
     }

@@ -105,10 +105,10 @@ function Acount(props) {
 
         <div className="o-Acount">
             <div className="o-img-acount">
-                <p style={{marginTop: '20rem'}}>
-                    Bienvenido <label style={{fontWeight: 'bold'}}>Camilo</label> <br/>
-                    Aquí podrás ver y modificar tu información
+                <p className="o-bienvenido" >
+                    Bienvenido <strong>Camilo</strong> 
                 </p>
+                <p>Aquí podrás ver y modificar tu información</p><br/>
             </div>
             {/* <img src={imagens} className="o-img-acount" alt="" /> */}
             <div className="o-contentAcount">

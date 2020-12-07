@@ -62,9 +62,7 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center ;
-        text-align: center;
-        margin-left: 1rem;
-       
+        text-align: center;       
     }  
     /* Estilos de los iconos con el texto */
     .o-nav-2 .o-nav-icon{
