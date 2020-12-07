@@ -135,7 +135,7 @@ function Service() {
 
     //acabar con la consulta
     const terminate = () => {
-        socket.emit('terminate', patient.id);
+        socket.emit('terminate', doctor.id);
         setServiceState(ServiceStates.ended)
         setMessages([]);
     }

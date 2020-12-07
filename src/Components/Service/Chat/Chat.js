@@ -50,7 +50,9 @@ function Chat({other, handler, k, send, value, end}) {
                     <p className="o-chatHeaderText">Chat: </p>
                     <p className="o-chatPerson">{other}</p>
                 </div>
+                <div className="btn">
                 <OButton label={"Abandonar"} onClick={end}></OButton>
+                </div>
             </div>
             <div className="o-chatContent">
                 <div className="o-recive">
@@ -80,7 +82,9 @@ function Chat({other, handler, k, send, value, end}) {
                 <FormControl className={classes.margin}>
                     <BootstrapInput placeholder="Escribe aquí" onChange={handleChange} id="bootstrap-input" value={value}/>
                 </FormControl>
+                <div className="btn">
                 <OButton label={"Enviar"} onClick={send}></OButton>
+                </div>
             </div>
         </div>
     );
