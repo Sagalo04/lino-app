@@ -60,6 +60,7 @@ const ServiceDoctor = () => {
         socket.emit('doctorSubscription');
         //consultar peticiones antiguas
         socket.emit('retrievePrevRequests', socket.id);
+       
     }, [])
 
     useEffect(() => {
@@ -71,14 +72,14 @@ const ServiceDoctor = () => {
     useEffect(() => {
         //peticion de cita
         socket.on('requestDoctor', (requests) => {
-            console.log('Hola', requests)
             const filtered = filterRequests(requests);
             setRequests(filtered);
         });
         //mensaje de chat
         socket.on('message', (message) => {
-            setMessages(messages.push(message));
-            console.log('mensajes: ', message);
+            //let totales = messages.push(message)
+            setMessages(messages.concat(message));
+            console.log(messages)
         });
         return () => socket.off();
     });
@@ -120,6 +121,7 @@ const ServiceDoctor = () => {
     const request = () => {
         //doctor info
         let info = {
+            id: socket.id,
             name: UserProfile.getMail().split('@')[0],
             specialty: 'Médico General',
             sourceImg: ''
@@ -138,8 +140,9 @@ const ServiceDoctor = () => {
     }
     //funcion para enviar mensaje
     const sendMessage = () => {
-        let message = { to: patient.id, from: socket.id, content: 'Hola', time: new Date().toLocaleTimeString() };
-        socket.emit(message);
+        let message = { to: patient.id, from: socket.id, content: chat, time: new Date().toLocaleTimeString() };
+        setChat('');
+        socket.emit('message', message);
     }
     //iniciar consulta
     const homeStart = () => {
@@ -155,6 +158,7 @@ const ServiceDoctor = () => {
     const terminate = () => {
         socket.emit('terminate', patient.id);
         setServiceState(ServiceStates.ended)
+        setMessages([]);
     }
 
     const checkServiceState = () => {
@@ -195,7 +199,7 @@ const ServiceDoctor = () => {
                 return <Accept home={false} user={patient.user} onClick={remoteStart} />
             //servicio remoto iniciado
             case ServiceStates.remoteServiceStarted:
-                return <Chat other={patient.user} handler={handleChange} k={'message'} />
+                return <Chat other={patient.user} handler={handleChange} k={'message'} send={sendMessage} value={chat} end={terminate}/>
             //servicio finalizado
             case ServiceStates.ended:
                 return (
