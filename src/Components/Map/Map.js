@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './CurrentoLocation';
 
+/* Clase MapContainer */
 export class MapContainer extends Component {
     constructor(props) {
         super(props)
@@ -12,13 +13,9 @@ export class MapContainer extends Component {
         };
     }
 
-    handleChange = (k, value) => {
-        this.setState({ [k]: value });
-    }
-
+    /* Función al clickear un marcador */
     onMarkerClick = (props, marker, e) => {
         console.log(props.mapCenter.lat)
-       
         this.setState({
             selectedPlace: props,
             activeMarker: marker,
@@ -26,6 +23,7 @@ export class MapContainer extends Component {
         });
     }
 
+    /* Función al cerrar el infowindow */
     onClose = props => {
         if (this.state.showingInfoWindow) {
             this.setState({
@@ -38,12 +36,14 @@ export class MapContainer extends Component {
 
     render() {
         return (
+            /* Inicio CurrentLocation */
             <CurrentLocation
                 centerAroundCurrentLocation
                 google={this.props.google}
                 handler = {this.props.handler}
                 k={this.props.k}
             >
+                {/* Inicio Marcador e informacion del marcador*/}
                 <Marker onClick={this.onMarkerClick} name={'Ubicación actual'} />
                 <InfoWindow
                     marker={this.state.activeMarker}
@@ -54,11 +54,14 @@ export class MapContainer extends Component {
                         <h4>{this.state.selectedPlace.name}</h4>
                     </div>
                 </InfoWindow>
+                {/* Fin Marcador e informacion del marcador*/}
             </CurrentLocation>
+            /* Fin CurrentLocation */
         );
     }
 }
 
+ /* Key de la API de google */
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyBnxvCl7rUeGz8ahhD3pjsjAwaq39xC3Vc'
 })(MapContainer);
