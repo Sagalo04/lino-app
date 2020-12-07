@@ -22,6 +22,8 @@
     resize: none;
     background-color: #f8f8f8;
     padding: 0.5rem;
+    outline: none;
+    font-weight: 100;
 }
 
 .o-rate-info{
@@ -29,7 +31,7 @@
     font-size: 1rem;
 }
 
-/*Rate*/
+/*Rate stars*/
 .rating{
     width: fit-content;
     position: relative;
