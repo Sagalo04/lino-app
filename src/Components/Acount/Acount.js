@@ -3,6 +3,8 @@ import React from 'react';
 import UserProfile from '../../UserProfile';
 import OButton from '../OButton/OButton';
 import './Acount.css'
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -113,31 +115,25 @@ function Acount(props) {
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Nombre</p>
                             <FormControl className={classes.margin}>
-                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                                <BootstrapInput defaultValue="Camilo" id="bootstrap-input" />
                             </FormControl>
                         </div>
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Apellido</p>
                             <FormControl className={classes.margin}>
-                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                                <BootstrapInput defaultValue="Sanchez" id="bootstrap-input" />
                             </FormControl>
                         </div>
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Correo</p>
                             <FormControl className={classes.margin}>
-                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                                <BootstrapInput disabled defaultValue={`${UserProfile.getMail()}`} id="bootstrap-input" />
                             </FormControl>
                         </div>
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Edad</p>
                             <FormControl className={classes.margin}>
-                                <BootstrapInput defaultValue="" id="bootstrap-input" />
-                            </FormControl>
-                        </div>
-                        <div className="o-changeInfo">
-                            <p className='o-labeled'>Edad</p>
-                            <FormControl className={classes.margin}>
-                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                                <BootstrapInput2 defaultValue="24" id="bootstrap-input" />
                             </FormControl>
                         </div>
                         <div className="o-changeInfo">
@@ -146,13 +142,13 @@ function Acount(props) {
                                 <BootstrapInput2 defaultValue="+57" id="bootstrap-input2" />
                             </FormControl>
                             <FormControl className={classes.margin}>
-                                <BootstrapInput3 defaultValue="" id="bootstrap-input" />
+                                <BootstrapInput3 defaultValue="3042111518" id="bootstrap-input" />
                             </FormControl>
                         </div>
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Idioma</p>
                             <FormControl className={classes.margin}>
-                                <BootstrapInput defaultValue="" id="bootstrap-input" />
+                                <BootstrapInput defaultValue="Español" id="bootstrap-input" />
                             </FormControl>
                         </div>
                         <div className="o-changeInfo">

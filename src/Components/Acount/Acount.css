@@ -104,7 +104,8 @@
     margin-bottom: 4rem;
 }
 .iconComments{
-    font-weight: 300
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 300;
 }
 
 /* Mediaquerys para tablet */
@@ -168,7 +169,6 @@
     }
 
     .o-contentTopAcount{
-
         flex-direction: column;
     }
 
