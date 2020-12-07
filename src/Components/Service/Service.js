@@ -96,9 +96,9 @@ function Service() {
             setMessages([]);
         });
         socket.on('message', (message) => {
-            //console.log(messages)
-            let totales = messages.push(message)
-            setMessages(totales);
+            //let totales = messages.push(message)
+            setMessages(messages.concat(message));
+            console.log(messages)
         });
     })
 
