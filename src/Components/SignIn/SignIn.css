@@ -62,7 +62,12 @@ body{
 .o-button{
     align-self: center ;
 }
+@media only screen and (max-width: 1025px){
+    .o-signin .o-button{
+        align-self: center;
+    }
 
+}
 /* Mediaquerys para movil */
 @media only screen and (max-width: 768px){
  
