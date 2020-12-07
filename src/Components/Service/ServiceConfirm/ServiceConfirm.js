@@ -27,10 +27,9 @@ function ServiceConfirm({name, info, sourceImg, date}){
                             <p>Precio de consulta:</p>
                             <p>$35.000</p>
                         </div>
-                        <br/><br/><br/>
-                        {/*
-                        <hr />
-                        <Link><OButton label={"Confirmar"}></OButton></Link>*/}
+                        <br/>
+                        <p>Pronto llegará donde estás</p>
+                        <br/><br/>
                     </div>
         </div>
     );
