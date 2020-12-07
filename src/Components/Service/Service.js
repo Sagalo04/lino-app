@@ -12,7 +12,8 @@ import ServicePending from './ServicePending/ServicePending';
 import ServiceConfirm from './ServiceConfirm/ServiceConfirm';
 import ServiceRate from './ServiceRate/ServiceRate';
 import ServiceStarted from './ServiceStarted/ServiceStarted';
-//import specialtyOptions
+import Chat from './Chat/Chat';
+
 import { services } from '../../Constants/Services'
 
 
@@ -24,7 +25,8 @@ const ServiceStates = {
     initial: 'Initial',
     pending: 'Pending',
     resolved: 'Resolved',
-    serviceStarted: 'serviceStarted',
+    homeServiceStarted: 'homeServiceStarted',
+    remoteServiceStarted: 'remoteServiceStarted',
     ended: 'Ended'
 }
 
@@ -40,6 +42,8 @@ function Service() {
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
     const [error, setError] = useState();
     const [doctor, setDoctor] = useState({});
+    const [messages, setMessages] = useState([]);
+    const [chat, setChat] = useState('');
 
     //levantamiento de estado
     const handleChange = (k, value) => {
@@ -65,11 +69,38 @@ function Service() {
             case "location":
                 setLocation(value);
                 break;
+            case "message":
+                setChat(value);
+                break;
             default:
                 break;
         }
     }
 
+    useEffect(() => {
+        //cuando responden a la peticion
+        socket.on('response', (docInfo) => {
+            setDoctor(docInfo)
+            setServiceState(ServiceStates.resolved);
+        });
+        //cuando inicia la consulta
+        socket.on('homeStart', () => {
+            setServiceState(ServiceStates.homeServiceStarted);
+        });
+        socket.on('remoteStart', () => {
+            setServiceState(ServiceStates.remoteServiceStarted);
+        });
+        //cuando terminan el servicio
+        socket.on('terminate', () => {
+            setServiceState(ServiceStates.ended);
+        });
+        socket.on('message', (message) => {
+            setMessages(messages.push(message));
+            console.log('dicen: ', messages);
+        });
+    })
+
+    //CLICLO DE VIDA DEL SERVICIO
     //envio solicitud de servicio
     const request = _ => {
         //validar si ha seleccionado un tipo de servicio
@@ -87,26 +118,16 @@ function Service() {
         setServiceState(ServiceStates.initial);
     }
 
-    useEffect(() => {
-        //cuando responden a la peticion
-        socket.on('response', (docInfo) => {
-            setDoctor(docInfo)
-            setServiceState(ServiceStates.resolved);
-        })
-        //cuando inicia la consulta
-        socket.on('start', () => {
-            setServiceState(ServiceStates.serviceStarted);
-        })
-        //cuando terminan el servicio
-        socket.on('terminate', () => {
-            setServiceState(ServiceStates.ended);
-        })
-    })
-
     //funcion para cancelar servicio
     const deleteRequest = () => {
         socket.emit('delete');
         setServiceState(ServiceStates.initial);
+    }
+
+    //funcion para enviar mensaje
+    const sendMessage = () => {
+        let message = { to: doctor.id, from: socket.id, content: 'Hola', time: new Date().toLocaleTimeString() };
+        socket.emit(message);
     }
 
     const checkServiceState = () => {
@@ -167,12 +188,17 @@ function Service() {
                             info={doctor.specialty}
                             sourceImg={doctor.sourceImg}
                             date={`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
+                            home={home}
                         />
                     </div>
                 );
-            case ServiceStates.serviceStarted:
+            //homeServiceStarted state render
+            case ServiceStates.homeServiceStarted:
                 return <ServiceStarted showButton={false} />;
-
+            //remoteServiceStarted state render
+            case ServiceStates.remoteServiceStarted:
+                return <Chat other={doctor.name} k="message" handler={handleChange}/>
+            //service ended state render
             case ServiceStates.ended:
                 return (
                     <div className="o-service">

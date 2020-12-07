@@ -36,14 +36,19 @@ const BootstrapInput = withStyles((theme) => ({
     },
 }))(InputBase);
 
-function Chat(props) {
+function Chat({other, handler, k}) {
+
+    const handleChange = (e)=>{
+        handler(k, e.target.value)
+    }
+
     const classes = useStyles();
     return (
         <div className="o-chat">
             <div className="o-chatHeader">
                 <div className="o-chatHeader">
                     <p className="o-chatHeaderText">Chat: </p>
-                    <p className="o-chatPerson">Lesly Lucumi</p>
+                    <p className="o-chatPerson">{other}</p>
                 </div>
                 <OButton label={"Abandonar"}></OButton>
             </div>
@@ -73,9 +78,9 @@ function Chat(props) {
             </div>
             <div className="o-chatFooter">
                 <FormControl className={classes.margin}>
-                    <BootstrapInput placeholder="Escribe aquí" id="bootstrap-input" />
+                    <BootstrapInput placeholder="Escribe aquí" onChange={handleChange} id="bootstrap-input" />
                 </FormControl>
-                <OButton label={"Enviar"}></OButton>
+                <OButton label={"Enviar"} ></OButton>
             </div>
         </div>
     );
