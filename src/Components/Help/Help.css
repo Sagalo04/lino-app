@@ -90,9 +90,10 @@
 }
 
 .helpicon{
+    font-family: "Font Awesome 5 Pro";
     margin-left: 1.5rem;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 300;
     margin-top: 0.5rem;
     color: black;
 }
