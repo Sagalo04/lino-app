@@ -57,20 +57,22 @@ function Chat({ messages, other, handler, k, end, value, send }) {
                 </div>
             </div>
             <div className="o-chatContent">
-                {messages.map((content, time,index) => {
+                {messages.forEach(element => {
                     return(
                     <div className="o-recive">
                         <p className="o-chatName">
                             Lesly Lucumi
                     </p>
                         <p className="o-chatMsg">
-                            {content}
+                            {element.content}
                     </p>
                         <p className="o-chatHr">
-                            {time}
+                            {element.time}
                     </p>
                     </div>)
-                })}
+                    
+                }) 
+                }
                 <div className="o-recive">
                     <p className="o-chatName">
                         Lesly Lucumi
