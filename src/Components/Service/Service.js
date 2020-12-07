@@ -12,6 +12,7 @@ import ServicePending from './ServicePending/ServicePending';
 import ServiceConfirm from './ServiceConfirm/ServiceConfirm';
 import ServiceRate from './ServiceRate/ServiceRate';
 import ServiceStarted from './ServiceStarted/ServiceStarted';
+import Chat from './Chat/Chat';
 
 import { services } from '../../Constants/Services'
 
@@ -25,6 +26,7 @@ const ServiceStates = {
     pending: 'Pending',
     resolved: 'Resolved',
     homeServiceStarted: 'homeServiceStarted',
+    remoteServiceStarted: 'remoteServiceStarted',
     ended: 'Ended'
 }
 
@@ -80,6 +82,9 @@ function Service() {
         //cuando inicia la consulta
         socket.on('homeStart', () => {
             setServiceState(ServiceStates.homeServiceStarted);
+        });
+        socket.on('remoteStart', () => {
+            setServiceState(ServiceStates.remoteServiceStarted);
         });
         //cuando terminan el servicio
         socket.on('terminate', () => {
@@ -179,6 +184,7 @@ function Service() {
                             info={doctor.specialty}
                             sourceImg={doctor.sourceImg}
                             date={`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
+                            home ={home}
                         />
                     </div>
                 );
@@ -186,8 +192,8 @@ function Service() {
             case ServiceStates.homeServiceStarted:
                 return <ServiceStarted showButton={false} />;
             //remoteServiceStarted state render
-            case ServiceStates.homeServiceStarted:
-                
+            case ServiceStates.remoteServiceStarted:
+                return <Chat other={doctor.name}/>
             //service ended state render
             case ServiceStates.ended:
                 return (

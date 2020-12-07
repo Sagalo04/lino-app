@@ -9,6 +9,7 @@ import ServiceRequest from './ServiceRequest/ServiceRequest';
 import Accept from './serviceAccept/serviceAccept'
 import ServiceRate from '../ServiceRate/ServiceRate'
 import ServiceStarted from '../ServiceStarted/ServiceStarted'
+import Chat from '../Chat/Chat'
 
 //web sockets
 import io from 'socket.io-client'
@@ -188,7 +189,9 @@ const ServiceDoctor = () => {
             case ServiceStates.remoteServiceAcepted:
                 return <Accept home={false} user={patient.user} onClick={remoteStart}/>
             //servicio remoto iniciado
-
+            case ServiceStates.remoteServiceStarted:
+                return <Chat other={patient.user}/>
+            //servicio finalizado
             case ServiceStates.ended:
                 return (
                     <div className="o-service">
