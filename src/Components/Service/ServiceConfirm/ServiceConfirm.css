@@ -1,23 +1,23 @@
+/* estilos del contenedor mayor */
 .o-service{
     width: 25rem;
     margin: 3rem;
     margin-top: 5rem;
 }
-
+/* estilos de las lineas divisoras */
 .o-service hr{
     width: 90%;
     border-top: 0.5px solid rgba(0,0,0,.0)
 }
-
+/* estilos del contenedor del servicio */
 .o-service-contain{
-    /* margin-top: 2rem; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-weight: 300;
 }
-
+/* estilos de la informacion */
 .o-service-info{
     margin-top: 1.5rem;
     width: 80%;
@@ -25,13 +25,14 @@
     flex-direction: row;
     justify-content: space-between;
 }
-/* Mediaquerys para movil */
+/* Mediaquerys para tablet */
 @media only screen and (max-width: 768px){
     .o-service{
         margin-top: 3rem;
 
     }
 }
+/* Mediaquerys para movil */
 @media only screen and (max-width: 700px){
     .o-service-info{
         width: 90%;

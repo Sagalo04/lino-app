@@ -19,7 +19,6 @@ function ServiceRequest({ info, changeActive, color, location }) {
             .then(res => res.json())
             .then((resJson) => {
     
-                //console.log(resJson.Response.View[0].Result[0].Location.Address.Label.split(',')[1].split(" ")[2])
                 let str = resJson.Response.View[0].Result[0].Location.Address.Label.split(',')[0]
                 setDirection(str)
             })
@@ -28,8 +27,6 @@ function ServiceRequest({ info, changeActive, color, location }) {
             })
     }
 
-    //const [str, setStr] = useState('');
-    //setStr(locationAdress(location.location))
     locationAdress(location.location)
     return (
         <div style={{ backgroundColor: `${color}` }} className="o-patient" onClick={changeActive}>

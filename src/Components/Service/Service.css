@@ -38,16 +38,19 @@
 }
 /* Mediaquerys para movil */
 @media only screen and (max-width: 700px){
+    /* estilos para el contenedor  */
     .o-body{
         position: inherit;
         display: flex;
         justify-content: center;
     }
+    /* estilos del contenedor mayor */
     .o-service{
         width: 19rem !important;
         margin-right: 0;
         margin: 0.5rem !important;
     }
+    /* estilos de los labels */
     .o-label{
     margin: 0 !important;
     margin-top: 1rem !important;

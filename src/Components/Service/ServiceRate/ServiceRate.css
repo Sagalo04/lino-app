@@ -1,21 +1,22 @@
+/* estilos para el header */
 .o-servicerate-header{
     display: flex;
     flex-direction: column;
     color: #677D8A;
 }
-
+/* estilos del top del panel */
 .o-service-rate{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
 }
-
+/* estilos del bonton */
 .rate-button{
     display: flex;
     justify-content: center;
 }
-
+/* estilos para el area del de escritura */
 #textarea{
     width: 100%;
     border: none;
@@ -25,7 +26,7 @@
     outline: none;
     font-weight: 100;
 }
-
+/* estilos del texto de informacion */
 .o-rate-info{
     font-weight: lighter;
     font-size: 1rem;
@@ -38,14 +39,14 @@
     display: flex;
     transform: rotateY(180deg);
 }
-
+/* estilos de los labels de las estrellas */
 .rating label{
     display: block;
     cursor: pointer;
     width: 2rem;
     margin-right: 0.5rem;
 }
-
+/* estilos de los inputs del rate */
 .rating input{
     display: none;
 }

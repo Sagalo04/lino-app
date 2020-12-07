@@ -1,7 +1,8 @@
+/* estilos para los parrafos */
 p{
     margin: 0
 }
-
+/* estilos para el contenedor del paciente */
 .o-patient{
     margin-left: 5%;
     width: 90%;
@@ -15,11 +16,11 @@ p{
     margin-bottom: 0.7rem;
     border: 3px solid rgba(0,0,0,0);
 }
-
+/* estilos para el hover del paciente */
 .o-patient:hover{
     border: 3px solid #E1F4FF;
-    /* background-color: #DFF1FF !important; */
 }
+/* estilos de la seccion del paciente */
 .o-pat-between{
     display: flex;
     flex-direction: column;
@@ -27,14 +28,14 @@ p{
     align-items: center;
     margin-right: 2rem;
 }
-
-
+/* estilos para mostrar la distancia */
 .o-distance{
     color: gray;
     font-size: 0.8rem;
     margin-left: 1rem;
     text-align: initial;
 }
+/* estilos para el servicio */
 .o-patient-service{
     height: 4rem;
     margin-left: 1rem;
@@ -42,6 +43,4 @@ p{
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    /* font-weight: bold; */
-
 }

@@ -1,14 +1,16 @@
 
-
+/* estilos para el mensaje */
 .o-service-pending .o-message-pending{
     font-size: 1.2rem;
     font-weight: 300;
 }
-
+/* estilos para el svg */
 svg.pending{
     height: 100px;
     animation: rotate 3s linear infinite;
 }
+
+/* estilos para la rotacion del circulo */
 @keyframes rotate{
     0%{
         transform: rotate(0deg);
@@ -17,7 +19,7 @@ svg.pending{
         transform: rotate(360deg);
     }
 }
-
+/* estilos para el cirulo */
 svg.pending circle{
     fill: none;
     stroke-width: 5;
@@ -27,6 +29,7 @@ svg.pending circle{
     stroke-dashoffset: 200;
     animation: animate 3s linear infinite;
 }
+/* estilos de rotacion */
 
 @keyframes animate
 {

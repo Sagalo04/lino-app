@@ -1,3 +1,4 @@
+/* estilos para el contenedor */
 .o-service-confirm-header{
     padding: 1rem;
     background-color: #FFFFFF;
@@ -7,7 +8,7 @@
     color: #677D8A;
     
 }
-
+/* estilos del titulo */
 .o-confirmTitle{
     font-size: 1.7rem ;
 }

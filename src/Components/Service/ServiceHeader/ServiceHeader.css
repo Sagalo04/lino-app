@@ -1,3 +1,4 @@
+/* estilos del contenedor mayor */
 .o-service-header{
     padding: 1rem;
     background-color: #FFFFFF;
@@ -7,12 +8,14 @@
     align-items: center;
     color: #677D8A;
 }
-
+/* esitlos para las etiquietas h3 dentro del contenedor */
 h3{
     font-weight: 300 !important; 
     margin-bottom: 1.5rem;
     margin-top: 0.7rem;
 }
+
+/* estilos de los iconos */
 .o-service-icons{
     width: 70%;
     display: flex;
