@@ -102,42 +102,51 @@ function Acount(props) {
     const mail = UserProfile.getMail();
     const classes = useStyles();
     return (
-
+        // contenedor mayor
         <div className="o-Acount">
+            {/* contenedor del texto dentro de la imagen */}
             <div className="o-img-acount">
                 <p className="o-bienvenido" >
                     Bienvenido <strong>Camilo</strong> 
                 </p>
                 <p>Aquí podrás ver y modificar tu información</p><br/>
             </div>
+            {/* contenedor del panel derecho */}
             <div className="o-contentAcount">
+                {/* titulo */}
                 <h3 className="o-personalTitle">Información personal</h3>
+                {/* contenedor de la informacion */}
                 <div className="o-contentPersonalAcount">
                     <div className="o-topAcount">
+                        {/* label con su campo de texto */}
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Nombre</p>
                             <FormControl className={classes.margin}>
                                 <BootstrapInput defaultValue="Camilo" id="bootstrap-input" />
                             </FormControl>
                         </div>
+                         {/* label con su campo de texto */}
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Apellido</p>
                             <FormControl className={classes.margin}>
                                 <BootstrapInput defaultValue="Sanchez" id="bootstrap-input" />
                             </FormControl>
                         </div>
+                         {/* label con su campo de texto */}
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Correo</p>
                             <FormControl className={classes.margin}>
                                 <BootstrapInput disabled defaultValue={`${mail}`} id="bootstrap-input" />
                             </FormControl>
                         </div>
+                         {/* label con su campo de texto */}
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Edad</p>
                             <FormControl className={classes.margin}>
                                 <BootstrapInput2 defaultValue="24" id="bootstrap-input" />
                             </FormControl>
                         </div>
+                         {/* label con su campo de texto */}
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Teléfono</p>
                             <FormControl className={classes.margin}>
@@ -147,12 +156,14 @@ function Acount(props) {
                                 <BootstrapInput3 defaultValue="3042111518" id="bootstrap-input" />
                             </FormControl>
                         </div>
+                         {/* label con su campo de texto */}
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Idioma</p>
                             <FormControl className={classes.margin}>
                                 <BootstrapInput defaultValue="Español" id="bootstrap-input" />
                             </FormControl>
                         </div>
+                         {/* label con su campo de texto */}
                         <div className="o-changeInfo">
                             <p className='o-labeled'>Foto de perfil</p>
                             <div className="o-avatarChange">
@@ -160,6 +171,7 @@ function Acount(props) {
                                 <p className="o-pchange">Cambiar</p>
                             </div>
                         </div>
+                        {/* boton de guardado */}
                         <div className="o-changeButton">
                             <OButton label={"Guardar"}></OButton>
 
@@ -167,7 +179,9 @@ function Acount(props) {
 
                     </div>
                 </div>
+                {/* Panel de reputacion */}
                 <div>
+                    {/* seccion de estrellas */}
                     <h3 className="o-personalTitle">Reputación</h3>
                     <div className="o-reputation">
                         <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
@@ -176,6 +190,7 @@ function Acount(props) {
                         <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
                         <i className='fas fa-star fa-2x iconProfile' size="2x"></i>
                     </div>
+                    {/* panel de comentarios */}
                     <div className="o-comments">
                         <p >Ver comentarios </p>
                         <i class="fas fa-chevron-right iconComments"></i>
