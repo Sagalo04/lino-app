@@ -1,32 +1,33 @@
+/* flex del selector */
 .o-select{
     display: flex;
     margin-top: 0.4rem;
     align-items: center;
 }
-
+/* estilos del texto */
 .o-select p{
     margin-top: 26px;
 }
-
+/* estilos de la linea divisora */
 hr{
     width: 90%;
     border-top: 0.5px solid rgba(0,0,0,0)
 }
+/* estilos del selctor */
 .o-selector{
     margin-left: 0.5rem !important;
     margin-top: 1rem !important;
     font-weight: 300 !important;
-    /* width: 10.2rem; */
     width: 10.2rem;
     text-align: start;
-    /* padding-right: 87px; */
 
 }
+/* estilos del titulo */
 .o-title{
    
     margin-left: 0.5rem;
 }
-
+/* labels */
 .o-label{
     justify-self:   flex-start ;
     align-items: flex-start;
@@ -35,8 +36,8 @@ hr{
     margin-right: 4rem;
     text-align: initial;
 }
-/* Mediaquerys para movil */
 
+/* Mediaquerys para movil */
 @media only screen and (max-width: 700px){
     .o-select{
         display: flex;
