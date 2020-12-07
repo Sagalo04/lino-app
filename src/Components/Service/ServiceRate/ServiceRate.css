@@ -58,7 +58,7 @@
     position: relative;
     display: block;
     font-size: 2rem;
-    color: #BDBDBD;
+    color: #d4d3d39e;
 }
 
 .rating label::after{
@@ -70,7 +70,7 @@
     top: 0%;
     opacity: 0;
     display: block;
-    color: #D7D0B7;
+    color: #ada070;
 }
 
 .rating label:hover::after,
