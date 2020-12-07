@@ -16,8 +16,10 @@ const socket = io.connect('http://localhost:4000')
 
 const ServiceStates = {
     initial: 'Initial',
-    serviceAcepted: 'serviceAcepted',
-    serviceStarted: 'serviceStarted',
+    homeServiceAcepted: 'homeServiceAcepted',
+    homeServiceStarted: 'homeServiceStarted',
+    remoteServiceAcepted: 'remoteServiceAcepted',
+    remoteServiceStarted: 'remoteServiceStarted',
     ended: 'Ended'
 }
 
@@ -118,20 +120,31 @@ const ServiceDoctor = () => {
         }
         //setear paciente
         setPatient(requests[index]);
-        socket.emit('response', requests[index].id, info);
-        if(home) setServiceState(ServiceStates.serviceAcepted);
-        if(remote) console.log('Hola')    
+        
+        if(home){
+            setServiceState(ServiceStates.homeServiceAcepted);
+            socket.emit('response', requests[index].id, info);
+        } 
+        if(remote){
+            setServiceState(ServiceStates.remoteServiceAcepted);
+            socket.emit('response', requests[index].id, info);
+        }    
     }
     //funcion para enviar mensaje
     const sendMessage = ()=>{
-        let message = {to: patient.id, from: socket.id, content: 'Hola'};
+        let message = {to: patient.id, from: socket.id, content: 'Hola', time: new Date().toLocaleTimeString()};
         socket.emit(message);
     }
     //iniciar consulta
-    const start = () => {
-        socket.emit('start', patient.id);
-        setServiceState(ServiceStates.serviceStarted);
+    const homeStart = () => {
+        socket.emit('homeStart', patient.id);
+        setServiceState(ServiceStates.homeServiceStarted);
     }
+    const remoteStart = () => {
+        socket.emit('remoteStart', patient.id);
+        setServiceState(ServiceStates.remoteServiceStarted);
+    }
+
     //acabar con la consulta
     const terminate = () => {
         socket.emit('terminate', patient.id);
@@ -140,6 +153,7 @@ const ServiceDoctor = () => {
 
     const checkServiceState = () => {
         switch (ServiceState) {
+            //bandeja de entrada iniciada
             case ServiceStates.initial:
                 return (
                     <div className="o-service">
@@ -164,11 +178,16 @@ const ServiceDoctor = () => {
                             <OButton label={"Aceptar"} onClick={request}></OButton>}
                     </div>
                 );
-            case ServiceStates.serviceAcepted:
-                return <Accept user={patient.user} onClick={start} />
-                
-            case ServiceStates.serviceStarted:
+            //servicio hogar aceptado
+            case ServiceStates.homeServiceAcepted:
+                return <Accept home={true} user={patient.user} onClick={homeStart} />
+            //servicio hogar iniciado
+            case ServiceStates.homeServiceStarted:
                 return <ServiceStarted showButton={true} onClick={terminate} />
+            //servicio remoto aceptado
+            case ServiceStates.remoteServiceAcepted:
+                return <Accept home={false} user={patient.user} onClick={remoteStart}/>
+            //servicio remoto iniciado
 
             case ServiceStates.ended:
                 return (

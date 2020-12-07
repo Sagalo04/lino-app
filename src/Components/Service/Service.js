@@ -24,7 +24,7 @@ const ServiceStates = {
     initial: 'Initial',
     pending: 'Pending',
     resolved: 'Resolved',
-    serviceStarted: 'serviceStarted',
+    homeServiceStarted: 'homeServiceStarted',
     ended: 'Ended'
 }
 
@@ -78,14 +78,14 @@ function Service() {
             setServiceState(ServiceStates.resolved);
         });
         //cuando inicia la consulta
-        socket.on('start', () => {
-            setServiceState(ServiceStates.serviceStarted);
+        socket.on('homeStart', () => {
+            setServiceState(ServiceStates.homeServiceStarted);
         });
         //cuando terminan el servicio
         socket.on('terminate', () => {
             setServiceState(ServiceStates.ended);
         });
-        socket.on('message', (message)=>{
+        socket.on('message', (message) => {
             setMessages(messages.push(message));
             console.log('dicen: ', messages);
         });
@@ -116,8 +116,8 @@ function Service() {
     }
 
     //funcion para enviar mensaje
-    const sendMessage = ()=>{
-        let message = {to: doctor.id, from: socket.id, content: 'Hola'};
+    const sendMessage = () => {
+        let message = { to: doctor.id, from: socket.id, content: 'Hola', time: new Date().toLocaleTimeString() };
         socket.emit(message);
     }
 
@@ -182,9 +182,12 @@ function Service() {
                         />
                     </div>
                 );
-            //servicestarted state render
-            case ServiceStates.serviceStarted:
+            //homeServiceStarted state render
+            case ServiceStates.homeServiceStarted:
                 return <ServiceStarted showButton={false} />;
+            //remoteServiceStarted state render
+            case ServiceStates.homeServiceStarted:
+                
             //service ended state render
             case ServiceStates.ended:
                 return (
