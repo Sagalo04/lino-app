@@ -79,6 +79,10 @@ function Service() {
         }
     }
 
+    const refresh = ()=>{
+        setServiceState(ServiceStates.initial);
+    }
+
     useEffect(() => {
         //cuando responden a la peticion
         socket.on('response', (docInfo) => {
@@ -161,7 +165,7 @@ function Service() {
             case ServiceStates.ended:
                 return(
                     <div className="o-service">
-                        <ServiceRate rateTo="doctor" name={doctor.name}/>
+                        <ServiceRate rateTo="doctor" name={doctor.name} onClick={refresh}/>
                     </div>
                 );
         }

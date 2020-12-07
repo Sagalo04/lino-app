@@ -27,6 +27,7 @@ const ServiceDoctor = () => {
     const [requests, setRequests] = useState([]);
     const [index, Setindex] = useState(0);
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
+    const [patient, setPatient]  = useState(null);
 
     //valores quemados para pruebas
     const service = 0 //medico
@@ -76,13 +77,19 @@ const ServiceDoctor = () => {
             specialty: 'Médico General',
             sourceImg: ''
         }
+        //set patient
+        setPatient(requests[index]);
         socket.emit('response', requests[index].id, info);
         setServiceState(ServiceStates.serviceAcepted);
     }
 
     const terminate = ()=>{
-        socket.emit('terminate', requests[index].id);
+        socket.emit('terminate', patient.id);
         setServiceState(ServiceStates.ended)
+    }
+
+    const refresh = ()=>{
+        setServiceState(ServiceStates.initial);
     }
 
     const changeActive = (index) => {
@@ -126,15 +133,14 @@ const ServiceDoctor = () => {
             case ServiceStates.serviceAcepted:
                 return (
                     <Accept 
-                        user={requests[index].user}
+                        user={patient.user}
                         onClick = {terminate}
                     ></Accept>
                 );
             case ServiceStates.ended:
                 return(
                     <div className="o-service">
-                        <ServiceRate rateTo="paciente"
-                        name={requests[index].user}/>
+                        <ServiceRate rateTo="paciente" name={patient.user} onClick={refresh}/>
                     </div>
                 );
         }
@@ -143,7 +149,7 @@ const ServiceDoctor = () => {
 
     return (
         <div className="o-body">
-            <Map location={requests[index]} />
+            <Map location={patient || requests[index]} />
             {checkServiceState()}
         </div>
     );
