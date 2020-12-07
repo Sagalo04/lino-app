@@ -8,6 +8,7 @@ import OButton from '../OButton/OButton'
 import { Link, useHistory } from 'react-router-dom';
 import UserProfile from '../../UserProfile';
 
+// estilos
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
+// funcion para la verificaicon de inicio de seiosn
 function SignIn(props) {
     const classes = useStyles();
     const [values, setValues] = React.useState({
@@ -74,10 +75,13 @@ function SignIn(props) {
 
     };
     return (
+        // contenedor mayor
         <div className="o-contain">
             <div className="o-contain-signin">
                 <div className="o-signin">
+                    {/* titulo */}
                     <h2 className="o-title">Iniciar Sesión</h2>
+                    {/* textfield para el usuario */}
                     <TextField
                         className={classes.textField}
                         id="input-with-icon-textfield"
@@ -85,8 +89,10 @@ function SignIn(props) {
                         value={values.mail}
                         onChange={handleChange2('mail')}
                     />
+                    {/* panel para la contraseña */}
                     <FormControl className={clsx(classes.margin, classes.textField)}>
                         <InputLabel htmlFor="standard-adornment-password">Contraseña</InputLabel>
+                        {/* input de texto */}
                         <Input
                             required
                             id="standard-adornment-password"
@@ -106,16 +112,17 @@ function SignIn(props) {
                             }
                         />
                     </FormControl>
+                    {/* mensaje de error en caso de que haya */}
                     {error ? <div className="o-error-message-service">
                             <p>Debes completar los campos de correo y contraseña<br /> Inténtalo de nuevo</p>
                         </div>
                             : null}
-
+                            {/* boton */}
                     <OButton label={"Ingresar"}
                         onClick={handleOnSubmit}
                     />
 
-
+                    {/* panel con los textos de abajo para registro y olvido de contraseña */}
                     <p className="mb-3">¿Olvidaste tu contraseña?</p>
                     <p className="o-text">¿No tienes una cuenta? <Link className="o-linkLogin" to="/">Registrate aquí</Link> </p>
                 </div>
