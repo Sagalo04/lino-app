@@ -101,6 +101,30 @@
 }
 
 /* Mediaquerys para mobil */
+@media only screen and (max-width: 1250px){
+    .o-helpDefine{
+        width: 49%;
+    }
+    .o-content-help{
+        min-width: 20rem;
+        width: 50rem;
+        padding: 5rem 0 0 3rem;
+    }
+    .o-helpinput{
+        width: fit-content;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .o-input-help{
+        min-width: 2rem;
+        max-width: 30rem;
+        width: 28rem;
+    }
+    .o-button{
+        align-self: flex-end;
+        margin-right: 1rem;
+    }
+}
 @media only screen and (max-width: 768px){
     .o-help{
         display: flex;
@@ -122,6 +146,7 @@
         font-weight: lighter;
     }
     .o-input-help{
+        max-width: 42rem;
         width: 42rem;
     }
     .o-button {
@@ -161,11 +186,12 @@
         width: 100vw;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         margin: 0;
     }
      .o-help-option{
-         width: 30%;
+         font-size: 1.5rem;
+         width: 80%;
          margin: 0;
      }
     
@@ -180,7 +206,9 @@
     flex-direction: column;
     width: 100vw;
 }
-
+.o-middle-help{
+    height: 12rem;
+}
 .o-content-help{
     max-width: 100%;
     min-width: 100%;   
@@ -192,14 +220,17 @@
 }
 
 .o-input-help{
+    align-self: center;
     width: 19rem;
 }
 .o-button {
-    align-self: unset;
-    margin-right: 1rem;
+    align-self: center;
+    margin-right: 0rem;
 }
 
 .o-helpTitle{
+    align-self: center;
+    text-align: center;
     font-size: 1.5rem;
 }
 
@@ -209,13 +240,13 @@ flex-direction: column;
 max-width: 100%;
 }
 
-
 .o-helpDefine{
     margin: 0;
     width: 100%;
 }
 
 .o-help-option{
+    width: 80%;
     padding: 1rem;
     font-size: 1rem;
 }
@@ -231,10 +262,6 @@ max-width: 100%;
    padding-right: 0;
    width: 100vw;
 
-}
-.o-help-option{
-    width: 100vw;
-    margin: 0;
 }
 
 }
