@@ -43,6 +43,7 @@ function Service() {
     const [error, setError] = useState();
     const [doctor, setDoctor] = useState({});
     const [messages, setMessages] = useState([]);
+    const [chat, setChat] = useState('');
 
     //levantamiento de estado
     const handleChange = (k, value) => {
@@ -67,6 +68,9 @@ function Service() {
                 break;
             case "location":
                 setLocation(value);
+                break;
+            case "message":
+                setChat(value);
                 break;
             default:
                 break;
@@ -184,7 +188,7 @@ function Service() {
                             info={doctor.specialty}
                             sourceImg={doctor.sourceImg}
                             date={`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
-                            home ={home}
+                            home={home}
                         />
                     </div>
                 );
@@ -193,7 +197,7 @@ function Service() {
                 return <ServiceStarted showButton={false} />;
             //remoteServiceStarted state render
             case ServiceStates.remoteServiceStarted:
-                return <Chat other={doctor.name}/>
+                return <Chat other={doctor.name} k="message" handler={handleChange}/>
             //service ended state render
             case ServiceStates.ended:
                 return (

@@ -22,7 +22,7 @@ const ServiceStates = {
     remoteServiceAcepted: 'remoteServiceAcepted',
     remoteServiceStarted: 'remoteServiceStarted',
     ended: 'Ended',
-    chat:'chat'
+    chat: 'chat'
 }
 
 const ServiceDoctor = () => {
@@ -34,7 +34,7 @@ const ServiceDoctor = () => {
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
     const [patient, setPatient] = useState(null);
     const [messages, setMessages] = useState([]);
-    const [chat, setChat]=useState(ServiceState.initial);
+    const [chat, setChat] = useState('');
 
     //valores quemados para pruebas
     const service = 0 //medico
@@ -55,14 +55,14 @@ const ServiceDoctor = () => {
     }
 
     //similar a componentDidMount
-    useEffect(()=>{
+    useEffect(() => {
         //suscribirme como doctor para recibir peticiones
         socket.emit('doctorSubscription');
         //consultar peticiones antiguas
         socket.emit('retrievePrevRequests', socket.id);
-    },[])
+    }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         //consultar peticiones antiguas
         socket.emit('retrievePrevRequests', socket.id);
     }, [home, remote, ServiceState])
@@ -76,7 +76,7 @@ const ServiceDoctor = () => {
             setRequests(filtered);
         });
         //mensaje de chat
-        socket.on('message', (message)=>{
+        socket.on('message', (message) => {
             setMessages(messages.push(message));
             console.log('mensajes: ', message);
         });
@@ -92,7 +92,7 @@ const ServiceDoctor = () => {
             case "remote":
                 setRemote(value);
                 break;
-            case "messege":
+            case "message":
                 setChat(value);
                 break;
             default:
@@ -126,19 +126,19 @@ const ServiceDoctor = () => {
         }
         //setear paciente
         setPatient(requests[index]);
-        
-        if(home){
+
+        if (home) {
             setServiceState(ServiceStates.homeServiceAcepted);
             socket.emit('response', requests[index].id, info);
-        } 
-        if(remote){
+        }
+        if (remote) {
             setServiceState(ServiceStates.remoteServiceAcepted);
             socket.emit('response', requests[index].id, info);
-        }    
+        }
     }
     //funcion para enviar mensaje
-    const sendMessage = ()=>{
-        let message = {to: patient.id, from: socket.id, content: 'Hola', time: new Date().toLocaleTimeString()};
+    const sendMessage = () => {
+        let message = { to: patient.id, from: socket.id, content: 'Hola', time: new Date().toLocaleTimeString() };
         socket.emit(message);
     }
     //iniciar consulta
@@ -192,10 +192,10 @@ const ServiceDoctor = () => {
                 return <ServiceStarted showButton={true} onClick={terminate} />
             //servicio remoto aceptado
             case ServiceStates.remoteServiceAcepted:
-                return <Accept home={false} user={patient.user} onClick={remoteStart}/>
+                return <Accept home={false} user={patient.user} onClick={remoteStart} />
             //servicio remoto iniciado
             case ServiceStates.remoteServiceStarted:
-                return <Chat other={patient.user} onchange={handleChange}/>
+                return <Chat other={patient.user} handler={handleChange} k={'message'} />
             //servicio finalizado
             case ServiceStates.ended:
                 return (
