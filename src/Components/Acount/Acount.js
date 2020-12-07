@@ -1,6 +1,5 @@
-import { Avatar, fade, FormControl, InputBase, InputLabel, makeStyles, withStyles } from '@material-ui/core';
+import { Avatar, fade, FormControl, InputBase, makeStyles, withStyles } from '@material-ui/core';
 import React from 'react';
-import imagens from '../../Resources/Images/help.png'
 import UserProfile from '../../UserProfile';
 import OButton from '../OButton/OButton';
 import './Acount.css'
