@@ -43,8 +43,13 @@ function Chat({ messages, other, handler, k, end, value, send, otherid }) {
     const handleChange = (e) => {
         handler(k, e.target.value)
     }
-    console.log(messages)
+    
+    const Submit = (e)=>{
+        e.preventDefault();
+        send();
+    }
     const classes = useStyles();
+    
     return (
         <div className="o-chat">
             <div className="o-chatHeader">
@@ -89,14 +94,14 @@ function Chat({ messages, other, handler, k, end, value, send, otherid }) {
                 })}
                 </div>
             </div>
-            <div className="o-chatFooter">
+            <form className="o-chatFooter" onSubmit={Submit}>
                 <FormControl className={classes.margin}>
                     <BootstrapInput placeholder="Escribe aquí" onChange={handleChange} id="bootstrap-input" value={value} />
                 </FormControl>
                 <div className="btn">
-                    <OButton label={"Enviar"} onClick={send}></OButton>
+                    <OButton label={"Enviar"}></OButton>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }

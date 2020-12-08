@@ -46,6 +46,7 @@ export class CurrentLocation extends React.Component {
             let center = new maps.LatLng(current.lat, current.lng);
             map.panTo(center);
         }
+        console.log(this.state.currentLocation)
         this.props.handler(this.props.k, this.state.currentLocation)
     }
 

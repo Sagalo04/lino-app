@@ -210,7 +210,14 @@ function Service() {
                 return <ServiceStarted showButton={false} />;
             //remoteServiceStarted state render
             case ServiceStates.remoteServiceStarted:
-                return <Chat other={doctor.name} otherid={doctor.id} k="message" messages={messages} handler={handleChange} send={sendMessage} value={chat} end={terminate}/>
+                return <Chat other={doctor.name}
+                            otherid={doctor.id}
+                            k="message"
+                            messages={messages}
+                            handler={handleChange}
+                            send={sendMessage}
+                            value={chat}
+                            end={terminate}/>
             //service ended state render
             case ServiceStates.ended:
                 return (

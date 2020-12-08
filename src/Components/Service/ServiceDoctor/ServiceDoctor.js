@@ -84,6 +84,7 @@ const ServiceDoctor = () => {
         //cuando terminan el servicio
         socket.on('terminate', () => {
             setServiceState(ServiceStates.ended);
+            setMessages([]);
         });
         return () => socket.off();
     });
@@ -206,7 +207,14 @@ const ServiceDoctor = () => {
                 return <Accept home={false} user={patient.user} onClick={remoteStart} />
             //servicio remoto iniciado
             case ServiceStates.remoteServiceStarted:
-                return <Chat value={chat} messages={messages} otherid={patient.id} other={patient.user} handler={handleChange} k={'message'} send={sendMessage} />
+                return <Chat value={chat} 
+                            messages={messages}
+                            otherid={patient.id}
+                            other={patient.user}
+                            handler={handleChange}
+                            k={'message'}
+                            send={sendMessage}
+                            end={terminate}/>
             //servicio finalizado
             case ServiceStates.ended:
                 return (
