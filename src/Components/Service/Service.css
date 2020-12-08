@@ -3,8 +3,6 @@
     position: fixed; 
     height: 100vh;
     width: 100vw;
-    background-size: cover;
-    background-image: url('/src/Resources/Images/mapa.png'); 
 }
 /* estilos para la card de servicio */
 .o-service{

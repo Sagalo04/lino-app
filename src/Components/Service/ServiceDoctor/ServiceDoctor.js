@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-//import '../Service.css'
 import './ServiceDoctor.css'
 import ServiceHeader from '../ServiceHeader/ServiceHeader';
 import OButton from '../../OButton/OButton'
@@ -10,16 +9,20 @@ import ServiceRequest from './ServiceRequest/ServiceRequest';
 import Accept from './serviceAccept/serviceAccept'
 import ServiceRate from '../ServiceRate/ServiceRate'
 import ServiceStarted from '../ServiceStarted/ServiceStarted'
+import Chat from '../Chat/Chat'
 
-//web socket comunication
+//web sockets
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:4000')
 
 const ServiceStates = {
     initial: 'Initial',
-    serviceAcepted: 'serviceAcepted',
-    serviceStarted: 'serviceStarted',
-    ended: 'Ended'
+    homeServiceAcepted: 'homeServiceAcepted',
+    homeServiceStarted: 'homeServiceStarted',
+    remoteServiceAcepted: 'remoteServiceAcepted',
+    remoteServiceStarted: 'remoteServiceStarted',
+    ended: 'Ended',
+    chat: 'chat'
 }
 
 const ServiceDoctor = () => {
@@ -30,6 +33,8 @@ const ServiceDoctor = () => {
     const [index, Setindex] = useState(0);
     const [ServiceState, setServiceState] = useState(ServiceStates.initial);
     const [patient, setPatient] = useState(null);
+    const [messages, setMessages] = useState([]);
+    const [chat, setChat] = useState('');
 
     //valores quemados para pruebas
     const service = 0 //medico
@@ -50,25 +55,36 @@ const ServiceDoctor = () => {
     }
 
     //similar a componentDidMount
-    useEffect(()=>{
-        //subscribe as a doctor
+    useEffect(() => {
+        //suscribirme como doctor para recibir peticiones
         socket.emit('doctorSubscription');
-        //bring back old requests
+        //consultar peticiones antiguas
         socket.emit('retrievePrevRequests', socket.id);
-    },[])
 
-    useEffect(()=>{
-        //bring back old requests
+    }, [])
+
+    useEffect(() => {
+        //consultar peticiones antiguas
         socket.emit('retrievePrevRequests', socket.id);
     }, [home, remote, ServiceState])
 
     //similar a componentDidUpdate
     useEffect(() => {
+        //peticion de cita
         socket.on('requestDoctor', (requests) => {
-            console.log('Hola', requests)
             const filtered = filterRequests(requests);
             setRequests(filtered);
-        })
+        });
+        //mensaje de chat
+        socket.on('message', (message) => {
+            //let totales = messages.push(message)
+            setMessages(messages.concat(message));
+            console.log(messages)
+        });
+        //cuando terminan el servicio
+        socket.on('terminate', () => {
+            setServiceState(ServiceStates.ended);
+        });
         return () => socket.off();
     });
 
@@ -80,6 +96,9 @@ const ServiceDoctor = () => {
                 break;
             case "remote":
                 setRemote(value);
+                break;
+            case "message":
+                setChat(value);
                 break;
             default:
                 break;
@@ -102,32 +121,56 @@ const ServiceDoctor = () => {
     }
 
     //CICLO DE VIDA DEL SERVICIO
-    //accept request
+    //aceptar peticion
     const request = () => {
         //doctor info
         let info = {
+            id: socket.id,
             name: UserProfile.getMail().split('@')[0],
             specialty: 'Médico General',
             sourceImg: ''
         }
-        //set patient
+        //setear paciente
         setPatient(requests[index]);
-        socket.emit('response', requests[index].id, info);
-        setServiceState(ServiceStates.serviceAcepted);
+
+        if (home) {
+            setServiceState(ServiceStates.homeServiceAcepted);
+            socket.emit('response', requests[index].id, info);
+        }
+        if (remote) {
+            setServiceState(ServiceStates.remoteServiceAcepted);
+            socket.emit('response', requests[index].id, info);
+        }
     }
-    //iniciar consilta
-    const start = () => {
-        socket.emit('start', patient.id);
-        setServiceState(ServiceStates.serviceStarted);
+    //funcion para enviar mensaje
+    const sendMessage = () => {
+        if (chat !== '') {
+            let message = { to: patient.id, from: socket.id, content: chat, time: new Date().toLocaleTimeString() };
+            setChat('');
+            socket.emit('message', message);
+            setMessages(messages.concat(message))
+        }
     }
+    //iniciar consulta
+    const homeStart = () => {
+        socket.emit('homeStart', patient.id);
+        setServiceState(ServiceStates.homeServiceStarted);
+    }
+    const remoteStart = () => {
+        socket.emit('remoteStart', patient.id);
+        setServiceState(ServiceStates.remoteServiceStarted);
+    }
+
     //acabar con la consulta
     const terminate = () => {
         socket.emit('terminate', patient.id);
         setServiceState(ServiceStates.ended)
+        setMessages([]);
     }
 
     const checkServiceState = () => {
         switch (ServiceState) {
+            //bandeja de entrada iniciada
             case ServiceStates.initial:
                 return (
                     <div className="o-service">
@@ -152,12 +195,19 @@ const ServiceDoctor = () => {
                             <OButton label={"Aceptar"} onClick={request}></OButton>}
                     </div>
                 );
-            case ServiceStates.serviceAcepted:
-                return <Accept user={patient.user} onClick={start} />
-                
-            case ServiceStates.serviceStarted:
+            //servicio hogar aceptado
+            case ServiceStates.homeServiceAcepted:
+                return <Accept home={true} user={patient.user} onClick={homeStart} />
+            //servicio hogar iniciado
+            case ServiceStates.homeServiceStarted:
                 return <ServiceStarted showButton={true} onClick={terminate} />
-
+            //servicio remoto aceptado
+            case ServiceStates.remoteServiceAcepted:
+                return <Accept home={false} user={patient.user} onClick={remoteStart} />
+            //servicio remoto iniciado
+            case ServiceStates.remoteServiceStarted:
+                return <Chat value={chat} messages={messages} otherid={patient.id} other={patient.user} handler={handleChange} k={'message'} send={sendMessage} />
+            //servicio finalizado
             case ServiceStates.ended:
                 return (
                     <div className="o-service">

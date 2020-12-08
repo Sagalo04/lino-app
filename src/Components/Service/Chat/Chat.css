@@ -1,0 +1,125 @@
+/* contendor general */
+.o-chat{
+    margin: 3rem;
+    margin-top: 5rem;
+    height: fit-content;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    width: 35rem;
+    background-color: white;
+    padding: 0rem 2rem;
+}
+/* contenedor de l aparte superior */
+.o-chatHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #677D8A;
+    font-weight: 300;
+    justify-content: space-between;
+}
+/* estilos del texto de la parte superior */
+.o-chatHeaderText{
+    font-size: 1.5rem;
+    margin-right: 0.3rem;
+}
+
+.o-chatHeaderText .btn{
+    padding: 0;
+}
+
+
+/* estilos del nombre de la persona */
+.o-chatPerson{
+    margin-top: 0.3rem;
+    font-size: 1.1rem;
+}
+/* contenedor del scroll */
+.o-scrolleable{
+    overflow: auto;
+    max-height: 25rem;
+}
+/* contenedor del chat */
+.o-chatContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #EEEEEE;
+    min-height: 25rem;
+    margin:0;
+    font-weight: 300;
+}
+/* estilos del mensaje recibido */
+.o-recive{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 60%;
+    margin: 0.5rem 1rem;
+    padding: 0.5rem;
+}
+/* estilos del mensaje enviado */
+.o-send{
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    background-color: #E1F4FF;
+    width: 60%;
+    margin: 0.5rem 1rem;
+    padding: 0.5rem;
+}
+/* estilos del nombre en el chat */
+.o-chatName{
+    font-size: 0.8rem;
+    color: #677D8A;
+}
+/* estilos del texto del mensajo */
+.o-chatMsg{
+    font-size: 1rem;
+}
+/* estilos de la Hora */
+.o-chatHr{
+    align-self: flex-end;
+    font-size: 0.6rem;
+}
+/* estilos del footer del chat */
+.o-chatFooter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* estilos para tablt */
+@media only screen and (max-width: 768px){
+    .o-chat{
+        margin:0;
+        margin-top: 1rem;
+        width: 35rem;
+        display: flex;
+        flex-direction: column;
+        margin-left: 6rem;  
+    }
+    .btn .o-button{
+ 
+    display: flex;
+    font-size: 1rem;
+    text-align: center;
+    justify-content: center;
+}
+}
+/* estilos para movil */
+@media only screen and (max-width: 700px){
+    .o-chat{
+        margin:0;
+        margin-top: 1rem;
+        width: 20rem;
+
+    }
+    .btn .o-button{
+    width: 1rem;
+    display: flex;
+    font-size: 0.8rem;
+    text-align: center;
+    justify-content: center;
+}
+}
