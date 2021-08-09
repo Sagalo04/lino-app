@@ -19,7 +19,7 @@ import { services } from '../../Constants/Services'
 
 //web socket comunication
 import io from 'socket.io-client'
-const socket = io.connect('http://localhost:4000')
+const socket = io.connect('https://DroopyRosyModels.santiagogarca4.repl.co')
 
 const ServiceStates = {
     initial: 'Initial',
