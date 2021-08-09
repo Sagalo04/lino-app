@@ -59,7 +59,7 @@ function Chat({ messages, other, handler, k, end, value, send, otherid }) {
             <div className="o-scrolleable">
                 <div className='o-chatContent'>    
                 {messages.map((element, index) => {
-                    if (otherid == element.from) {
+                    if (otherid === element.from) {
                         return (
                             <div className="o-recive">
                                 <p className="o-chatName">
